@@ -178,7 +178,7 @@ export default function Contact({ id }: ContactProps) {
 
       setSuccessMessage('Message sent successfully!')
       setFormData({ name: '', email: '', message: '' })
-    } catch (error) {
+    } catch {
       setErrorMessage('Failed to send message. Please try again later.')
     } finally {
       setIsSubmitting(false)

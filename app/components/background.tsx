@@ -1,20 +1,6 @@
 'use client'
 
 import { styled, keyframes, css } from 'styled-components'
-import { ReactNode } from 'react'
-
-// Keyframe animations
-const neuralPulse = keyframes`
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.1;
-  }
-  100% {
-    opacity: 0;
-  }
-`
 
 const starFall = keyframes`
   0% {
