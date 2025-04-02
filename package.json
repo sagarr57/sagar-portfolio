@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.14.0",
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
+    "@sendgrid/mail": "^8.1.4",
     "framer-motion": "^12.6.2",
     "next": "15.2.4",
     "nodemailer": "^6.10.0",
@@ -27,6 +28,7 @@
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sendgrid": "^4.3.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "typescript": "^5"

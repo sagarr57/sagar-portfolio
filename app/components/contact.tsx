@@ -54,53 +54,41 @@ const Form = styled.form`
   }
 `
 
-const InputGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+const Input = styled.input`
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 
-  label {
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-
-  input,
-  textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 0.8rem;
-    color: #ffffff;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-
-    &:focus {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-    }
-  }
-
-  textarea {
-    min-height: 150px;
-    resize: vertical;
-  }
-
-  @media (max-width: 768px) {
-    label {
-      font-size: 0.9rem;
-    }
-
-    input,
-    textarea {
-      padding: 0.6rem;
-      font-size: 0.9rem;
-    }
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
   }
 `
 
-const SubmitButton = styled.button`
+const Textarea = styled.textarea`
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-height: 150px;
+  resize: vertical;
+
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+`
+
+const Button = styled.button`
   background: linear-gradient(45deg, #3b82f6, #8b5cf6);
   color: #ffffff;
   border: none;
@@ -159,9 +147,13 @@ export default function Contact({ id }: ContactProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSuccessMessage('')
     setErrorMessage('')
+    setSuccessMessage('')
+
+    if (!formData.name || !formData.email || !formData.message) {
+      setErrorMessage('Please fill in all fields')
+      return
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -178,10 +170,8 @@ export default function Contact({ id }: ContactProps) {
 
       setSuccessMessage('Message sent successfully!')
       setFormData({ name: '', email: '', message: '' })
-    } catch {
+    } catch (error) {
       setErrorMessage('Failed to send message. Please try again later.')
-    } finally {
-      setIsSubmitting(false)
     }
   }
 
@@ -189,39 +179,30 @@ export default function Contact({ id }: ContactProps) {
     <ContactSection id={id}>
       <ContactTitle>Contact Me</ContactTitle>
       <Form onSubmit={handleSubmit}>
-        <InputGroup>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
-          />
-        </InputGroup>
-        <InputGroup>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            required
-          />
-        </InputGroup>
-        <InputGroup>
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            required
-          />
-        </InputGroup>
-        <SubmitButton type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-          <FaPaperPlane style={{ marginLeft: '0.5rem' }} />
-        </SubmitButton>
+        <Input
+          type="text"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          required
+        />
+        <Input
+          type="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          required
+        />
+        <Textarea
+          placeholder="Your Message"
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          required
+        />
+        <Button type="submit">
+          Send Message
+          <FaPaperPlane size={20} />
+        </Button>
       </Form>
       {successMessage && (
         <SuccessMessage>{successMessage}</SuccessMessage>

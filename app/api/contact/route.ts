@@ -1,23 +1,21 @@
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import sgMail from '@sendgrid/mail'
 
-// Configure nodemailer
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'sagar05.ms@gmail.com',
-    pass: process.env.EMAIL_PASSWORD, // Make sure to set this in your environment variables
-  },
-})
+// Configure SendGrid
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
 
 export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json()
 
     // Send email to your address
-    await transporter.sendMail({
-      from: email,
+    const msg = {
       to: 'sagar05.ms@gmail.com',
+      from: {
+        email: email,
+        name: name
+      },
+      replyTo: email,
       subject: `New Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       html: `
@@ -27,7 +25,9 @@ export async function POST(request: Request) {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
-    })
+    }
+
+    await sgMail.send(msg)
 
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 })
   } catch (error) {
