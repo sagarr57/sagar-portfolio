@@ -50,7 +50,7 @@ const Form = styled.form`
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    gap: 1rem;
+    max-width: 100%;
   }
 `
 
@@ -67,6 +67,11 @@ const Input = styled.input`
     outline: none;
     border-color: #3b82f6;
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.6rem;
+    font-size: 0.9rem;
   }
 `
 
@@ -86,6 +91,11 @@ const Textarea = styled.textarea`
     border-color: #3b82f6;
     box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
   }
+
+  @media (max-width: 768px) {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
 `
 
 const Button = styled.button`
@@ -93,7 +103,7 @@ const Button = styled.button`
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -104,34 +114,26 @@ const Button = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-  }
-
-  &:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
-    padding: 0.8rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 `
 
-const SuccessMessage = styled.div`
-  background: rgba(59, 130, 246, 0.1);
+const SuccessMessage = styled.p`
   color: #3b82f6;
-  padding: 1rem;
-  border-radius: 0.5rem;
   text-align: center;
+  font-size: 1rem;
   margin-top: 1rem;
 `
 
-const ErrorMessage = styled.div`
-  background: rgba(239, 68, 68, 0.1);
+const ErrorMessage = styled.p`
   color: #ef4444;
-  padding: 1rem;
-  border-radius: 0.5rem;
   text-align: center;
+  font-size: 1rem;
   margin-top: 1rem;
 `
 
@@ -141,7 +143,7 @@ export default function Contact({ id }: ContactProps) {
     email: '',
     message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const [successMessage, setSuccessMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -170,7 +172,7 @@ export default function Contact({ id }: ContactProps) {
 
       setSuccessMessage('Message sent successfully!')
       setFormData({ name: '', email: '', message: '' })
-    } catch (error) {
+    } catch {
       setErrorMessage('Failed to send message. Please try again later.')
     }
   }
