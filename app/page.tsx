@@ -13,7 +13,6 @@ import HeaderComponent from './components/header'
 import Background from './components/background'
 import Contact from './components/contact'
 import { PageProvider } from './context/pageContext'
-import { useState } from 'react'
 
 const Container = styled.div`
   min-height: 100vh;
@@ -290,52 +289,7 @@ const ProfessionalSummary = styled.p`
   }
 `
 
-// const InfoItem = styled.div`
-//   display: flex;
-//   align-items: center;
-//   gap: 1rem;
-//   color: rgba(255, 255, 255, 0.9);
-
-//   svg {
-//     font-size: 1.5rem;
-//     color: #3b82f6;
-//   }
-
-//   div {
-//     h3 {
-//       font-size: 1.2rem;
-//       font-weight: 600;
-//       margin-bottom: 0.5rem;
-//     }
-
-//     p {
-//       font-size: 1rem;
-//       color: rgba(255, 255, 255, 0.9);
-//     }
-//   }
-
-//   @media (max-width: 768px) {
-//     svg {
-//       font-size: 1.2rem;
-//     }
-//   }
-// `
-
 export default function Home() {
-  const [activeTab, setActiveTab] = useState('Frontend')
-
-  // const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-  //   e.preventDefault();
-  //   const href = e.currentTarget.getAttribute('href');
-  //   if (href) {
-  //     const targetId = href.replace('#', '');
-  //     const element = document.getElementById(targetId);
-  //     if (element) {
-  //       element.scrollIntoView({ behavior: 'smooth' });
-  //     }
-  //   }
-  // };
-
   return (
     <PageProvider>
       <Container>
@@ -394,7 +348,7 @@ export default function Home() {
             </ProfessionalSummary>
           </HeroSection>
 
-          <Skills activeTab={activeTab} setActiveTab={setActiveTab} />
+          <Skills />
           <Experience />
           <Education />
           <Projects />
