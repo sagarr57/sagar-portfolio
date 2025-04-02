@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaBriefcase } from 'react-icons/fa'
 import { TbBrandLinkedin, TbBrandGithub } from 'react-icons/tb'
 import { styled } from 'styled-components'
 import Experience from './components/experience'
@@ -61,32 +61,6 @@ const HeroSection = styled.section`
   }
 `
 
-const Name = styled.h1`
-  font-size: 3.5rem;
-  font-weight: 800;
-  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
-`
-
-const Title = styled.h2`
-  font-size: 2rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-`
-
 const ContactInfo = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -108,7 +82,7 @@ const ContactInfo = styled.div`
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   color: rgba(255, 255, 255, 0.9);
 
   svg {
@@ -137,6 +111,10 @@ const ContactItem = styled.div`
   &:last-child {
     margin-top: 1rem;
     justify-content: center;
+    gap: 1;
+    svg {
+      display: none;
+    }
   }
 
   @media (max-width: 768px) {
@@ -156,7 +134,7 @@ const ContactItem = styled.div`
   }
 `
 
-const HireMeButton = styled.a`
+const DownloadResumeButton = styled.a`
   background: linear-gradient(45deg, #3b82f6, #8b5cf6);
   border: 2px solid transparent;
   padding: 0.8rem 1.5rem;
@@ -252,13 +230,42 @@ const SocialLink = styled.a`
   }
 `
 
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
+const Name = styled.h1`
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 
   @media (max-width: 768px) {
-    gap: 1rem;
+    font-size: 2.5rem;
+  }
+`
+
+const Title = styled.h2`
+  font-size: 2rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+`
+
+const ProfessionalSummary = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+  margin: 2rem auto;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin: 1.5rem auto;
   }
 `
 
@@ -276,19 +283,6 @@ const ViewWorkText = styled.div`
   }
 `
 
-const ProfessionalSummary = styled.p`
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 800px;
-  margin: 2rem auto;
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-    margin: 1.5rem auto;
-  }
-`
-
 export default function Home() {
   return (
     <PageProvider>
@@ -299,53 +293,51 @@ export default function Home() {
         <ContentWrapper>
           <HeaderComponent />
           <HeroSection>
+            <Name>Sagar Mamindla</Name>
+            <Title>Software Engineer</Title>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Name>Sagar Mamindla</Name>
-              <Title>Software Engineer</Title>
+              <ContactInfo>
+                <ContactItem>
+                  <FaBriefcase className="icon" />
+                  <span>3+ Years</span>
+                </ContactItem>
+                <ContactItem>
+                  <FaEnvelope className="icon" />
+                  <a href="mailto:sagar05.ms@gmail.com">sagar05.ms@gmail.com</a>
+                </ContactItem>
+                <ContactItem>
+                  <FaPhone className="icon" />
+                  <span>+971 553084546</span>
+                </ContactItem>
+                <ContactItem>
+                  <FaPhone className="icon" />
+                </ContactItem>
+              </ContactInfo>
+
+              <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+                <DownloadResumeButton href="/resume/sagar-mamindla-resume.pdf" download>
+                  <span>Download Resume</span>
+                </DownloadResumeButton>
+              </div>
+
+              <ViewWorkText>Know more</ViewWorkText>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', margin: '1rem 0' }}>
+                <SocialLink href="https://github.com/sagarr57" target="_blank" rel="noopener noreferrer">
+                  <TbBrandGithub />
+                </SocialLink>
+                <SocialLink href="https://linkedin.com/in/sagar-mamindla" target="_blank" rel="noopener noreferrer">
+                  <TbBrandLinkedin />
+                </SocialLink>
+              </div>
+
+              <ProfessionalSummary>
+                Software Engineer with 3+ years of experience in front-end development, now pursuing an MSc in Artificial Intelligence. Passionate about leveraging AI and machine learning to enhance user experiences and optimize system performance. Skilled in React JS, JavaScript, and Python, with hands-on experience in automation, data-driven applications, and AI integration. Eager to apply AI techniques to real-world challenges.
+              </ProfessionalSummary>
             </motion.div>
-
-            <ContactInfo>
-              <ContactItem>
-                <FaBriefcase className="icon" />
-                <span>3+ Years</span>
-              </ContactItem>
-              <ContactItem>
-                <FaEnvelope className="icon" />
-                <a href="mailto:sagar05.ms@gmail.com">sagar05.ms@gmail.com</a>
-              </ContactItem>
-              <ContactItem>
-                <FaPhone className="icon" />
-                <span>+971 553084546</span>
-              </ContactItem>
-              <ContactItem>
-                <FaMapMarkerAlt className="icon" />
-                <span>Dubai, UAE</span>
-              </ContactItem>
-
-              <ContactItem>
-                <HireMeButton href="#contact">
-                  <span>Hire Me</span>
-                </HireMeButton>
-              </ContactItem>
-            </ContactInfo>
-
-            <ViewWorkText>Know more</ViewWorkText>
-            <SocialLinks>
-              <SocialLink href="https://github.com/sagarr57" target="_blank" rel="noopener noreferrer">
-                <TbBrandGithub />
-              </SocialLink>
-              <SocialLink href="https://linkedin.com/in/sagar-mamindla" target="_blank" rel="noopener noreferrer">
-                <TbBrandLinkedin />
-              </SocialLink>
-            </SocialLinks>
-
-            <ProfessionalSummary>
-              Software Engineer with 3+ years of experience in front-end development, now pursuing an MSc in Artificial Intelligence. Passionate about leveraging AI and machine learning to enhance user experiences and optimize system performance. Skilled in React JS, JavaScript, and Python, with hands-on experience in automation, data-driven applications, and AI integration. Eager to apply AI techniques to real-world challenges.
-            </ProfessionalSummary>
           </HeroSection>
 
           <Skills />
