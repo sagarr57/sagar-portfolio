@@ -3,8 +3,7 @@
 import { styled } from 'styled-components'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { useState } from 'react'
-import { TbBrandLinkedin, TbBrandGithub } from 'react-icons/tb'
-import { FaUser, FaBriefcase, FaCode, FaGraduationCap, FaCertificate, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaUser, FaBriefcase, FaCode, FaGraduationCap, FaCertificate, FaMapMarkerAlt } from 'react-icons/fa'
 
 const Header = styled.header`
   position: fixed;

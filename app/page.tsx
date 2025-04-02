@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa'
 import { TbBrandLinkedin, TbBrandGithub } from 'react-icons/tb'
 import { styled } from 'styled-components'
 import Experience from './components/experience'
@@ -290,51 +290,51 @@ const ProfessionalSummary = styled.p`
   }
 `
 
-const InfoItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+// const InfoItem = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 1rem;
+//   color: rgba(255, 255, 255, 0.9);
 
-  svg {
-    font-size: 1.5rem;
-    color: #3b82f6;
-  }
+//   svg {
+//     font-size: 1.5rem;
+//     color: #3b82f6;
+//   }
 
-  div {
-    h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
+//   div {
+//     h3 {
+//       font-size: 1.2rem;
+//       font-weight: 600;
+//       margin-bottom: 0.5rem;
+//     }
 
-    p {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-  }
+//     p {
+//       font-size: 1rem;
+//       color: rgba(255, 255, 255, 0.9);
+//     }
+//   }
 
-  @media (max-width: 768px) {
-    svg {
-      font-size: 1.2rem;
-    }
-  }
-`
+//   @media (max-width: 768px) {
+//     svg {
+//       font-size: 1.2rem;
+//     }
+//   }
+// `
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('Frontend')
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    const href = e.currentTarget.getAttribute('href');
-    if (href) {
-      const targetId = href.replace('#', '');
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
+  // const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  //   e.preventDefault();
+  //   const href = e.currentTarget.getAttribute('href');
+  //   if (href) {
+  //     const targetId = href.replace('#', '');
+  //     const element = document.getElementById(targetId);
+  //     if (element) {
+  //       element.scrollIntoView({ behavior: 'smooth' });
+  //     }
+  //   }
+  // };
 
   return (
     <PageProvider>

@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaCode, FaDatabase, FaServer, FaCloud, FaRobot, FaGraduationCap, FaJava } from 'react-icons/fa'
+import { FaCode, FaDatabase, FaRobot, FaJava } from 'react-icons/fa'
 import { TbBrandReact, TbBrandNextjs, TbBrandPython, TbBrandJavascript, TbBrandTypescript, TbBrandNodejs, TbBrandMongodb, TbBrandMysql, TbBrandDocker, TbBrandGit } from 'react-icons/tb'
-import { SiMaterialdesign, SiBootstrap, SiRedux, SiExpress, SiJira, SiFigma, SiPostman, SiJest, SiMocha, SiTrello, SiSlack, SiTensorflow, SiPytorch, SiScikitlearn, SiPandas, SiNumpy, SiGooglecloud, SiSwagger, SiHtml5, SiCss3 } from 'react-icons/si'
+import { SiMaterialdesign, SiBootstrap, SiRedux, SiExpress, SiJira, SiFigma, SiPostman, SiJest, SiMocha, SiSlack, SiGooglecloud, SiHtml5, SiCss3 } from 'react-icons/si'
 import { BiTestTube } from 'react-icons/bi'
 import { useState } from 'react'
 import { styled } from 'styled-components'

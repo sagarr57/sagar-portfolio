@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaCertificate, FaUniversity } from 'react-icons/fa'
+import { FaCertificate } from 'react-icons/fa'
 import { styled } from 'styled-components'
 
 const CertificationsSection = styled.section`
@@ -80,36 +80,6 @@ const CertificationIcon = styled.div<{ color: string }>`
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
-  }
-`
-
-const CertificationSubtitle = styled.p`
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 1rem;
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-  }
-`
-
-const CertificationPeriod = styled.p`
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1rem;
-
-  @media (max-width: 768px) {
-    font-size: 0.8rem;
-  }
-`
-
-const CertificationDescription = styled.p`
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.5;
-
-  @media (max-width: 768px) {
-    font-size: 0.8rem;
   }
 `
 
