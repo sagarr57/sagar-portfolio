@@ -160,18 +160,6 @@ const skillsData: Record<string, Skill[]> = {
   ]
 }
 
-const frontendSkills = [
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'React',
-  'Next.js',
-  'Tailwind CSS',
-  'Styled Components',
-  'Framer Motion',
-  'Responsive Design',
-  'UI/UX Design'
-]
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState('Programming & Development')
