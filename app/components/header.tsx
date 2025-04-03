@@ -208,7 +208,7 @@ export default function HeaderComponent() {
     setIsOpen(!isOpen)
   }
 
-  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleNavLinkClick = () => {
     setIsOpen(false)
   }
 
@@ -251,10 +251,7 @@ export default function HeaderComponent() {
             Dubai, UAE
           </Location>
         </SocialLinks>
-        <MobileMenuButton onClick={(e) => {
-          e.stopPropagation();
-          toggleMenu();
-        }}>
+        <MobileMenuButton onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </MobileMenuButton>
       </Header>
