@@ -19,6 +19,9 @@ const Container = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
     padding: 1rem;
@@ -41,6 +44,9 @@ const ContentWrapper = styled.div`
   padding: 2rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1400px;
 
   @media (max-width: 768px) {
     padding: 1rem;

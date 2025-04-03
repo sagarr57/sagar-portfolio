@@ -34,16 +34,20 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <html lang="en">
-        <body className={inter.className}>
-          <StyledComponentsWrapper>
-            <ThemeProvider theme={theme}>
-              {children}
-            </ThemeProvider>
-          </StyledComponentsWrapper>
-        </body>
-      </html>
-    </>
+    <html lang="en">
+      <body className={inter.className} style={{
+        margin: 0,
+        padding: 0,
+        width: '100vw',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
+      }}>
+        <StyledComponentsWrapper>
+          <ThemeProvider theme={theme}>
+            {children}
+          </ThemeProvider>
+        </StyledComponentsWrapper>
+      </body>
+    </html>
   )
 }
