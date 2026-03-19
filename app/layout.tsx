@@ -1,31 +1,27 @@
-'use client'
-
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from 'styled-components'
-import StyledComponentsWrapper from './components/styled-components-wrapper'
+import type { Metadata, Viewport } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-poppins',
+  preload: true,
+  adjustFontFallback: true,
+})
 
-const theme = {
-  colors: {
-    primary: '#6366f1',
-    secondary: '#3b82f6',
-    accent: '#8b5cf6',
-    background: '#0a0a0a',
-    text: '#ffffff',
-    gradient: 'linear-gradient(135deg, #6366f1 0%, #3b82f6 100%)',
-  },
-  fonts: {
-    heading: 'Inter, sans-serif',
-    body: 'Inter, sans-serif',
-  },
-  breakpoints: {
-    sm: '640px',
-    md: '768px',
-    lg: '1024px',
-    xl: '1280px',
-  },
+export const metadata: Metadata = {
+  title: 'Sagar Mamindla - AI Engineer & Full-Stack Developer',
+  description: 'AI Engineer & Full-Stack Developer specializing in machine learning integration, intelligent automation, and cutting-edge web technologies.',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#42A5F5',
 }
 
 export default function RootLayout({
@@ -34,20 +30,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className} style={{
-        margin: 0,
-        padding: 0,
-        width: '100vw',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-      }}>
-        <StyledComponentsWrapper>
-          <ThemeProvider theme={theme}>
-            {children}
-          </ThemeProvider>
-        </StyledComponentsWrapper>
-      </body>
+    <html lang="en" className={poppins.variable}>
+      <head>
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      </head>
+      <body className={poppins.className}>{children}</body>
     </html>
   )
 }

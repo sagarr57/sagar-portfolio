@@ -1,149 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { FaPaperPlane } from 'react-icons/fa'
-import { styled } from 'styled-components'
+import { IoMailOutline, IoCallOutline, IoLocationOutline } from 'react-icons/io5'
+import SectionWithGradient from './ui/SectionWithGradient'
+import { colors } from '../utils/colors'
 
-interface FormData {
-  name: string
-  email: string
-  message: string
-}
-
-interface ContactProps {
-  id?: string;
-}
-
-const ContactSection = styled.section`
-  padding: 3rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  margin-top: 3rem;
-
-  @media (max-width: 768px) {
-    padding: 2rem 1rem;
-    margin-top: 2rem;
-  }
-`
-
-const ContactTitle = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 2rem;
-  text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-`
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-  }
-`
-
-const Input = styled.input`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 0.8rem;
-  color: #ffffff;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-
-  &:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    padding: 0.6rem;
-    font-size: 0.9rem;
-  }
-`
-
-const Textarea = styled.textarea`
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 0.8rem;
-  color: #ffffff;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  min-height: 150px;
-  resize: vertical;
-
-  &:focus {
-    outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  }
-
-  @media (max-width: 768px) {
-    padding: 0.6rem;
-    font-size: 0.9rem;
-  }
-`
-
-const Button = styled.button`
-  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-  color: #ffffff;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  @media (max-width: 768px) {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
-`
-
-const SuccessMessage = styled.p`
-  color: #3b82f6;
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 1rem;
-`
-
-const ErrorMessage = styled.p`
-  color: #ef4444;
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 1rem;
-`
-
-export default function Contact({ id }: ContactProps) {
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: ''
-  })
-
+export default function Contact() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [successMessage, setSuccessMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -151,67 +16,209 @@ export default function Contact({ id }: ContactProps) {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
-
     if (!formData.name || !formData.email || !formData.message) {
       setErrorMessage('Please fill in all fields')
       return
     }
-
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-
-      if (!response.ok) {
-        throw new Error('Failed to send message')
-      }
-
-      setSuccessMessage('Message sent successfully!')
+      if (!response.ok) throw new Error('Failed to send message')
+      setSuccessMessage("Message sent! I'll get back to you soon.")
       setFormData({ name: '', email: '', message: '' })
     } catch {
-      setErrorMessage('Failed to send message. Please try again later.')
+      setErrorMessage('Failed to send. Please try again or email directly.')
     }
   }
 
+  const contactItems = [
+    { icon: <IoMailOutline />, title: 'Email', text: 'sagar05.ms@gmail.com', link: 'mailto:sagar05.ms@gmail.com', description: 'Drop me a line' },
+    { icon: <IoCallOutline />, title: 'Call', text: '+971 553084546', link: 'tel:+971553084546', description: 'Available for calls' },
+    { icon: <IoLocationOutline />, title: 'Location', text: 'Dubai, UAE', description: 'Open to remote work' },
+  ]
+
   return (
-    <ContactSection id={id}>
-      <ContactTitle>Contact Me</ContactTitle>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
+    <SectionWithGradient id="contact" variant="tertiary" overlayPosition={{ cyan: { x: '15%', y: '45%' }, purple: { x: '85%', y: '55%' } }}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 6vw, 3rem)' }}
+      >
+        <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
+          Let&apos;s Build Something Intelligent
+        </h2>
+        <div
+          style={{
+            width: 48,
+            height: 3,
+            background: colors.gradient.primary,
+            borderRadius: 2,
+            margin: '0 auto 1rem',
+          }}
         />
-        <Input
-          type="email"
-          placeholder="Your Email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-        />
-        <Textarea
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          required
-        />
-        <Button type="submit">
-          Send Message
-          <FaPaperPlane size={20} />
-        </Button>
-      </Form>
-      {successMessage && (
-        <SuccessMessage>{successMessage}</SuccessMessage>
-      )}
-      {errorMessage && (
-        <ErrorMessage>{errorMessage}</ErrorMessage>
-      )}
-    </ContactSection>
+        <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
+          Whether you need an AI engineer or full-stack developer, I&apos;m here to bring your vision to life.
+        </p>
+      </motion.div>
+
+      <div
+        className="contact-cards"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          gap: '1rem',
+          marginBottom: 'clamp(2rem, 5vw, 2.5rem)',
+          width: '100%',
+        }}
+      >
+        {contactItems.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.05, duration: 0.5 }}
+            whileHover={{ y: -2 }}
+            style={{
+              background: colors.background.card,
+              borderRadius: 12,
+              border: `1px solid ${colors.overlay.cardBorder}`,
+              padding: 'clamp(1rem, 3vw, 1.25rem)',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.5rem',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+              cursor: item.link ? 'pointer' : 'default',
+              width: '100%',
+              minWidth: 0,
+              maxWidth: '100%',
+            }}
+            onClick={item.link ? () => window.open(item.link) : undefined}
+          >
+            <div style={{ fontSize: '1.5rem', color: colors.accent.primary }}>{item.icon}</div>
+            <div style={{ width: '100%', minWidth: 0, wordBreak: 'break-word' }}>
+              <div style={{ fontWeight: 600, fontSize: '0.9375rem', color: colors.text.primary }}>{item.title}</div>
+              <div style={{ fontWeight: 500, fontSize: '0.875rem', color: colors.accent.primary }}>{item.text}</div>
+              <div style={{ fontSize: '0.8125rem', color: colors.text.muted }}>{item.description}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      <motion.form
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        onSubmit={handleSubmit}
+        style={{
+          background: colors.background.card,
+          borderRadius: 12,
+          border: `1px solid ${colors.overlay.cardBorder}`,
+          padding: 'clamp(1.25rem, 4vw, 1.75rem)',
+          maxWidth: 560,
+          width: '100%',
+          minWidth: 0,
+          margin: '0 auto',
+          boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+        }}
+      >
+        <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.25rem', color: colors.text.primary }}>Start a Conversation</h3>
+          <p style={{ color: colors.text.secondary, fontSize: '0.9375rem' }}>
+            Tell me about your project and let&apos;s explore how we can work together.
+          </p>
+        </div>
+
+        <div style={{ marginBottom: '1rem' }}>
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            required
+            style={{
+              width: '100%',
+              padding: '0.75rem 1rem',
+              border: `1px solid ${colors.overlay.cardBorder}`,
+              borderRadius: 8,
+              fontSize: '1rem',
+              background: colors.background.tertiary,
+              color: colors.text.primary,
+            }}
+          />
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <input
+            type="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            required
+            style={{
+              width: '100%',
+              padding: '0.75rem 1rem',
+              border: `1px solid ${colors.overlay.cardBorder}`,
+              borderRadius: 8,
+              fontSize: '1rem',
+              background: colors.background.tertiary,
+              color: colors.text.primary,
+            }}
+          />
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <textarea
+            placeholder="Tell me about your project..."
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            required
+            rows={4}
+            style={{
+              width: '100%',
+              padding: '0.75rem 1rem',
+              border: `1px solid ${colors.overlay.cardBorder}`,
+              borderRadius: 8,
+              fontSize: '1rem',
+              background: colors.background.tertiary,
+              color: colors.text.primary,
+              resize: 'vertical',
+              minHeight: 100,
+            }}
+          />
+        </div>
+        <motion.button
+          type="submit"
+          whileHover={{ y: -1 }}
+          whileTap={{ scale: 0.98 }}
+          style={{
+            width: '100%',
+            padding: '0.75rem 1.25rem',
+            background: colors.gradient.primary,
+            color: '#fff',
+            border: 'none',
+            borderRadius: 8,
+            fontSize: '1rem',
+            fontWeight: 500,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.5rem',
+            boxShadow: '0 2px 10px rgba(66,165,245,0.3)',
+          }}
+        >
+          Send Message <FaPaperPlane size={14} />
+        </motion.button>
+        {successMessage && <p style={{ color: colors.status.success, textAlign: 'center', marginTop: '1rem', fontSize: '0.9375rem' }}>{successMessage}</p>}
+        {errorMessage && <p style={{ color: colors.status.error, textAlign: 'center', marginTop: '1rem', fontSize: '0.9375rem' }}>{errorMessage}</p>}
+      </motion.form>
+    </SectionWithGradient>
   )
 }
