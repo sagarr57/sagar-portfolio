@@ -95,7 +95,6 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        {/* Category tabs - horizontal scroll on mobile */}
         <div
           className="skills-tabs"
           style={{
@@ -133,7 +132,6 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Skills grid - responsive: 2 cols mobile, 3-4 cols desktop */}
         <div
           className="skills-grid"
           style={{
