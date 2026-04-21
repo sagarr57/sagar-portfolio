@@ -40,7 +40,7 @@ const professionalExperience = [
   { id: 4, title: 'Junior Level Engineer', company: 'XRG Consulting', location: 'Hyderabad, India', duration: 'Sept 2021 - Jan 2023', type: 'Professional', description: ['Developed a robust Java-based backend service for automated user invitation system, eliminating 40% of manual follow-up tasks.', 'Created an interactive React modal component for team invitations, significantly enhancing user engagement and workflow efficiency.', 'Comprehensive API documentation using Swagger, reducing new developer onboarding time by two weeks.'], tools: [{ icon: 'TbBrandJavascript', label: 'JavaScript' }, { icon: 'TbBrandTypescript', label: 'TypeScript' }, { icon: 'TbBrandPython', label: 'Python' }, { icon: 'TbBrandDocker', label: 'Docker' }, { icon: 'SiSwagger', label: 'Swagger' }] },
 ]
 
-const PREVIEW_BULLET_COUNT = 2
+const PREVIEW_BULLET_COUNT = 1
 
 const highlightKeywords = [
   'Google Search Console',
@@ -132,7 +132,7 @@ function ExpCard(props: { exp: ExpItem; index: number; accentColor: string; acce
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
         {exp.tools.map(function (tool, idx) {
           return (
-            <span key={idx} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', background: accentBg, padding: '0.375rem 0.75rem', borderRadius: 8, fontSize: '0.8125rem', color: accentColor, fontWeight: 500, border: '1px solid ' + accentBorder }}>
+            <span key={idx} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', background: accentBg, padding: '0.28rem 0.6rem', borderRadius: 7, fontSize: '0.75rem', color: accentColor, fontWeight: 500, border: '1px solid ' + accentBorder }}>
               {getIcon(tool.icon)} {tool.label}
             </span>
           )

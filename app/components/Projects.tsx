@@ -8,7 +8,7 @@ import { projects, type Project } from '../utils/projectsData'
 
 type ProjectTab = 'professional' | 'coursework'
 
-const DESCRIPTION_PREVIEW = 2
+const DESCRIPTION_PREVIEW = 1
 
 function filterByTab(tab: ProjectTab): Project[] {
   if (tab === 'professional') return projects.filter((p) => p.category === 'Professional')

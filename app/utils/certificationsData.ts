@@ -120,17 +120,4 @@ export const certifications: Certification[] = [
     credentialId: 'UC-d52b1992-1fe9-49a7-9d3e-de1182c6b2a8',
     verifyUrl: 'https://www.udemy.com/certificate/UC-d52b1992-1fe9-49a7-9d3e-de1182c6b2a8/',
   },
-  {
-    title: 'New Relic Observability Foundations Badge',
-    issuer: 'New Relic',
-    issuerKey: 'newrelic',
-    issued: 'Oct 2023',
-    expires: 'Oct 2025',
-    skills: ['New Relic APM', 'Observability', 'Synthetics', 'Log monitoring'],
-    credentialId: '84661041',
-    verifyUrl: 'https://learn.newrelic.com/page/credentials',
-    verifyLabel: 'New Relic credentials',
-    infoUrl: 'https://learn.newrelic.com/path/foundations',
-    infoLabel: 'Foundations learning path',
-  },
 ]

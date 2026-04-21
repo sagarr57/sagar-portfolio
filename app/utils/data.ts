@@ -55,24 +55,21 @@ export const aboutData = {
     {
       title: 'Background & impact',
       content: [
-        'I bring 4+ years of software engineering experience across enterprise observability, sustainability analytics, and high-stakes fintech — from New Relic and Decarbeon to my current role as AI Solution Engineer at Louis Charles International in Dubai.',
-        'Today I own live customer journeys end to end: public sites and applications for QuickCash Direct and All Day Loans, PingFree lender integrations, and internal tools (including PingFree Admin) where reliability and conversion matter.',
+        'I bring 4+ years across enterprise observability, sustainability analytics, and fintech, and now lead AI and product delivery at Louis Charles International in Dubai.',
       ],
       highlight: 'Louis Charles International',
     },
     {
       title: 'How I work',
       content: [
-        'I build with Next.js, React, Node.js, Python, and FastAPI — plus MongoDB, Supabase, and modern UI stacks when the product calls for them.',
-        'I care as much about operations as features: CRM and WhatsApp-led workflows, automation through Pabbly and GoHighLevel, and SEO/analytics with Google Search Console, Tag Manager, Analytics, and Microsoft Clarity so teams can see what is working.',
+        'I build with Next.js, React, Node.js, Python, and FastAPI, with strong focus on automation, CRM workflows, and analytics that improve business outcomes.',
       ],
       highlight: 'Next.js',
     },
     {
       title: 'Education & direction',
       content: [
-        'I am pursuing an MSc in Artificial Intelligence at Heriot-Watt University (Dubai), building on a B.Tech in Computer Science & Engineering from Keshav Memorial Institute of Technology.',
-        'That mix grounds me in rigorous ML and agents while my day job keeps me honest about latency, compliance, and shipping — the sweet spot for practical AI in real products.',
+        'I am pursuing an MSc in Artificial Intelligence at Heriot-Watt University, building on a B.Tech in Computer Science and applying both to practical AI products.',
       ],
       highlight: 'MSc in Artificial Intelligence',
       highlightColor: '#42A5F5',

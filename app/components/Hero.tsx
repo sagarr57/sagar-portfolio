@@ -1,9 +1,7 @@
 'use client'
 
-import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { IoMailOutline, IoCallOutline, IoLocationOutline } from 'react-icons/io5'
 import { TbBrandLinkedin, TbBrandGithub } from 'react-icons/tb'
 import { HiArrowDown } from 'react-icons/hi'
 import { colors } from '../utils/colors'
@@ -16,17 +14,6 @@ export default function Hero() {
     if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const contactItems: {
-    icon: ReactNode
-    text: string
-    subtext: string
-    href?: string
-  }[] = [
-    { icon: <IoMailOutline />, text: 'Email', subtext: 'sagar05.ms@gmail.com', href: 'mailto:sagar05.ms@gmail.com' },
-    { icon: <IoCallOutline />, text: 'Call', subtext: '+971 553084546', href: 'tel:+971553084546' },
-    { icon: <IoLocationOutline />, text: 'Location', subtext: 'Dubai, UAE' },
-  ]
-
   const socialLinks = [
     { icon: <TbBrandGithub />, link: 'https://github.com/sagarr57', label: 'GitHub' },
     { icon: <TbBrandLinkedin />, link: 'https://linkedin.com/in/sagar-mamindla', label: 'LinkedIn' },
@@ -37,11 +24,13 @@ export default function Hero() {
       id="hero"
       style={{
         minHeight: '100dvh',
-        paddingTop: 'clamp(88px, 14vw, 104px)',
+        paddingTop: 'clamp(104px, 16vw, 124px)',
+        paddingRight: 'clamp(1rem, 4vw, 1.75rem)',
+        paddingBottom: 'clamp(1.35rem, 4vw, 2.4rem)',
+        paddingLeft: 'clamp(1rem, 4vw, 1.75rem)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: 'clamp(2rem, 5vw, 3.5rem) clamp(1.25rem, 4vw, 2rem)',
         background: `linear-gradient(180deg, ${colors.background.primary} 0%, ${colors.background.secondary} 55%, ${colors.background.tertiary} 100%)`,
         position: 'relative',
       }}
@@ -52,7 +41,7 @@ export default function Hero() {
           position: 'absolute',
           inset: 0,
           background:
-            'radial-gradient(ellipse 80% 50% at 85% 15%, rgba(66, 165, 245, 0.12) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 10% 80%, rgba(100, 181, 246, 0.08) 0%, transparent 45%)',
+            'radial-gradient(ellipse 80% 50% at 85% 15%, rgba(59, 130, 246, 0.1) 0%, transparent 52%), radial-gradient(ellipse 60% 40% at 10% 80%, rgba(125, 211, 252, 0.08) 0%, transparent 48%)',
           pointerEvents: 'none',
         }}
       />
@@ -131,29 +120,13 @@ export default function Hero() {
             Crafting intelligent solutions at the intersection of AI and software engineering.
           </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.24, duration: 0.45 }}
-            style={{
-              margin: 0,
-              color: colors.text.secondary,
-              maxWidth: '34rem',
-              lineHeight: 1.65,
-              fontSize: 'clamp(0.9375rem, 1.8vw, 1.0625rem)',
-            }}
-          >
-            With{' '}
-            <span style={{ color: colors.accent.primary, fontWeight: 600 }}>4+ years of experience</span>, I build
-            AI-powered products and full-stack applications end to end.
-          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.28, duration: 0.4 }}
+            transition={{ delay: 0.24, duration: 0.4 }}
             style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}
           >
-            {['4+ years experience', 'Fintech & AI products', 'Dubai and remote'].map((point) => (
+            {['4+ years experience', 'Fintech & AI products'].map((point) => (
               <span
                 key={point}
                 style={{
@@ -171,80 +144,6 @@ export default function Hero() {
                 {point}
               </span>
             ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '0.65rem',
-            }}
-          >
-            {contactItems.map((item, i) => {
-              const cardStyle = {
-                background: colors.background.card,
-                borderRadius: 12,
-                border: `1px solid ${colors.overlay.cardBorder}`,
-                padding: '0.65rem 1rem',
-                display: 'inline-flex' as const,
-                alignItems: 'center' as const,
-                gap: '0.5rem',
-                textDecoration: 'none' as const,
-                boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                maxWidth: '100%' as const,
-                minHeight: 0,
-                minWidth: 0,
-                color: 'inherit' as const,
-              }
-              const inner = (
-                <>
-                  <span style={{ color: colors.accent.primary, fontSize: '1.125rem', flexShrink: 0 }}>{item.icon}</span>
-                  <div style={{ minWidth: 0, textAlign: 'left' }}>
-                    <div
-                      style={{
-                        fontSize: '0.6875rem',
-                        color: colors.text.muted,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.04em',
-                      }}
-                    >
-                      {item.text}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: '0.8125rem',
-                        fontWeight: 500,
-                        color: colors.text.primary,
-                        wordBreak: 'break-word',
-                      }}
-                    >
-                      {item.subtext}
-                    </div>
-                  </div>
-                </>
-              )
-              if (item.href) {
-                return (
-                  <motion.a
-                    key={i}
-                    href={item.href}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    style={cardStyle}
-                  >
-                    {inner}
-                  </motion.a>
-                )
-              }
-              return (
-                <motion.div key={i} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} style={cardStyle}>
-                  {inner}
-                </motion.div>
-              )
-            })}
           </motion.div>
 
           <motion.div
@@ -269,11 +168,11 @@ export default function Hero() {
               style={{
                 background: colors.gradient.primary,
                 color: '#fff',
-                padding: '0.7rem 1.35rem',
+                padding: '0.65rem 1.15rem',
                 borderRadius: 10,
                 fontWeight: 600,
                 textDecoration: 'none',
-                fontSize: '0.9375rem',
+                fontSize: '0.875rem',
                 boxShadow: '0 6px 20px rgba(66,165,245,0.28)',
                 minHeight: 44,
               }}
@@ -288,18 +187,18 @@ export default function Hero() {
               style={{
                 background: colors.background.card,
                 color: colors.text.primary,
-                padding: '0.7rem 1.35rem',
+                padding: '0.65rem 1.15rem',
                 borderRadius: 10,
                 border: `1px solid ${colors.overlay.cardBorder}`,
                 fontWeight: 600,
                 textDecoration: 'none',
-                fontSize: '0.9375rem',
+                fontSize: '0.875rem',
                 minHeight: 44,
               }}
             >
               Download resume
             </motion.a>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', gap: '0.45rem' }}>
               {socialLinks.map((s, i) => (
                 <motion.a
                   key={i}
@@ -310,8 +209,8 @@ export default function Hero() {
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    width: 44,
-                    height: 44,
+                    width: 40,
+                    height: 40,
                     borderRadius: 10,
                     border: `1px solid ${colors.overlay.cardBorder}`,
                     background: colors.background.card,
@@ -319,7 +218,7 @@ export default function Hero() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '1.25rem',
+                    fontSize: '1.1rem',
                     textDecoration: 'none',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                   }}
@@ -337,13 +236,12 @@ export default function Hero() {
           transition={{ delay: 0.15, duration: 0.5 }}
           style={{
             position: 'relative',
-            /* Definite width only (no %): grid `auto` + `width:100%` collapsed the portrait to 0 wide */
-            width: 'clamp(260px, 88vw, 400px)',
+            width: 'clamp(200px, 62vw, 300px)',
             margin: '0 auto',
             aspectRatio: '4 / 5',
-            borderRadius: 20,
+            borderRadius: 18,
             overflow: 'hidden',
-            boxShadow: '0 28px 56px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(66, 165, 245, 0.15)',
+            boxShadow: '0 20px 40px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(59, 130, 246, 0.12)',
           }}
           className="hero-portrait-wrap"
         >
@@ -352,7 +250,7 @@ export default function Hero() {
             alt="Sagar Mamindla — AI engineer and full-stack developer"
             fill
             priority
-            sizes="(max-width: 768px) 90vw, 400px"
+            sizes="(max-width: 768px) 62vw, 300px"
             style={{ objectFit: 'cover', objectPosition: 'center top' }}
           />
         </motion.div>
