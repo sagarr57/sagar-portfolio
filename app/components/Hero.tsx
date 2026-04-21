@@ -21,6 +21,8 @@ export default function Hero() {
 
   return (
     <section id="hero">
+      <div className="hero-glow hero-glow--left" aria-hidden />
+      <div className="hero-glow hero-glow--right" aria-hidden />
       <div
         className="hero-inner-grid"
         style={{
@@ -47,7 +49,7 @@ export default function Hero() {
         >
           <div>
             <motion.h1
-              className="hero-title"
+              className="hero-title font-display"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05, duration: 0.45 }}
@@ -69,7 +71,7 @@ export default function Hero() {
               style={{
                 margin: 0,
                 color: colors.accent.primary,
-                fontWeight: 600,
+                fontWeight: 500,
                 fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
                 letterSpacing: '-0.02em',
               }}
@@ -139,14 +141,14 @@ export default function Hero() {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
               style={{
-                background: colors.gradient.primary,
-                color: '#fff',
+                background: colors.accent.primary,
+                color: colors.accentForeground,
                 padding: '0.65rem 1.15rem',
                 borderRadius: 10,
-                fontWeight: 600,
+                fontWeight: 500,
                 textDecoration: 'none',
                 fontSize: '0.875rem',
-                boxShadow: '0 6px 22px rgba(59, 130, 246, 0.4)',
+                boxShadow: 'none',
                 minHeight: 44,
               }}
             >
@@ -163,7 +165,7 @@ export default function Hero() {
                 padding: '0.65rem 1.15rem',
                 borderRadius: 10,
                 border: `1px solid ${colors.overlay.cardBorder}`,
-                fontWeight: 600,
+                fontWeight: 500,
                 textDecoration: 'none',
                 fontSize: '0.875rem',
                 minHeight: 44,
@@ -193,7 +195,7 @@ export default function Hero() {
                     justifyContent: 'center',
                     fontSize: '1.1rem',
                     textDecoration: 'none',
-                    boxShadow: '0 2px 12px rgba(0, 0, 0, 0.4)',
+                    boxShadow: 'none',
                   }}
                 >
                   {s.icon}
@@ -212,7 +214,7 @@ export default function Hero() {
             margin: '0 auto',
             borderRadius: 18,
             overflow: 'hidden',
-            boxShadow: '0 20px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(96, 165, 250, 0.2)',
+            boxShadow: '0 8px 28px rgba(0, 0, 0, 0.45)',
           }}
           className="hero-portrait-wrap"
         >

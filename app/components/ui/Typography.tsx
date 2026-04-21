@@ -32,7 +32,10 @@ export default function Typography({
   const Tag = as || variantToTag[variant] || 'p'
   const typographyStyle = {
     fontSize: typography.sizes[variant].clamp,
-    fontFamily: 'var(--font-poppins), "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif',
+    fontFamily:
+      variant === 'hero' || variant.startsWith('h')
+        ? 'var(--font-display), "Outfit", system-ui, sans-serif'
+        : 'var(--font-sans), "DM Sans", system-ui, sans-serif',
     fontWeight: variant === 'hero' || variant.startsWith('h') 
       ? typography.weights.semibold 
       : typography.weights.regular,

@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaBriefcase } from 'react-icons/fa'
 import { getIcon } from '../utils/iconMapper'
@@ -40,8 +39,6 @@ const professionalExperience = [
   { id: 4, title: 'Junior Level Engineer', company: 'XRG Consulting', location: 'Hyderabad, India', duration: 'Sept 2021 - Jan 2023', type: 'Professional', description: ['Developed a robust Java-based backend service for automated user invitation system, eliminating 40% of manual follow-up tasks.', 'Created an interactive React modal component for team invitations, significantly enhancing user engagement and workflow efficiency.', 'Comprehensive API documentation using Swagger, reducing new developer onboarding time by two weeks.'], tools: [{ icon: 'TbBrandJavascript', label: 'JavaScript' }, { icon: 'TbBrandTypescript', label: 'TypeScript' }, { icon: 'TbBrandPython', label: 'Python' }, { icon: 'TbBrandDocker', label: 'Docker' }, { icon: 'SiSwagger', label: 'Swagger' }] },
 ]
 
-const PREVIEW_BULLET_COUNT = 1
-
 const highlightKeywords = [
   'Google Search Console',
   'Google Tag Manager',
@@ -57,11 +54,11 @@ const highlightKeywords = [
   'AI', 'SaaS', 'CRM', 'Next.js', 'React', 'Node.js', 'MongoDB', 'Python', 'LLMs', 'WordPress', 'Chart.js', 'Power BI', 'Tailwind CSS', 'ESG', 'sustainability', 'automation', 'WhatsApp', 'voice calling', 'Decarbeon', 'New Relic', 'Playwright', 'Jest', 'CI/CD', '25%', '35%', '40%', '45%', '50%', 'zero critical bugs', '99.9%', 'machine learning', 'ML', 'chatbot', 'NLP', 'SEO',
 ]
 
-function highlightText(text: string, accentColor: string): string {
+function highlightText(text: string, keywordColor: string): string {
   let result = text
   for (const keyword of highlightKeywords) {
     const regex = new RegExp('\\b(' + keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')\\b', 'gi')
-    result = result.replace(regex, '<strong style="color: ' + accentColor + '; font-weight: 600;">$1</strong>')
+    result = result.replace(regex, '<strong style="color: ' + keywordColor + '; font-weight: 500;">$1</strong>')
   }
   return result
 }
@@ -70,11 +67,6 @@ type ExpItem = (typeof professionalExperience)[0]
 
 function ExpCard(props: { exp: ExpItem; index: number; accentColor: string; accentBg: string; accentBorder: string; featured?: boolean }) {
   const { exp, index, accentColor, accentBg, accentBorder, featured } = props
-  const [expanded, setExpanded] = useState(false)
-  const totalBullets = exp.description.length
-  const needsToggle = totalBullets > PREVIEW_BULLET_COUNT
-  const visibleBullets = !needsToggle || expanded ? exp.description : exp.description.slice(0, PREVIEW_BULLET_COUNT)
-  const moreCount = totalBullets - PREVIEW_BULLET_COUNT
 
   return (
     <motion.div
@@ -90,50 +82,40 @@ function ExpCard(props: { exp: ExpItem; index: number; accentColor: string; acce
         border: '1px solid ' + colors.overlay.cardBorder,
         borderLeft: '4px solid ' + accentColor,
         padding: 'clamp(1.25rem, 4vw, 1.75rem)',
-        boxShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
+        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.35)',
         width: '100%',
         minWidth: 0,
       }}
     >
       <div style={{ marginBottom: '1rem' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-          <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: colors.text.primary, margin: 0 }}>{exp.title}</h3>
-          <span style={{ background: accentBg, color: accentColor, padding: '0.2rem 0.5rem', borderRadius: 6, fontSize: '0.75rem', fontWeight: 600 }}>{exp.type}</span>
+          <h3 style={{ fontSize: '1.05rem', fontWeight: 500, color: colors.text.primary, margin: 0 }}>{exp.title}</h3>
+          <span style={{ background: accentBg, color: accentColor, padding: '0.2rem 0.5rem', borderRadius: 6, fontSize: '0.75rem', fontWeight: 500 }}>{exp.type}</span>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', color: colors.text.muted, fontSize: '0.875rem' }}>
-          <span style={{ fontWeight: 600, color: colors.text.primary }}>{exp.company}</span>
+          <span style={{ fontWeight: 500, color: colors.text.primary }}>{exp.company}</span>
           <span>•</span>
           <span>{exp.location}</span>
           <span>•</span>
           <span>{exp.duration}</span>
         </div>
       </div>
-      <ul id={'exp-bullets-' + exp.id} style={{ listStyle: 'none', padding: 0, margin: '0 0 0.5rem' }}>
-        {visibleBullets.map(function (item, idx) {
+      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 0.5rem' }}>
+        {exp.description.map(function (item, idx) {
           return (
-            <li key={idx} style={{ padding: '0.25rem 0', paddingLeft: '1.25rem', position: 'relative', color: colors.text.secondary, lineHeight: 1.65, fontSize: '0.9375rem' }}>
-              <span style={{ position: 'absolute', left: 0, color: accentColor, fontWeight: 'bold' }}>▸</span>
-              <span dangerouslySetInnerHTML={{ __html: highlightText(item, accentColor) }} />
+            <li key={idx} style={{ padding: '0.25rem 0', paddingLeft: '0.85rem', position: 'relative', color: colors.text.secondary, lineHeight: 1.65, fontSize: '0.9375rem' }}>
+              <span className="list-marker-dot" style={{ background: accentColor }} aria-hidden />
+              <span dangerouslySetInnerHTML={{ __html: highlightText(item, colors.keyword) }} />
             </li>
           )
         })}
       </ul>
-      {needsToggle ? (
-        <button
-          type="button"
-          className="exp-expand-btn"
-          aria-expanded={expanded}
-          aria-controls={'exp-bullets-' + exp.id}
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? 'Show less' : 'Show ' + moreCount + ' more'}
-        </button>
-      ) : null}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
         {exp.tools.map(function (tool, idx) {
           return (
-            <span key={idx} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', background: accentBg, padding: '0.28rem 0.6rem', borderRadius: 7, fontSize: '0.75rem', color: accentColor, fontWeight: 500, border: '1px solid ' + accentBorder }}>
-              {getIcon(tool.icon)} {tool.label}
+            <span key={idx} className="tech-pill tech-pill--with-icon">
+              {getIcon(tool.icon)}
+              <span>{tool.label}</span>
             </span>
           )
         })}
@@ -151,15 +133,14 @@ export default function Experience() {
       className="section-surface"
       style={{ padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)', background: colors.background.primary, position: 'relative' }}
     >
-      <div className="section-glow section-glow--alt" aria-hidden />
       <div style={{ maxWidth: 1180, width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.25rem)' }}>
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>Experience & Expertise</h2>
-          <div style={{ width: 48, height: 3, background: colors.gradient.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
-          <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>Skim roles in the grid — expand any card for the full story and stack.</p>
+          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>Roles, impact, and the tools behind each chapter.</p>
         </motion.div>
         <div>
-          <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: colors.text.primary, fontSize: '1.25rem' }}>
+          <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: colors.text.primary, fontSize: '1.1rem', fontWeight: 500 }}>
             <FaBriefcase style={{ color: proAccent }} /> Professional Experience
           </h3>
           <div className="experience-cards">

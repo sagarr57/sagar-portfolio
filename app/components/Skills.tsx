@@ -147,8 +147,8 @@ export default function Skills() {
           <div
             style={{
               width: 48,
-              height: 3,
-              background: colors.gradient.primary,
+              height: 2,
+              background: colors.accent.primary,
               borderRadius: 2,
               margin: '0 auto 1rem',
             }}
@@ -179,15 +179,15 @@ export default function Skills() {
               style={{
                 padding: '0.625rem 1rem',
                 cursor: 'pointer',
-                color: activeTab === tab ? '#fff' : colors.text.secondary,
-                fontWeight: activeTab === tab ? 600 : 500,
-                background: activeTab === tab ? colors.gradient.primary : colors.background.card,
-                borderRadius: 8,
+                color: activeTab === tab ? colors.accentForeground : colors.text.secondary,
+                fontWeight: 500,
+                background: activeTab === tab ? colors.accent.primary : 'rgba(255, 255, 255, 0.05)',
+                borderRadius: 999,
                 whiteSpace: 'nowrap',
                 fontSize: '0.875rem',
-                border: activeTab === tab ? 'none' : `1px solid ${colors.overlay.cardBorder}`,
+                border: activeTab === tab ? '1px solid transparent' : `1px solid ${colors.overlay.cardBorder}`,
                 flexShrink: 0,
-                boxShadow: activeTab === tab ? '0 2px 12px rgba(59, 130, 246, 0.35)' : 'none',
+                boxShadow: 'none',
               }}
             >
               {tab}
@@ -221,7 +221,7 @@ export default function Skills() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '0.5rem',
-                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.4)',
+                boxShadow: '0 1px 8px rgba(0, 0, 0, 0.3)',
               }}
             >
               <div

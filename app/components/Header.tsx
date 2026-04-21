@@ -47,13 +47,12 @@ export default function Header() {
           pointerEvents: 'auto',
           width: '100%',
           maxWidth: 1180,
-          background: 'rgba(11, 17, 32, 0.82)',
+          background: 'rgba(26, 39, 64, 0.88)',
           backdropFilter: 'blur(18px) saturate(1.35)',
           WebkitBackdropFilter: 'blur(18px) saturate(1.35)',
           border: `1px solid ${colors.overlay.cardBorder}`,
           borderRadius: 16,
-          boxShadow:
-            '0 18px 48px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.06) inset',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.05) inset',
           overflow: mobileOpen ? 'visible' : 'hidden',
         }}
         initial={{ y: -8, opacity: 0 }}
@@ -79,7 +78,7 @@ export default function Header() {
             }}
             className="header-brand"
             style={{
-              fontWeight: 600,
+              fontWeight: 500,
               fontSize: 'clamp(0.9375rem, 2vw, 1rem)',
               color: colors.text.primary,
               textDecoration: 'none',

@@ -1,9 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaExternalLinkAlt } from 'react-icons/fa'
+import { HiArrowUpRight } from 'react-icons/hi2'
 import { SiLinkedin, SiMeta, SiCoursera, SiUdemy, SiNewrelic } from 'react-icons/si'
-import type { ReactNode } from 'react'
 import { colors } from '../utils/colors'
 import { certifications, type CertificationIssuerKey } from '../utils/certificationsData'
 
@@ -23,38 +22,6 @@ function IssuerIcon({ issuerKey }: { issuerKey: CertificationIssuerKey }) {
   }
 }
 
-function CompactLink(props: { href: string; children: ReactNode; variant?: 'primary' | 'ghost' }) {
-  const { href, children, variant = 'primary' } = props
-  const primary = variant === 'primary'
-  return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="compact-cta cert-tile-link"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0.35rem',
-        fontSize: '0.75rem',
-        fontWeight: 600,
-        textDecoration: 'none',
-        padding: '0.4rem 0.65rem',
-        borderRadius: 8,
-        border: primary ? 'none' : `1px solid ${colors.overlay.cardBorder}`,
-        background: primary ? colors.gradient.primary : colors.background.tertiary,
-        color: primary ? '#fff' : colors.accent.primary,
-      }}
-    >
-      {children}
-      <FaExternalLinkAlt size={10} aria-hidden />
-    </motion.a>
-  )
-}
-
 export default function Certifications() {
   return (
     <section
@@ -66,7 +33,6 @@ export default function Certifications() {
         position: 'relative',
       }}
     >
-      <div className="section-glow section-glow--alt" aria-hidden />
       <div style={{ maxWidth: 1200, width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +44,7 @@ export default function Certifications() {
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
             Licenses & certifications
           </h2>
-          <div style={{ width: 48, height: 3, background: colors.gradient.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
           <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
             Verified credentials — compact grid, full detail on the issuer sites
           </p>
@@ -96,14 +62,14 @@ export default function Certifications() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.08 }}
                 transition={{ duration: 0.4, delay: Math.min(index * 0.025, 0.2) }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                whileHover={{ y: -2, transition: { duration: 0.2 } }}
                 className="cert-tile"
                 style={{
                   background: colors.background.card,
                   borderRadius: 14,
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   padding: '1rem 1rem 0.85rem',
-                  boxShadow: '0 4px 22px rgba(0, 0, 0, 0.42)',
+                  boxShadow: '0 2px 12px rgba(0, 0, 0, 0.35)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.5rem',
@@ -116,7 +82,7 @@ export default function Certifications() {
                       width: 44,
                       height: 44,
                       borderRadius: 10,
-                      background: colors.overlay.blue,
+                      background: 'rgba(255, 255, 255, 0.05)',
                       border: `1px solid ${colors.overlay.cardBorder}`,
                       display: 'flex',
                       alignItems: 'center',
@@ -125,7 +91,7 @@ export default function Certifications() {
                   >
                     <IssuerIcon issuerKey={cert.issuerKey} />
                   </div>
-                  <p style={{ margin: 0, fontSize: '0.7rem', fontWeight: 600, color: colors.text.muted, textAlign: 'right', lineHeight: 1.35 }}>
+                  <p style={{ margin: 0, fontSize: '0.7rem', fontWeight: 500, color: colors.text.muted, textAlign: 'right', lineHeight: 1.35 }}>
                     {cert.issued}
                     {cert.expires ? (
                       <>
@@ -141,7 +107,7 @@ export default function Certifications() {
                   style={{
                     margin: 0,
                     fontSize: '0.9375rem',
-                    fontWeight: 700,
+                    fontWeight: 500,
                     color: colors.text.primary,
                     lineHeight: 1.35,
                     display: '-webkit-box',
@@ -152,7 +118,7 @@ export default function Certifications() {
                 >
                   {cert.title}
                 </h3>
-                <p style={{ margin: 0, fontSize: '0.78rem', fontWeight: 600, color: colors.text.secondary }}>{cert.issuer}</p>
+                <p style={{ margin: 0, fontSize: '0.78rem', fontWeight: 500, color: colors.text.secondary }}>{cert.issuer}</p>
 
                 {skillsShow.length > 0 ? (
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.25rem' }}>
@@ -161,7 +127,7 @@ export default function Certifications() {
                         key={s}
                         style={{
                           fontSize: '0.65rem',
-                          fontWeight: 600,
+                          fontWeight: 500,
                           color: colors.text.muted,
                           background: colors.background.tertiary,
                           padding: '0.15rem 0.4rem',
@@ -181,7 +147,7 @@ export default function Certifications() {
                       <span
                         style={{
                           fontSize: '0.65rem',
-                          fontWeight: 700,
+                          fontWeight: 500,
                           color: colors.accent.primary,
                           padding: '0.15rem 0.35rem',
                         }}
@@ -207,14 +173,37 @@ export default function Certifications() {
                   </p>
                 ) : null}
 
-                <div style={{ marginTop: 'auto', paddingTop: '0.35rem', display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                <div style={{ marginTop: 'auto', paddingTop: '0.35rem', display: 'flex', flexWrap: 'wrap', gap: '0.65rem', alignItems: 'center' }}>
                   {cert.verifyUrl ? (
-                    <CompactLink href={cert.verifyUrl}>{cert.verifyLabel ?? 'Verify'}</CompactLink>
+                    <motion.a
+                      href={cert.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-view-link cert-tile-link"
+                      aria-label={cert.verifyLabel ?? 'Verify credential on issuer site'}
+                      whileHover={{ opacity: 0.9 }}
+                      whileTap={{ scale: 0.99 }}
+                    >
+                      <span className="project-view-link__label">
+                        <span className="project-view-link__verb">Verify</span>
+                      </span>
+                      <HiArrowUpRight size={16} aria-hidden className="project-view-link__arrow" />
+                    </motion.a>
                   ) : null}
                   {cert.infoUrl && cert.infoUrl !== cert.verifyUrl ? (
-                    <CompactLink href={cert.infoUrl} variant="ghost">
-                      {cert.infoLabel ?? 'More'}
-                    </CompactLink>
+                    <motion.a
+                      href={cert.infoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cert-secondary-link cert-tile-link"
+                      whileHover={{ opacity: 0.92 }}
+                      whileTap={{ scale: 0.99 }}
+                    >
+                      <span className="cert-secondary-link__label">
+                        <span>{cert.infoLabel ?? 'More'}</span>
+                      </span>
+                      <HiArrowUpRight size={14} aria-hidden />
+                    </motion.a>
                   ) : null}
                 </div>
               </motion.article>

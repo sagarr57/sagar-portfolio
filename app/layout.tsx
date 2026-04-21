@@ -1,12 +1,19 @@
-import { Poppins } from 'next/font/google'
+import { Outfit, DM_Sans } from 'next/font/google'
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
 
-const poppins = Poppins({
+const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
-  variable: '--font-poppins',
+  variable: '--font-display',
+  preload: true,
+  adjustFontFallback: true,
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
   preload: true,
   adjustFontFallback: true,
 })
@@ -53,7 +60,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: '#0B1120',
+  themeColor: '#0a0f1a',
 }
 
 export default function RootLayout({
@@ -62,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={`${outfit.variable} ${dmSans.variable}`}>
       <head>
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -86,7 +93,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body className={dmSans.className}>{children}</body>
     </html>
   )
 }

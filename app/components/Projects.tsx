@@ -2,13 +2,11 @@
 
 import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaExternalLinkAlt, FaCode } from 'react-icons/fa'
+import { HiArrowUpRight } from 'react-icons/hi2'
 import { colors } from '../utils/colors'
 import { projects, type Project } from '../utils/projectsData'
 
 type ProjectTab = 'professional' | 'coursework'
-
-const DESCRIPTION_PREVIEW = 1
 
 function filterByTab(tab: ProjectTab): Project[] {
   if (tab === 'professional') return projects.filter((p) => p.category === 'Professional')
@@ -16,11 +14,8 @@ function filterByTab(tab: ProjectTab): Project[] {
 }
 
 function ProjectCard({ project, index, accent }: { project: Project; index: number; accent: string }) {
-  const [expanded, setExpanded] = useState(false)
   const bullets = project.description
-  const needsToggle = bullets.length > DESCRIPTION_PREVIEW
-  const visible = !needsToggle || expanded ? bullets : bullets.slice(0, DESCRIPTION_PREVIEW)
-  const rest = bullets.length - DESCRIPTION_PREVIEW
+  const linkSuffix = project.type === 'github' ? 'on GitHub' : 'live'
 
   return (
     <motion.article
@@ -32,49 +27,27 @@ function ProjectCard({ project, index, accent }: { project: Project; index: numb
       className="project-card"
       style={{
         background: colors.background.card,
-        borderRadius: 16,
+        borderRadius: 14,
         border: `1px solid ${colors.overlay.cardBorder}`,
         padding: 'clamp(1.15rem, 3vw, 1.6rem)',
-        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.45)',
+        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.35)',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'stretch',
         minHeight: 0,
+        borderTop: `1px solid rgba(255, 255, 255, 0.06)`,
       }}
     >
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 3,
-          background: `linear-gradient(90deg, ${accent}, ${colors.accent.secondary})`,
-          opacity: 0.85,
-        }}
-      />
-      <div style={{ marginBottom: '1rem', paddingTop: 4, flexShrink: 0 }}>
-        <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: colors.text.primary, margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+      <div style={{ marginBottom: '1rem', paddingTop: 2, flexShrink: 0 }}>
+        <h3 style={{ fontSize: '1.05rem', fontWeight: 500, color: colors.text.primary, margin: '0 0 0.5rem', lineHeight: 1.35 }}>
           {project.title}
         </h3>
         {project.techStack?.length ? (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
             {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                style={{
-                  background: colors.background.tertiary,
-                  color: colors.text.secondary,
-                  padding: '0.2rem 0.55rem',
-                  borderRadius: 8,
-                  fontSize: '0.75rem',
-                  fontWeight: 500,
-                  border: `1px solid ${colors.overlay.cardBorder}`,
-                }}
-              >
+              <span key={tech} className="tech-pill">
                 {tech}
               </span>
             ))}
@@ -82,7 +55,6 @@ function ProjectCard({ project, index, accent }: { project: Project; index: numb
         ) : null}
       </div>
       <ul
-        id={'project-desc-' + project.id}
         style={{
           listStyle: 'none',
           padding: 0,
@@ -91,65 +63,34 @@ function ProjectCard({ project, index, accent }: { project: Project; index: numb
           fontSize: '0.9rem',
         }}
       >
-        {visible.map((item, i) => (
-          <li key={i} style={{ marginBottom: '0.4rem', paddingLeft: '1rem', position: 'relative', lineHeight: 1.55 }}>
-            <span style={{ position: 'absolute', left: 0, color: accent }}>▸</span>
+        {bullets.map((item, i) => (
+          <li key={i} style={{ marginBottom: '0.4rem', paddingLeft: '0.85rem', position: 'relative', lineHeight: 1.55 }}>
+            <span
+              className="list-marker-dot"
+              style={{ background: accent }}
+              aria-hidden
+            />
             <span
               dangerouslySetInnerHTML={{
-                __html: item.replace(/<strong>/g, `<strong style="color:${accent}">`),
+                __html: item.replace(/<strong>/g, `<strong style="color:${colors.keyword}; font-weight: 500;">`),
               }}
             />
           </li>
         ))}
       </ul>
-      {needsToggle ? (
-        <button
-          type="button"
-          className="project-expand-btn"
-          aria-expanded={expanded}
-          aria-controls={'project-desc-' + project.id}
-          onClick={() => setExpanded(!expanded)}
-          style={{
-            color: accent,
-            borderColor: accent + '44',
-            alignSelf: 'flex-start',
-          }}
-        >
-          {expanded ? 'Show less' : 'Show ' + rest + ' more detail' + (rest === 1 ? '' : 's')}
-        </button>
-      ) : null}
       <motion.a
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="compact-cta"
-        whileHover={{ y: -1 }}
-        whileTap={{ scale: 0.98 }}
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-          color: '#fff',
-          textDecoration: 'none',
-          fontWeight: 600,
-          fontSize: '0.875rem',
-          padding: '0.55rem 1.1rem',
-          borderRadius: 10,
-          background: colors.gradient.primary,
-                    boxShadow: '0 4px 18px rgba(59, 130, 246, 0.35)',
-          marginTop: 'auto',
-          alignSelf: 'flex-start',
-        }}
+        className="project-view-link"
+        whileHover={{ opacity: 0.9 }}
+        whileTap={{ scale: 0.99 }}
       >
-        {project.type === 'github' ? (
-          <>
-            <FaCode size={14} /> View on GitHub
-          </>
-        ) : (
-          <>
-            <FaExternalLinkAlt size={14} /> View live
-          </>
-        )}
+        <span className="project-view-link__label">
+          <span className="project-view-link__verb">View</span>
+          <span className="project-view-link__rest">{linkSuffix}</span>
+        </span>
+        <HiArrowUpRight size={16} aria-hidden className="project-view-link__arrow" />
       </motion.a>
     </motion.article>
   )
@@ -158,7 +99,7 @@ function ProjectCard({ project, index, accent }: { project: Project; index: numb
 export default function Projects() {
   const [tab, setTab] = useState<ProjectTab>('professional')
   const list = useMemo(() => filterByTab(tab), [tab])
-  const accent = tab === 'coursework' ? colors.status.success : colors.accent.primary
+  const accent = tab === 'coursework' ? colors.accent.secondary : colors.accent.primary
 
   return (
     <section
@@ -170,7 +111,6 @@ export default function Projects() {
         position: 'relative',
       }}
     >
-      <div className="section-glow" aria-hidden />
       <div style={{ maxWidth: 1200, width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -182,9 +122,9 @@ export default function Projects() {
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
             Featured Projects
           </h2>
-          <div style={{ width: 48, height: 3, background: colors.gradient.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
           <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
-            Highlights first — expand a card when you want the full project notes.
+            Selected work across professional builds and coursework.
           </p>
         </motion.div>
 
@@ -216,15 +156,15 @@ export default function Projects() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 style={{
-                  border: active ? 'none' : `1px solid ${colors.overlay.cardBorder}`,
-                  background: active ? colors.gradient.primary : colors.background.card,
-                  color: active ? '#fff' : colors.text.secondary,
-                  fontWeight: 600,
-                  fontSize: '0.9375rem',
-                  padding: '0.65rem 1.35rem',
+                  border: active ? '1px solid transparent' : '1px solid rgba(255, 255, 255, 0.12)',
+                  background: active ? colors.accent.primary : 'rgba(255, 255, 255, 0.05)',
+                  color: active ? colors.accentForeground : colors.text.secondary,
+                  fontWeight: 500,
+                  fontSize: '0.875rem',
+                  padding: '0.55rem 1.2rem',
                   borderRadius: 999,
                   cursor: 'pointer',
-                  boxShadow: active ? '0 8px 26px rgba(59, 130, 246, 0.35)' : '0 2px 12px rgba(0,0,0,0.35)',
+                  boxShadow: 'none',
                   transition: 'background 0.2s, color 0.2s',
                 }}
               >

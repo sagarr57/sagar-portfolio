@@ -65,7 +65,7 @@ export default function About() {
                   borderRadius: 16,
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   padding: 'clamp(1.25rem, 4vw, 1.85rem)',
-                  boxShadow: '0 4px 28px rgba(0, 0, 0, 0.45)',
+                  boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -105,7 +105,7 @@ export default function About() {
                     const regex = keyword.includes(' ') ? new RegExp(`(${escaped})`, 'gi') : new RegExp(`\\b(${escaped})\\b`, 'gi')
                     highlightedText = highlightedText.replace(
                       regex,
-                      `<strong style="color: ${card.highlightColor || colors.accent.primary}; font-weight: 600;">$1</strong>`
+                      `<strong style="color: ${card.highlightColor || colors.accent.primary}; font-weight: 500;">$1</strong>`
                     )
                   })
                   return (
@@ -138,7 +138,7 @@ export default function About() {
               marginBottom: 'clamp(1.25rem, 3vw, 1.75rem)',
               color: colors.text.primary,
               fontSize: 'clamp(1.15rem, 2.5vw, 1.35rem)',
-              fontWeight: 600,
+              fontWeight: 500,
             }}
           >
             What drives me
@@ -158,7 +158,7 @@ export default function About() {
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   padding: 'clamp(1.15rem, 3vw, 1.5rem)',
                   textAlign: 'center',
-                  boxShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
+                  boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
                   transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
                 }}
               >

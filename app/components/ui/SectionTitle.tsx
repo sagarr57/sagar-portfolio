@@ -31,8 +31,8 @@ export default function SectionTitle({ title, subtitle, children }: SectionTitle
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         style={{
-          height: 3,
-          background: colors.gradient.primary,
+          height: 2,
+          background: colors.accent.primary,
           borderRadius: 2,
           margin: '0 auto 1rem',
         }}

@@ -57,8 +57,8 @@ export const typography = {
   weights: {
     regular: 400,
     medium: 500,
-    semibold: 600,
-    bold: 700,
+    semibold: 500,
+    bold: 500,
   },
   // Line heights (matching n8n.io)
   lineHeights: {
@@ -88,7 +88,10 @@ export const typography = {
 export const getTypographyStyle = (variant: keyof typeof typography.sizes) => {
   return {
     fontSize: typography.sizes[variant].clamp,
-    fontFamily: 'var(--font-oswald), "Oswald", system-ui, sans-serif',
+    fontFamily:
+      variant === 'hero' || variant.startsWith('h')
+        ? 'var(--font-display), "Outfit", system-ui, sans-serif'
+        : 'var(--font-sans), "DM Sans", system-ui, sans-serif',
     fontWeight: variant === 'hero' || variant.startsWith('h') ? typography.weights.semibold : typography.weights.regular,
     lineHeight: variant === 'hero' || variant === 'h1' ? typography.lineHeights.tight : variant.startsWith('h') ? typography.lineHeights.normal : typography.lineHeights.body,
     letterSpacing: variant.startsWith('h') ? typography.letterSpacing.tight : 'normal',

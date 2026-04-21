@@ -1,45 +1,53 @@
-// Color tokens — dark modern theme (automation / product-site style)
+// Mirrors design tokens (see globals.css :root) for inline styles in components
 export const colors = {
   background: {
-    primary: '#0B1120',
-    secondary: '#0F172A',
-    tertiary: '#111C2E',
-    card: '#151F32',
+    primary: '#0a0f1a',
+    secondary: '#121b2e',
+    tertiary: '#121b2e',
+    card: '#121b2e',
+    /** Contact / footer band */
+    contact: 'rgba(0, 0, 0, 0.4)',
   },
 
   text: {
-    primary: '#F1F5F9',
-    secondary: '#CBD5E1',
-    muted: '#94A3B8',
-    disabled: '#64748B',
+    primary: '#e8eef7',
+    secondary: '#c8d4e8',
+    muted: '#8b9dc4',
+    disabled: '#64748b',
   },
 
   accent: {
-    primary: '#60A5FA',
-    secondary: '#38BDF8',
-    light: '#93C5FD',
-    dark: '#3B82F6',
+    primary: '#3b82f6',
+    secondary: '#60a5fa',
+    light: '#93c5fd',
+    dark: '#2563eb',
   },
 
+  /** Text on solid accent buttons */
+  accentForeground: '#f0f7ff',
+
+  /** Highlighted keywords in prose */
+  keyword: '#93c5fd',
+
   gradient: {
-    primary: 'linear-gradient(135deg, #3B82F6 0%, #6366F1 55%, #38BDF8 100%)',
-    secondary: 'linear-gradient(135deg, rgba(59, 130, 246, 0.35) 0%, rgba(99, 102, 241, 0.2) 100%)',
-    backgroundPrimary: 'linear-gradient(180deg, #0B1120 0%, #0F172A 45%, #111C2E 100%)',
-    backgroundSecondary: 'linear-gradient(180deg, #0F172A 0%, #111C2E 50%, #0B1120 100%)',
-    backgroundTertiary: 'linear-gradient(180deg, #111C2E 0%, #0F172A 40%, #111C2E 100%)',
+    primary: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+    secondary: 'linear-gradient(135deg, rgba(59, 130, 246, 0.22) 0%, rgba(37, 99, 235, 0.12) 100%)',
+    backgroundPrimary: 'linear-gradient(180deg, #0a0f1a 0%, #121b2e 50%, #0a0f1a 100%)',
+    backgroundSecondary: 'linear-gradient(180deg, #121b2e 0%, #1a2740 100%)',
+    backgroundTertiary: 'linear-gradient(180deg, #121b2e 0%, #0a0f1a 100%)',
   },
 
   overlay: {
     blue: 'rgba(59, 130, 246, 0.14)',
     blueStrong: 'rgba(59, 130, 246, 0.22)',
-    card: 'rgba(21, 31, 50, 0.94)',
-    cardBorder: 'rgba(148, 163, 184, 0.18)',
-    cardBorderHover: 'rgba(96, 165, 250, 0.38)',
+    card: 'rgba(18, 27, 46, 0.92)',
+    cardBorder: 'rgba(255, 255, 255, 0.12)',
+    cardBorderHover: 'rgba(255, 255, 255, 0.18)',
   },
 
   status: {
-    success: '#4ADE80',
-    error: '#F87171',
-    warning: '#FBBF24',
+    success: '#4ade80',
+    error: '#f87171',
+    warning: '#fbbf24',
   },
 } as const

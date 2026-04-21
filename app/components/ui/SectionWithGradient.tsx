@@ -6,7 +6,7 @@ import GradientBackground from './GradientBackground'
 interface SectionWithGradientProps {
   id: string
   children: ReactNode
-  variant?: 'primary' | 'secondary' | 'tertiary'
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'contact'
   overlayPosition?: {
     cyan?: { x: string; y: string }
     purple?: { x: string; y: string }
@@ -31,6 +31,7 @@ export default function SectionWithGradient({
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
+        borderTop: variant === 'contact' ? '1px solid rgba(255, 255, 255, 0.1)' : undefined,
       }}
     >
       <GradientBackground variant={variant} overlayPosition={overlayPosition} />

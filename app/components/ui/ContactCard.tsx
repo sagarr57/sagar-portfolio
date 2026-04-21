@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
+import { colors } from '../../utils/colors'
 
 interface ContactCardProps {
   icon: ReactNode
@@ -46,21 +47,21 @@ export default function ContactCard({
     >
       <div style={{
         fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
-        color: '#00D9FF',
+        color: colors.accent.primary,
       }}>
         {icon}
       </div>
       <div style={{ textAlign: 'center' }}>
         <div style={{ 
           color: 'var(--text-primary)', 
-          fontWeight: 600, 
+          fontWeight: 500, 
           fontSize: 'clamp(0.8rem, 2vw, 0.9rem)', 
           marginBottom: '0.25rem' 
         }}>
           {text}
         </div>
         <div style={{ 
-          color: '#00D9FF', 
+          color: colors.accent.primary, 
           fontWeight: 500, 
           fontSize: 'clamp(0.7rem, 1.8vw, 0.8rem)', 
           marginBottom: description ? '0.25rem' : 0

@@ -41,7 +41,7 @@ export default function Contact() {
   ]
 
   return (
-    <SectionWithGradient id="contact" variant="tertiary" overlayPosition={{ cyan: { x: '15%', y: '45%' }, purple: { x: '85%', y: '55%' } }}>
+    <SectionWithGradient id="contact" variant="contact">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -55,8 +55,8 @@ export default function Contact() {
         <div
           style={{
             width: 48,
-            height: 3,
-            background: colors.gradient.primary,
+            height: 2,
+            background: colors.accent.primary,
             borderRadius: 2,
             margin: '0 auto 1rem',
           }}
@@ -89,7 +89,7 @@ export default function Contact() {
             flexDirection: 'column' as const,
             alignItems: 'center',
             gap: '0.35rem',
-            boxShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
+            boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
             cursor: item.link ? 'pointer' : 'default',
             width: '100%',
             minWidth: 0,
@@ -101,7 +101,7 @@ export default function Contact() {
             <>
               <div style={{ fontSize: '1.3rem', color: colors.accent.primary }}>{item.icon}</div>
               <div style={{ width: '100%', minWidth: 0, wordBreak: 'break-word' }}>
-                <div style={{ fontWeight: 600, fontSize: '0.875rem', color: colors.text.primary }}>{item.title}</div>
+                <div style={{ fontWeight: 500, fontSize: '0.875rem', color: colors.text.primary }}>{item.title}</div>
                 <div style={{ fontWeight: 500, fontSize: '0.8125rem', color: colors.accent.primary }}>{item.text}</div>
                 <div style={{ fontSize: '0.75rem', color: colors.text.muted }}>{item.description}</div>
               </div>
@@ -158,7 +158,7 @@ export default function Contact() {
           width: '100%',
           minWidth: 0,
           margin: '0 auto',
-          boxShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
+          boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
@@ -231,8 +231,8 @@ export default function Contact() {
           style={{
             width: '100%',
             padding: '0.62rem 1rem',
-            background: colors.gradient.primary,
-            color: '#fff',
+            background: colors.accent.primary,
+            color: colors.accentForeground,
             border: 'none',
             borderRadius: 8,
             fontSize: '0.9375rem',
@@ -242,14 +242,14 @@ export default function Contact() {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '0.5rem',
-            boxShadow: '0 2px 14px rgba(59, 130, 246, 0.35)',
+            boxShadow: 'none',
           }}
         >
           Send Message <FaPaperPlane size={14} />
         </motion.button>
         <p style={{ color: colors.text.muted, textAlign: 'center', marginTop: '0.65rem', fontSize: '0.8125rem' }}>
           Prefer email? Reach me directly at{' '}
-          <a href="mailto:sagar05.ms@gmail.com" style={{ color: colors.accent.primary, textDecoration: 'none', fontWeight: 600 }}>
+          <a href="mailto:sagar05.ms@gmail.com" style={{ color: colors.accent.primary, textDecoration: 'none', fontWeight: 500 }}>
             sagar05.ms@gmail.com
           </a>
         </p>

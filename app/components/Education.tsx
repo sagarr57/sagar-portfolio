@@ -13,12 +13,12 @@ function InitialBadge({ label }: { label: string }) {
         width: 52,
         height: 52,
         borderRadius: 12,
-        background: colors.overlay.blueStrong,
+        background: 'rgba(255, 255, 255, 0.06)',
         border: `1px solid ${colors.overlay.cardBorder}`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontWeight: 700,
+        fontWeight: 500,
         fontSize: '0.8125rem',
         color: colors.accent.primary,
         flexShrink: 0,
@@ -43,7 +43,6 @@ export default function Education() {
         position: 'relative',
       }}
     >
-      <div className="section-glow" aria-hidden />
       <div style={{ maxWidth: 1100, width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,7 +54,7 @@ export default function Education() {
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
             Education
           </h2>
-          <div style={{ width: 48, height: 3, background: colors.gradient.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
           <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
             Formal training in AI and computer science
           </p>
@@ -76,7 +75,7 @@ export default function Education() {
                 border: `1px solid ${colors.overlay.cardBorder}`,
                 borderLeft: `4px solid ${colors.accent.primary}`,
                 padding: 'clamp(1.25rem, 4vw, 1.75rem)',
-                boxShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
+                boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
                 display: 'flex',
                 gap: '1rem',
                 alignItems: 'flex-start',
@@ -86,9 +85,9 @@ export default function Education() {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
                   <FaGraduationCap style={{ color: colors.accent.primary, flexShrink: 0 }} aria-hidden />
-                  <h3 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 700, color: colors.text.primary }}>{entry.institution}</h3>
+                  <h3 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 500, color: colors.text.primary }}>{entry.institution}</h3>
                 </div>
-                <p style={{ margin: '0 0 0.5rem', fontWeight: 600, color: colors.text.secondary, fontSize: '0.9375rem' }}>{entry.degree}</p>
+                <p style={{ margin: '0 0 0.5rem', fontWeight: 500, color: colors.text.secondary, fontSize: '0.9375rem' }}>{entry.degree}</p>
                 <p style={{ margin: 0, fontSize: '0.875rem', color: colors.text.muted }}>
                   {entry.dates}
                   {entry.location ? ` · ${entry.location}` : ''}

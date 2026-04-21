@@ -36,8 +36,6 @@ export const certifications: Certification[] = [
     skills: ['Front-End Development', 'React', 'JavaScript', 'HTML', 'CSS', 'UI/UX'],
     credentialId: 'D7QMN3WV9KEV',
     verifyUrl: 'https://coursera.org/verify/professional-cert/D7QMN3WV9KEV',
-    infoUrl: 'https://coursera.org/share/51432707f6a45ac182e911d870bcb7bc',
-    infoLabel: 'Program (Coursera)',
   },
   {
     title: 'Principles of UX/UI Design',
