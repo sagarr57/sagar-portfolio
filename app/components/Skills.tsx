@@ -2,8 +2,53 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { TbBrandReact, TbBrandNextjs, TbBrandJavascript, TbBrandTypescript, TbBrandNodejs, TbBrandMongodb, TbBrandMysql, TbBrandDocker, TbBrandGit, TbBrandPython } from 'react-icons/tb'
-import { SiMaterialdesign, SiBootstrap, SiRedux, SiExpress, SiJira, SiFigma, SiPostman, SiJest, SiMocha, SiSlack, SiGooglecloud, SiHtml5, SiCss3, SiTensorflow, SiPytorch, SiZapier, SiJupyter, SiPandas, SiNumpy } from 'react-icons/si'
+import {
+  TbBrandReact,
+  TbBrandNextjs,
+  TbBrandJavascript,
+  TbBrandTypescript,
+  TbBrandNodejs,
+  TbBrandMongodb,
+  TbBrandMysql,
+  TbBrandDocker,
+  TbBrandGit,
+  TbBrandPython,
+  TbWebhook,
+  TbBriefcase,
+} from 'react-icons/tb'
+import {
+  SiMaterialdesign,
+  SiBootstrap,
+  SiRedux,
+  SiExpress,
+  SiJira,
+  SiFigma,
+  SiPostman,
+  SiJest,
+  SiMocha,
+  SiSlack,
+  SiGooglecloud,
+  SiHtml5,
+  SiCss3,
+  SiTensorflow,
+  SiPytorch,
+  SiZapier,
+  SiJupyter,
+  SiPandas,
+  SiNumpy,
+  SiGoogleanalytics,
+  SiGoogletagmanager,
+  SiGooglesearchconsole,
+  SiSemrush,
+  SiTailwindcss,
+  SiSupabase,
+  SiFastapi,
+  SiOpenai,
+  SiWordpress,
+  SiWhatsapp,
+  SiN8N,
+} from 'react-icons/si'
+import { IoAnalyticsOutline } from 'react-icons/io5'
 import { BiTestTube } from 'react-icons/bi'
 import { FaBrain } from 'react-icons/fa'
 import { colors } from '../utils/colors'
@@ -11,11 +56,11 @@ import { colors } from '../utils/colors'
 const skillsData: Record<string, { icon: React.ReactNode; name: string; color: string }[]> = {
   'AI & Machine Learning': [
     { icon: <TbBrandPython size={28} />, name: 'Python', color: '#3776AB' },
+    { icon: <SiOpenai size={28} />, name: 'OpenAI / LLMs', color: '#10A37F' },
     { icon: <SiTensorflow size={28} />, name: 'TensorFlow', color: '#FF6F00' },
     { icon: <SiPytorch size={28} />, name: 'PyTorch', color: '#EE4C2C' },
     { icon: <FaBrain size={28} />, name: 'Machine Learning', color: colors.accent.primary },
     { icon: <SiJupyter size={28} />, name: 'Jupyter', color: '#F37626' },
-    { icon: <SiZapier size={28} />, name: 'Zapier', color: '#FF4A00' },
     { icon: <FaBrain size={28} />, name: 'Scikit-learn', color: '#F7931E' },
     { icon: <SiPandas size={28} />, name: 'Pandas', color: '#150458' },
     { icon: <SiNumpy size={28} />, name: 'NumPy', color: '#013243' },
@@ -28,6 +73,7 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
   'Front-End': [
     { icon: <TbBrandReact size={28} />, name: 'React', color: '#61DAFB' },
     { icon: <TbBrandNextjs size={28} />, name: 'Next.js', color: '#000' },
+    { icon: <SiTailwindcss size={28} />, name: 'Tailwind CSS', color: '#06B6D4' },
     { icon: <SiMaterialdesign size={28} />, name: 'Material UI', color: '#0081CB' },
     { icon: <SiBootstrap size={28} />, name: 'Bootstrap', color: '#7952B3' },
     { icon: <SiRedux size={28} />, name: 'Redux', color: '#764ABC' },
@@ -36,8 +82,24 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
   ],
   'Back-End & Databases': [
     { icon: <SiExpress size={28} />, name: 'Express.js', color: '#000' },
+    { icon: <SiFastapi size={28} />, name: 'FastAPI', color: '#009688' },
     { icon: <TbBrandMongodb size={28} />, name: 'MongoDB', color: '#47A248' },
+    { icon: <SiSupabase size={28} />, name: 'Supabase', color: '#3ECF8E' },
     { icon: <TbBrandMysql size={28} />, name: 'MySQL', color: '#4479A1' },
+  ],
+  'SEO & Analytics': [
+    { icon: <SiGooglesearchconsole size={28} />, name: 'Google Search Console', color: '#458CF5' },
+    { icon: <SiGoogleanalytics size={28} />, name: 'Google Analytics', color: '#E37400' },
+    { icon: <SiGoogletagmanager size={28} />, name: 'Google Tag Manager', color: '#246FDB' },
+    { icon: <IoAnalyticsOutline size={28} />, name: 'Microsoft Clarity', color: '#00A4EF' },
+    { icon: <SiSemrush size={28} />, name: 'SEO & research', color: '#FF642D' },
+  ],
+  'Automation & workflows': [
+    { icon: <TbWebhook size={28} />, name: 'Pabbly Connect', color: '#1E88E5' },
+    { icon: <TbBriefcase size={28} />, name: 'GoHighLevel', color: '#FF6521' },
+    { icon: <SiZapier size={28} />, name: 'Zapier', color: '#FF4A00' },
+    { icon: <SiN8N size={28} />, name: 'n8n', color: '#EA4B71' },
+    { icon: <SiWhatsapp size={28} />, name: 'WhatsApp Business', color: '#25D366' },
   ],
   'DevOps & Cloud': [
     { icon: <TbBrandDocker size={28} />, name: 'Docker', color: '#2496ED' },
@@ -53,6 +115,7 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
     { icon: <SiJira size={28} />, name: 'Agile', color: '#2D70AD' },
     { icon: <SiFigma size={28} />, name: 'Figma', color: '#F04E37' },
     { icon: <SiSlack size={28} />, name: 'Slack', color: '#4A154B' },
+    { icon: <SiWordpress size={28} />, name: 'WordPress', color: '#21759B' },
     { icon: <TbBrandGit size={28} />, name: 'Git', color: '#0079BF' },
   ],
 }
@@ -65,7 +128,7 @@ export default function Skills() {
     <section
       id="skills"
       style={{
-        padding: 'clamp(3rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem)',
+        padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)',
         background: colors.background.secondary,
         position: 'relative',
       }}
@@ -76,7 +139,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 6vw, 3rem)' }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.25rem)' }}
         >
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
             Technical Expertise

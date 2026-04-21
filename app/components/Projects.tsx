@@ -1,77 +1,260 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { useMemo, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FaExternalLinkAlt, FaCode } from 'react-icons/fa'
 import { colors } from '../utils/colors'
+import { projects, type Project } from '../utils/projectsData'
 
-const projects = [
-  { id: 1, title: 'AI-Powered Performance Monitoring Platform', category: 'Professional', techStack: ['React', 'Node.js', 'AI/ML', 'Data Visualization'], description: ['Built a React-based performance monitoring solution with AI-driven analytics.', 'Delivered 25% reduction in page load times and 35% increase in user engagement.'], link: 'https://one.newrelic.com/website-grader', type: 'live' as const },
-  { id: 2, title: 'Intelligent Observability Landing Page', category: 'Professional', techStack: ['React', 'Next.js', 'Material UI', 'AI Personalization'], description: ['Developed high-converting landing page with AI-powered personalization.', 'Achieved 40% improvement in conversion rates through UX optimization.'], link: 'https://newrelic.com/instant-observability', type: 'live' as const },
-  { id: 4, title: 'Louis Charles International - Official Business Website', category: 'Professional', techStack: ['Next.js', 'React', 'SEO', 'Analytics'], description: ['Designed and developed the official website for Louis Charles International.', 'Implemented responsive layouts and SEO-friendly structure for lead generation.'], link: 'https://louis-charles.com', type: 'live' as const },
-  { id: 5, title: 'QuickCash Direct - Instant Loan Application Platform', category: 'Professional', techStack: ['Next.js', 'React', 'Loan Matching', 'Financial Services'], description: ['Developed US-based instant loan application website with $250-$3000 loans.', 'Built 3-step loan application process connecting borrowers with trusted lenders.'], link: 'https://www.quickcashdirect.com/', type: 'live' as const },
-  { id: 6, title: 'MediConnect360 - AI-Powered Healthcare Platform', category: 'Coursework', techStack: ['Node.js', 'Express.js', 'MongoDB', 'AI/NLP', 'Docker'], description: ['Built hospital management system with AI-powered patient care workflows.', 'Integrated AI chatbot using NLP, reducing admin overhead by 50%.'], link: 'https://github.com/sagarr57/F29AI_Group-17', type: 'github' as const },
-  { id: 7, title: 'Biologically-Inspired ANN + PSO for Concrete Strength Prediction', category: 'Coursework', techStack: ['Python', 'Neural Networks', 'PSO', 'Machine Learning'], description: ['Implemented multi-layer ANN from scratch with flexible layers and activations.', 'Developed PSO algorithm with informant topology on UCI dataset.'], link: 'https://github.com/sagarr57/F21BC_PG09', type: 'github' as const },
-  { id: 8, title: 'SudoSage - Intelligent Sudoku Solver', category: 'Coursework', techStack: ['Next.js', 'React', 'CSP', 'Backtracking'], description: ['Built intelligent Sudoku solver using recursive backtracking and constraint propagation.', 'Developed Next.js/React interface with interactive puzzle input.'], link: 'https://github.com/sagarr57/F29AI_Group-17', type: 'github' as const },
-  { id: 9, title: 'Lunar Mission Visualizer - PDDL Planning Simulator', category: 'Coursework', techStack: ['React', 'Next.js', 'PDDL', 'Automated Planning'], description: ['Designed frontend simulator for lunar exploration domain with PDDL-style plans.', 'Implemented mission selection, visualization, and animated SVG maps.'], link: 'https://github.com/sagarr57/F29AI_Group-17', type: 'github' as const },
-  { id: 10, title: 'Crop Recommendation & Disease Detection - ML Platform', category: 'Coursework', techStack: ['Python', 'Scikit-learn', 'CNN', 'MLP', 'Random Forest'], description: ['ML platform for crop recommendation (99.72% accuracy) and plant disease detection.', 'Applied feature engineering, SMOTE, GridSearchCV, and data augmentation.'], link: 'https://github.com/sagarr57/PG-Group-3', type: 'github' as const },
-]
+type ProjectTab = 'professional' | 'coursework'
 
-export default function Projects() {
-  const accentFor = (cat: string) => cat === 'Coursework' ? colors.status.success : colors.accent.primary
+const DESCRIPTION_PREVIEW = 2
+
+function filterByTab(tab: ProjectTab): Project[] {
+  if (tab === 'professional') return projects.filter((p) => p.category === 'Professional')
+  return projects.filter((p) => p.category === 'Coursework')
+}
+
+function ProjectCard({ project, index, accent }: { project: Project; index: number; accent: string }) {
+  const [expanded, setExpanded] = useState(false)
+  const bullets = project.description
+  const needsToggle = bullets.length > DESCRIPTION_PREVIEW
+  const visible = !needsToggle || expanded ? bullets : bullets.slice(0, DESCRIPTION_PREVIEW)
+  const rest = bullets.length - DESCRIPTION_PREVIEW
 
   return (
-    <section id="projects" style={{ padding: 'clamp(3rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem)', background: colors.background.tertiary, position: 'relative' }}>
-      <div style={{ maxWidth: 1200, width: '100%', margin: '0 auto' }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 6vw, 3rem)' }}>
-          <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>Featured Projects</h2>
-          <div style={{ width: 48, height: 3, background: colors.gradient.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
-          <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>Where AI innovation meets execution - intelligent solutions that drive business value</p>
-        </motion.div>
-        <div className="projects-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'clamp(1rem, 4vw, 1.5rem)' }}>
-          {projects.map(function (project, index) {
-            return (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.4, delay: index * 0.03 }}
-              whileHover={{ y: -2 }}
-              style={{ background: colors.background.card, borderRadius: 12, border: `1px solid ${colors.overlay.cardBorder}`, padding: 'clamp(1.25rem, 4vw, 1.75rem)', boxShadow: '0 2px 12px rgba(0,0,0,0.04)' }}
-            >
-              <div style={{ marginBottom: '1rem' }}>
-                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  <h3 style={{ fontSize: '1.125rem', fontWeight: 600, color: colors.text.primary, margin: 0 }}>{project.title}</h3>
-                  <span style={{ background: `${accentFor(project.category)}20`, color: accentFor(project.category), padding: '0.2rem 0.5rem', borderRadius: 6, fontSize: '0.75rem', fontWeight: 600 }}>{project.category}</span>
-                </div>
-                {project.techStack && project.techStack.length > 0 && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
-                    {project.techStack.map((tech) => <span key={tech} style={{ background: colors.background.tertiary, color: colors.text.secondary, padding: '0.2rem 0.5rem', borderRadius: 6, fontSize: '0.75rem' }}>{tech}</span>)}
-                  </div>
-                )}
-              </div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1rem', color: colors.text.secondary, fontSize: '0.9375rem' }}>
-                {project.description.map((item, i) => (
-                  <li key={i} style={{ marginBottom: '0.375rem', paddingLeft: '1rem', position: 'relative' }}>
-                    <span style={{ position: 'absolute', left: 0, color: accentFor(project.category) }}>▸</span>
-                    <span dangerouslySetInnerHTML={{ __html: item.replace(/<strong>/g, `<strong style="color: ${accentFor(project.category)}">`) }} />
-                  </li>
-                ))}
-              </ul>
-              <motion.a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -1 }}
-                whileTap={{ scale: 0.98 }}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#fff', textDecoration: 'none', fontWeight: 500, fontSize: '0.9375rem', padding: '0.625rem 1.25rem', borderRadius: 8, background: colors.gradient.primary, boxShadow: '0 2px 10px rgba(66,165,245,0.3)' }}
+    <motion.article
+      layout
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: index * 0.04 }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="project-card"
+      style={{
+        background: colors.background.card,
+        borderRadius: 16,
+        border: `1px solid ${colors.overlay.cardBorder}`,
+        padding: 'clamp(1.15rem, 3vw, 1.6rem)',
+        boxShadow: '0 4px 24px rgba(15, 23, 42, 0.06)',
+        position: 'relative',
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'stretch',
+        minHeight: 0,
+      }}
+    >
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 3,
+          background: `linear-gradient(90deg, ${accent}, ${colors.accent.secondary})`,
+          opacity: 0.85,
+        }}
+      />
+      <div style={{ marginBottom: '1rem', paddingTop: 4, flexShrink: 0 }}>
+        <h3 style={{ fontSize: '1.125rem', fontWeight: 700, color: colors.text.primary, margin: '0 0 0.5rem', lineHeight: 1.35 }}>
+          {project.title}
+        </h3>
+        {project.techStack?.length ? (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
+            {project.techStack.map((tech) => (
+              <span
+                key={tech}
+                style={{
+                  background: colors.background.tertiary,
+                  color: colors.text.secondary,
+                  padding: '0.2rem 0.55rem',
+                  borderRadius: 8,
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  border: `1px solid ${colors.overlay.cardBorder}`,
+                }}
               >
-                {project.type === 'github' ? <><FaCode size={14} /> View on GitHub</> : <><FaExternalLinkAlt size={14} /> View Live Project</>}
-              </motion.a>
-            </motion.div>
+                {tech}
+              </span>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <ul
+        id={'project-desc-' + project.id}
+        style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          color: colors.text.secondary,
+          fontSize: '0.9rem',
+        }}
+      >
+        {visible.map((item, i) => (
+          <li key={i} style={{ marginBottom: '0.4rem', paddingLeft: '1rem', position: 'relative', lineHeight: 1.55 }}>
+            <span style={{ position: 'absolute', left: 0, color: accent }}>▸</span>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: item.replace(/<strong>/g, `<strong style="color:${accent}">`),
+              }}
+            />
+          </li>
+        ))}
+      </ul>
+      {needsToggle ? (
+        <button
+          type="button"
+          className="project-expand-btn"
+          aria-expanded={expanded}
+          aria-controls={'project-desc-' + project.id}
+          onClick={() => setExpanded(!expanded)}
+          style={{
+            color: accent,
+            borderColor: accent + '44',
+            alignSelf: 'flex-start',
+          }}
+        >
+          {expanded ? 'Show less' : 'Show ' + rest + ' more detail' + (rest === 1 ? '' : 's')}
+        </button>
+      ) : null}
+      <motion.a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="compact-cta"
+        whileHover={{ y: -1 }}
+        whileTap={{ scale: 0.98 }}
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+          color: '#fff',
+          textDecoration: 'none',
+          fontWeight: 600,
+          fontSize: '0.875rem',
+          padding: '0.55rem 1.1rem',
+          borderRadius: 10,
+          background: colors.gradient.primary,
+          boxShadow: '0 4px 16px rgba(66,165,245,0.28)',
+          marginTop: 'auto',
+          alignSelf: 'flex-start',
+        }}
+      >
+        {project.type === 'github' ? (
+          <>
+            <FaCode size={14} /> View on GitHub
+          </>
+        ) : (
+          <>
+            <FaExternalLinkAlt size={14} /> View live
+          </>
+        )}
+      </motion.a>
+    </motion.article>
+  )
+}
+
+export default function Projects() {
+  const [tab, setTab] = useState<ProjectTab>('professional')
+  const list = useMemo(() => filterByTab(tab), [tab])
+  const accent = tab === 'coursework' ? colors.status.success : colors.accent.primary
+
+  return (
+    <section
+      id="projects"
+      className="section-surface"
+      style={{
+        padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)',
+        background: colors.background.tertiary,
+        position: 'relative',
+      }}
+    >
+      <div className="section-glow" aria-hidden />
+      <div style={{ maxWidth: 1200, width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2rem)' }}
+        >
+          <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
+            Featured Projects
+          </h2>
+          <div style={{ width: 48, height: 3, background: colors.gradient.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
+            Highlights first — expand a card when you want the full project notes.
+          </p>
+        </motion.div>
+
+        <div
+          role="tablist"
+          aria-label="Project categories"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '0.5rem',
+            flexWrap: 'wrap',
+            marginBottom: 'clamp(1.5rem, 4vw, 2.25rem)',
+          }}
+        >
+          {(
+            [
+              { id: 'professional' as const, label: 'Professional' },
+              { id: 'coursework' as const, label: 'Coursework' },
+            ] as const
+          ).map((t) => {
+            const active = tab === t.id
+            return (
+              <motion.button
+                key={t.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => setTab(t.id)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                style={{
+                  border: active ? 'none' : `1px solid ${colors.overlay.cardBorder}`,
+                  background: active ? colors.gradient.primary : colors.background.card,
+                  color: active ? '#fff' : colors.text.secondary,
+                  fontWeight: 600,
+                  fontSize: '0.9375rem',
+                  padding: '0.65rem 1.35rem',
+                  borderRadius: 999,
+                  cursor: 'pointer',
+                  boxShadow: active ? '0 8px 24px rgba(66,165,245,0.28)' : '0 2px 10px rgba(0,0,0,0.04)',
+                  transition: 'background 0.2s, color 0.2s',
+                }}
+              >
+                {t.label}
+              </motion.button>
             )
           })}
         </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={tab}
+            role="tabpanel"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="projects-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              gap: 'clamp(1rem, 3vw, 1.35rem)',
+              alignItems: 'stretch',
+            }}
+          >
+            {list.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} accent={accent} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   )

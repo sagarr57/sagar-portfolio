@@ -26,7 +26,7 @@ export default function SectionWithGradient({
       id={id}
       className={className}
       style={{
-        padding: 'clamp(3rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem)',
+        padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',

@@ -47,7 +47,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 6vw, 3rem)' }}
+        style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.25rem)' }}
       >
         <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
           Let&apos;s Build Something Intelligent
@@ -71,45 +71,76 @@ export default function Contact() {
         style={{
           display: 'grid',
           gridTemplateColumns: '1fr',
-          gap: '1rem',
-          marginBottom: 'clamp(2rem, 5vw, 2.5rem)',
+          gap: '0.75rem',
+          marginBottom: 'clamp(1.25rem, 3vw, 1.75rem)',
           width: '100%',
+          maxWidth: 980,
+          marginInline: 'auto',
         }}
       >
-        {contactItems.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.05, duration: 0.5 }}
-            whileHover={{ y: -2 }}
-            style={{
-              background: colors.background.card,
-              borderRadius: 12,
-              border: `1px solid ${colors.overlay.cardBorder}`,
-              padding: 'clamp(1rem, 3vw, 1.25rem)',
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '0.5rem',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-              cursor: item.link ? 'pointer' : 'default',
-              width: '100%',
-              minWidth: 0,
-              maxWidth: '100%',
-            }}
-            onClick={item.link ? () => window.open(item.link) : undefined}
-          >
-            <div style={{ fontSize: '1.5rem', color: colors.accent.primary }}>{item.icon}</div>
-            <div style={{ width: '100%', minWidth: 0, wordBreak: 'break-word' }}>
-              <div style={{ fontWeight: 600, fontSize: '0.9375rem', color: colors.text.primary }}>{item.title}</div>
-              <div style={{ fontWeight: 500, fontSize: '0.875rem', color: colors.accent.primary }}>{item.text}</div>
-              <div style={{ fontSize: '0.8125rem', color: colors.text.muted }}>{item.description}</div>
-            </div>
-          </motion.div>
-        ))}
+        {contactItems.map((item, index) => {
+          const cardStyle = {
+            background: colors.background.card,
+            borderRadius: 12,
+            border: `1px solid ${colors.overlay.cardBorder}`,
+            padding: 'clamp(0.8rem, 2.4vw, 1rem)',
+            textAlign: 'center' as const,
+            display: 'flex',
+            flexDirection: 'column' as const,
+            alignItems: 'center',
+            gap: '0.35rem',
+            boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+            cursor: item.link ? 'pointer' : 'default',
+            width: '100%',
+            minWidth: 0,
+            maxWidth: '100%',
+            textDecoration: 'none',
+          }
+
+          const content = (
+            <>
+              <div style={{ fontSize: '1.3rem', color: colors.accent.primary }}>{item.icon}</div>
+              <div style={{ width: '100%', minWidth: 0, wordBreak: 'break-word' }}>
+                <div style={{ fontWeight: 600, fontSize: '0.875rem', color: colors.text.primary }}>{item.title}</div>
+                <div style={{ fontWeight: 500, fontSize: '0.8125rem', color: colors.accent.primary }}>{item.text}</div>
+                <div style={{ fontSize: '0.75rem', color: colors.text.muted }}>{item.description}</div>
+              </div>
+            </>
+          )
+
+          if (item.link) {
+            return (
+              <motion.a
+                key={index}
+                href={item.link}
+                aria-label={`${item.title}: ${item.text}`}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05, duration: 0.5 }}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.99 }}
+                style={cardStyle}
+              >
+                {content}
+              </motion.a>
+            )
+          }
+
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05, duration: 0.5 }}
+              whileHover={{ y: -2 }}
+              style={cardStyle}
+            >
+              {content}
+            </motion.div>
+          )
+        })}
       </div>
 
       <motion.form
@@ -122,22 +153,22 @@ export default function Contact() {
           background: colors.background.card,
           borderRadius: 12,
           border: `1px solid ${colors.overlay.cardBorder}`,
-          padding: 'clamp(1.25rem, 4vw, 1.75rem)',
-          maxWidth: 560,
+          padding: 'clamp(1rem, 3vw, 1.25rem)',
+          maxWidth: 500,
           width: '100%',
           minWidth: 0,
           margin: '0 auto',
           boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
         }}
       >
-        <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
-          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.25rem', color: colors.text.primary }}>Start a Conversation</h3>
-          <p style={{ color: colors.text.secondary, fontSize: '0.9375rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+          <h3 style={{ marginBottom: '0.4rem', fontSize: '1.125rem', color: colors.text.primary }}>Start a Conversation</h3>
+          <p style={{ color: colors.text.secondary, fontSize: '0.875rem' }}>
             Tell me about your project and let&apos;s explore how we can work together.
           </p>
         </div>
 
-        <div style={{ marginBottom: '1rem' }}>
+        <div style={{ marginBottom: '0.75rem' }}>
           <input
             type="text"
             placeholder="Your Name"
@@ -146,16 +177,16 @@ export default function Contact() {
             required
             style={{
               width: '100%',
-              padding: '0.75rem 1rem',
+              padding: '0.6rem 0.85rem',
               border: `1px solid ${colors.overlay.cardBorder}`,
               borderRadius: 8,
-              fontSize: '1rem',
+              fontSize: '0.9375rem',
               background: colors.background.tertiary,
               color: colors.text.primary,
             }}
           />
         </div>
-        <div style={{ marginBottom: '1rem' }}>
+        <div style={{ marginBottom: '0.75rem' }}>
           <input
             type="email"
             placeholder="Your Email"
@@ -164,16 +195,16 @@ export default function Contact() {
             required
             style={{
               width: '100%',
-              padding: '0.75rem 1rem',
+              padding: '0.6rem 0.85rem',
               border: `1px solid ${colors.overlay.cardBorder}`,
               borderRadius: 8,
-              fontSize: '1rem',
+              fontSize: '0.9375rem',
               background: colors.background.tertiary,
               color: colors.text.primary,
             }}
           />
         </div>
-        <div style={{ marginBottom: '1rem' }}>
+        <div style={{ marginBottom: '0.75rem' }}>
           <textarea
             placeholder="Tell me about your project..."
             value={formData.message}
@@ -182,14 +213,14 @@ export default function Contact() {
             rows={4}
             style={{
               width: '100%',
-              padding: '0.75rem 1rem',
+              padding: '0.6rem 0.85rem',
               border: `1px solid ${colors.overlay.cardBorder}`,
               borderRadius: 8,
-              fontSize: '1rem',
+              fontSize: '0.9375rem',
               background: colors.background.tertiary,
               color: colors.text.primary,
               resize: 'vertical',
-              minHeight: 100,
+              minHeight: 88,
             }}
           />
         </div>
@@ -199,12 +230,12 @@ export default function Contact() {
           whileTap={{ scale: 0.98 }}
           style={{
             width: '100%',
-            padding: '0.75rem 1.25rem',
+            padding: '0.62rem 1rem',
             background: colors.gradient.primary,
             color: '#fff',
             border: 'none',
             borderRadius: 8,
-            fontSize: '1rem',
+            fontSize: '0.9375rem',
             fontWeight: 500,
             cursor: 'pointer',
             display: 'flex',
@@ -216,6 +247,12 @@ export default function Contact() {
         >
           Send Message <FaPaperPlane size={14} />
         </motion.button>
+        <p style={{ color: colors.text.muted, textAlign: 'center', marginTop: '0.65rem', fontSize: '0.8125rem' }}>
+          Prefer email? Reach me directly at{' '}
+          <a href="mailto:sagar05.ms@gmail.com" style={{ color: colors.accent.primary, textDecoration: 'none', fontWeight: 600 }}>
+            sagar05.ms@gmail.com
+          </a>
+        </p>
         {successMessage && <p style={{ color: colors.status.success, textAlign: 'center', marginTop: '1rem', fontSize: '0.9375rem' }}>{successMessage}</p>}
         {errorMessage && <p style={{ color: colors.status.error, textAlign: 'center', marginTop: '1rem', fontSize: '0.9375rem' }}>{errorMessage}</p>}
       </motion.form>

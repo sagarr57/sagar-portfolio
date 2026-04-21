@@ -50,57 +50,59 @@ export const heroData = {
 // About Section Data
 export const aboutData = {
   title: 'About Me',
-  subtitle: 'A blend of corporate excellence and AI-powered innovation',
+  subtitle: 'AI engineer and full-stack builder — shipping fintech products, automation, and data-backed UX from Dubai.',
   cards: [
     {
-      title: 'The AI Engineering Journey',
+      title: 'Background & impact',
       content: [
-        'With over 4 years of hands-on experience in software engineering and AI, I\'ve had the privilege of working with companies like Louis Charles International, Decarbeon, and New Relic—delivering products that go from zero to production impact.',
-        'My expertise spans the entire lifecycle—from architecting AI-integrated frontends and data-rich dashboards to building automation-heavy backends and CRMs that streamline real-world business operations.',
+        'I bring 4+ years of software engineering experience across enterprise observability, sustainability analytics, and high-stakes fintech — from New Relic and Decarbeon to my current role as AI Solution Engineer at Louis Charles International in Dubai.',
+        'Today I own live customer journeys end to end: public sites and applications for QuickCash Direct and All Day Loans, PingFree lender integrations, and internal tools (including PingFree Admin) where reliability and conversion matter.',
       ],
-      highlight: 'Louis Charles International, Decarbeon & New Relic',
+      highlight: 'Louis Charles International',
     },
     {
-      title: 'AI-Powered Solutions',
+      title: 'How I work',
       content: [
-        'Beyond corporate walls, I\'ve successfully delivered AI-powered freelance projects that transform businesses. From intelligent chatbots to machine learning-driven applications, I bring cutting-edge AI technology to every project.',
-        'Whether you\'re a startup looking to integrate AI capabilities or an established business seeking to leverage machine learning, I\'m here to turn your vision into intelligent reality.',
+        'I build with Next.js, React, Node.js, Python, and FastAPI — plus MongoDB, Supabase, and modern UI stacks when the product calls for them.',
+        'I care as much about operations as features: CRM and WhatsApp-led workflows, automation through Pabbly and GoHighLevel, and SEO/analytics with Google Search Console, Tag Manager, Analytics, and Microsoft Clarity so teams can see what is working.',
       ],
+      highlight: 'Next.js',
     },
     {
-      title: 'The AI Vision',
+      title: 'Education & direction',
       content: [
-        'Currently pursuing an MSc in Artificial Intelligence at Heriot-Watt University, I\'m at the intersection of traditional software engineering and cutting-edge AI innovation.',
-        'This unique combination allows me to build intelligent applications that don\'t just look great—they learn, adapt, and deliver unprecedented value through machine learning and neural networks.',
+        'I am pursuing an MSc in Artificial Intelligence at Heriot-Watt University (Dubai), building on a B.Tech in Computer Science & Engineering from Keshav Memorial Institute of Technology.',
+        'That mix grounds me in rigorous ML and agents while my day job keeps me honest about latency, compliance, and shipping — the sweet spot for practical AI in real products.',
       ],
       highlight: 'MSc in Artificial Intelligence',
       highlightColor: '#42A5F5',
       special: true,
+      wide: true,
     },
   ],
   values: [
     {
       icon: 'FaCode',
-      title: 'Intelligent Code',
-      description: 'Writing AI-enhanced, maintainable code that adapts and evolves with modern technologies.',
+      title: 'Ship-quality code',
+      description: 'Readable TypeScript/React, sensible architecture, and tests where they protect revenue and sleep.',
       color: '#00D9FF',
     },
     {
       icon: 'FaBrain',
-      title: 'AI Innovation',
-      description: 'Leveraging machine learning and neural networks to solve complex real-world challenges.',
+      title: 'AI with guardrails',
+      description: 'LLM features, automation, and analytics designed for real users — measurable, observable, and easy to iterate.',
       color: '#7B2CBF',
     },
     {
       icon: 'FaRocket',
-      title: 'Performance',
-      description: 'Building lightning-fast AI-powered applications that deliver exceptional user experiences.',
+      title: 'Speed that lasts',
+      description: 'Performance budgets, Core Web Vitals awareness, and dashboards that stay fast as data grows.',
       color: '#FF006E',
     },
     {
       icon: 'FaNetworkWired',
-      title: 'Integration',
-      description: 'Seamlessly connecting AI models with production systems for maximum impact.',
+      title: 'Systems thinking',
+      description: 'Connecting frontends, APIs, CRMs, marketing tools, and lender panels into one coherent lead journey.',
       color: '#8338EC',
     },
   ],
