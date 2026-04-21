@@ -187,7 +187,7 @@ export default function Skills() {
                 fontSize: '0.875rem',
                 border: activeTab === tab ? 'none' : `1px solid ${colors.overlay.cardBorder}`,
                 flexShrink: 0,
-                boxShadow: activeTab === tab ? '0 2px 8px rgba(66,165,245,0.3)' : 'none',
+                boxShadow: activeTab === tab ? '0 2px 12px rgba(59, 130, 246, 0.35)' : 'none',
               }}
             >
               {tab}
@@ -221,7 +221,7 @@ export default function Skills() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '0.5rem',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.4)',
               }}
             >
               <div

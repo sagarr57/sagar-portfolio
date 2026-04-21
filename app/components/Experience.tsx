@@ -90,7 +90,7 @@ function ExpCard(props: { exp: ExpItem; index: number; accentColor: string; acce
         border: '1px solid ' + colors.overlay.cardBorder,
         borderLeft: '4px solid ' + accentColor,
         padding: 'clamp(1.25rem, 4vw, 1.75rem)',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+        boxShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
         width: '100%',
         minWidth: 0,
       }}

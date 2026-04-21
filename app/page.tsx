@@ -12,7 +12,7 @@ import Contact from './components/Contact'
 
 export default function Home() {
   return (
-    <main style={{ position: 'relative', minHeight: '100vh', background: '#F8FAFC', overflowX: 'hidden' }}>
+    <main style={{ position: 'relative', zIndex: 1, minHeight: '100vh', background: '#0B1120', overflowX: 'hidden' }}>
       <a
         href="#about"
         className="skip-link"

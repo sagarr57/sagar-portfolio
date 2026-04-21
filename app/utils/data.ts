@@ -72,7 +72,7 @@ export const aboutData = {
         'I am pursuing an MSc in Artificial Intelligence at Heriot-Watt University, building on a B.Tech in Computer Science and applying both to practical AI products.',
       ],
       highlight: 'MSc in Artificial Intelligence',
-      highlightColor: '#42A5F5',
+      highlightColor: '#60A5FA',
       special: true,
       wide: true,
     },

@@ -103,7 +103,7 @@ export default function Certifications() {
                   borderRadius: 14,
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   padding: '1rem 1rem 0.85rem',
-                  boxShadow: '0 4px 20px rgba(15, 23, 42, 0.05)',
+                  boxShadow: '0 4px 22px rgba(0, 0, 0, 0.42)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.5rem',

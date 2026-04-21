@@ -20,32 +20,7 @@ export default function Hero() {
   ]
 
   return (
-    <section
-      id="hero"
-      style={{
-        minHeight: '100dvh',
-        paddingTop: 'clamp(104px, 16vw, 124px)',
-        paddingRight: 'clamp(1rem, 4vw, 1.75rem)',
-        paddingBottom: 'clamp(1.35rem, 4vw, 2.4rem)',
-        paddingLeft: 'clamp(1rem, 4vw, 1.75rem)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        background: `linear-gradient(180deg, ${colors.background.primary} 0%, ${colors.background.secondary} 55%, ${colors.background.tertiary} 100%)`,
-        position: 'relative',
-      }}
-    >
-      <div
-        aria-hidden
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'radial-gradient(ellipse 80% 50% at 85% 15%, rgba(59, 130, 246, 0.1) 0%, transparent 52%), radial-gradient(ellipse 60% 40% at 10% 80%, rgba(125, 211, 252, 0.08) 0%, transparent 48%)',
-          pointerEvents: 'none',
-        }}
-      />
-
+    <section id="hero">
       <div
         className="hero-inner-grid"
         style={{
@@ -56,8 +31,6 @@ export default function Hero() {
           maxWidth: 1120,
           width: '100%',
           margin: '0 auto',
-          position: 'relative',
-          zIndex: 1,
           gridTemplateColumns: '1fr',
         }}
       >
@@ -173,7 +146,7 @@ export default function Hero() {
                 fontWeight: 600,
                 textDecoration: 'none',
                 fontSize: '0.875rem',
-                boxShadow: '0 6px 20px rgba(66,165,245,0.28)',
+                boxShadow: '0 6px 22px rgba(59, 130, 246, 0.4)',
                 minHeight: 44,
               }}
             >
@@ -220,7 +193,7 @@ export default function Hero() {
                     justifyContent: 'center',
                     fontSize: '1.1rem',
                     textDecoration: 'none',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                    boxShadow: '0 2px 12px rgba(0, 0, 0, 0.4)',
                   }}
                 >
                   {s.icon}
@@ -236,12 +209,10 @@ export default function Hero() {
           transition={{ delay: 0.15, duration: 0.5 }}
           style={{
             position: 'relative',
-            width: 'clamp(200px, 62vw, 300px)',
             margin: '0 auto',
-            aspectRatio: '4 / 5',
             borderRadius: 18,
             overflow: 'hidden',
-            boxShadow: '0 20px 40px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(59, 130, 246, 0.12)',
+            boxShadow: '0 20px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(96, 165, 250, 0.2)',
           }}
           className="hero-portrait-wrap"
         >
@@ -250,7 +221,7 @@ export default function Hero() {
             alt="Sagar Mamindla — AI engineer and full-stack developer"
             fill
             priority
-            sizes="(max-width: 768px) 62vw, 300px"
+            sizes="(max-width: 768px) 40vw, 300px"
             style={{ objectFit: 'cover', objectPosition: 'center top' }}
           />
         </motion.div>
@@ -258,6 +229,7 @@ export default function Hero() {
 
       <motion.button
         type="button"
+        className="hero-scroll-cta"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.55 }}

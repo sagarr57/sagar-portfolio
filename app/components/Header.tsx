@@ -47,13 +47,13 @@ export default function Header() {
           pointerEvents: 'auto',
           width: '100%',
           maxWidth: 1180,
-          background: 'rgba(255, 253, 247, 0.78)',
+          background: 'rgba(11, 17, 32, 0.82)',
           backdropFilter: 'blur(18px) saturate(1.35)',
           WebkitBackdropFilter: 'blur(18px) saturate(1.35)',
           border: `1px solid ${colors.overlay.cardBorder}`,
           borderRadius: 16,
           boxShadow:
-            '0 14px 44px rgba(15, 23, 42, 0.09), 0 1px 0 rgba(255, 255, 255, 0.65) inset, 0 0 0 1px rgba(255,255,255,0.4)',
+            '0 18px 48px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.06) inset',
           overflow: mobileOpen ? 'visible' : 'hidden',
         }}
         initial={{ y: -8, opacity: 0 }}
@@ -171,7 +171,7 @@ export default function Header() {
               style={{
                 overflow: 'hidden',
                 borderTop: `1px solid ${colors.overlay.cardBorder}`,
-                background: 'rgba(255, 253, 247, 0.96)',
+                background: 'rgba(15, 23, 42, 0.98)',
               }}
             >
               <div

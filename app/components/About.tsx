@@ -65,7 +65,7 @@ export default function About() {
                   borderRadius: 16,
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   padding: 'clamp(1.25rem, 4vw, 1.85rem)',
-                  boxShadow: '0 4px 24px rgba(15, 23, 42, 0.06)',
+                  boxShadow: '0 4px 28px rgba(0, 0, 0, 0.45)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -158,7 +158,7 @@ export default function About() {
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   padding: 'clamp(1.15rem, 3vw, 1.5rem)',
                   textAlign: 'center',
-                  boxShadow: '0 2px 14px rgba(15, 23, 42, 0.05)',
+                  boxShadow: '0 2px 16px rgba(0, 0, 0, 0.4)',
                   transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
                 }}
               >

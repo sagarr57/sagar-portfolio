@@ -89,7 +89,7 @@ export default function Contact() {
             flexDirection: 'column' as const,
             alignItems: 'center',
             gap: '0.35rem',
-            boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+            boxShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
             cursor: item.link ? 'pointer' : 'default',
             width: '100%',
             minWidth: 0,
@@ -158,7 +158,7 @@ export default function Contact() {
           width: '100%',
           minWidth: 0,
           margin: '0 auto',
-          boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+          boxShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
@@ -242,7 +242,7 @@ export default function Contact() {
             alignItems: 'center',
             justifyContent: 'center',
             gap: '0.5rem',
-            boxShadow: '0 2px 10px rgba(66,165,245,0.3)',
+            boxShadow: '0 2px 14px rgba(59, 130, 246, 0.35)',
           }}
         >
           Send Message <FaPaperPlane size={14} />

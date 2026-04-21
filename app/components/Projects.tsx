@@ -35,7 +35,7 @@ function ProjectCard({ project, index, accent }: { project: Project; index: numb
         borderRadius: 16,
         border: `1px solid ${colors.overlay.cardBorder}`,
         padding: 'clamp(1.15rem, 3vw, 1.6rem)',
-        boxShadow: '0 4px 24px rgba(15, 23, 42, 0.06)',
+        boxShadow: '0 4px 24px rgba(0, 0, 0, 0.45)',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
@@ -136,7 +136,7 @@ function ProjectCard({ project, index, accent }: { project: Project; index: numb
           padding: '0.55rem 1.1rem',
           borderRadius: 10,
           background: colors.gradient.primary,
-          boxShadow: '0 4px 16px rgba(66,165,245,0.28)',
+                    boxShadow: '0 4px 18px rgba(59, 130, 246, 0.35)',
           marginTop: 'auto',
           alignSelf: 'flex-start',
         }}
@@ -224,7 +224,7 @@ export default function Projects() {
                   padding: '0.65rem 1.35rem',
                   borderRadius: 999,
                   cursor: 'pointer',
-                  boxShadow: active ? '0 8px 24px rgba(66,165,245,0.28)' : '0 2px 10px rgba(0,0,0,0.04)',
+                  boxShadow: active ? '0 8px 26px rgba(59, 130, 246, 0.35)' : '0 2px 12px rgba(0,0,0,0.35)',
                   transition: 'background 0.2s, color 0.2s',
                 }}
               >

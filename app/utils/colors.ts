@@ -1,51 +1,45 @@
-// Color Tokens - Clean modern light theme
+// Color tokens — dark modern theme (automation / product-site style)
 export const colors = {
-  // Background Colors - Neutral light with cool tint
   background: {
-    primary: '#F8FAFC',
-    secondary: '#F2F6FB',
-    tertiary: '#EEF3FA',
-    card: '#FFFFFF',
+    primary: '#0B1120',
+    secondary: '#0F172A',
+    tertiary: '#111C2E',
+    card: '#151F32',
   },
 
-  // Text Colors - Dark for contrast on light
   text: {
-    primary: '#0F172A',
-    secondary: '#334155',
-    muted: '#64748b',
-    disabled: '#94a3b8',
+    primary: '#F1F5F9',
+    secondary: '#CBD5E1',
+    muted: '#94A3B8',
+    disabled: '#64748B',
   },
 
-  // Accent Colors - Professional blue scale
   accent: {
-    primary: '#3B82F6',
-    secondary: '#60A5FA',
-    light: '#BFDBFE',
-    dark: '#2563EB',
+    primary: '#60A5FA',
+    secondary: '#38BDF8',
+    light: '#93C5FD',
+    dark: '#3B82F6',
   },
 
-  // Gradient Colors
   gradient: {
-    primary: 'linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%)',
-    secondary: 'linear-gradient(135deg, #DBEAFE 0%, #EFF6FF 100%)',
-    backgroundPrimary: 'linear-gradient(180deg, #F8FAFC 0%, #F2F6FB 50%, #EEF3FA 100%)',
-    backgroundSecondary: 'linear-gradient(180deg, #EEF3FA 0%, #E6F0FB 100%)',
-    backgroundTertiary: 'linear-gradient(180deg, #F3F7FC 0%, #EAF2FC 30%, #F3F7FC 100%)',
+    primary: 'linear-gradient(135deg, #3B82F6 0%, #6366F1 55%, #38BDF8 100%)',
+    secondary: 'linear-gradient(135deg, rgba(59, 130, 246, 0.35) 0%, rgba(99, 102, 241, 0.2) 100%)',
+    backgroundPrimary: 'linear-gradient(180deg, #0B1120 0%, #0F172A 45%, #111C2E 100%)',
+    backgroundSecondary: 'linear-gradient(180deg, #0F172A 0%, #111C2E 50%, #0B1120 100%)',
+    backgroundTertiary: 'linear-gradient(180deg, #111C2E 0%, #0F172A 40%, #111C2E 100%)',
   },
 
-  // Overlay Colors
   overlay: {
-    blue: 'rgba(59, 130, 246, 0.08)',
-    blueStrong: 'rgba(59, 130, 246, 0.14)',
-    card: 'rgba(255, 255, 255, 0.88)',
-    cardBorder: 'rgba(148, 163, 184, 0.28)',
-    cardBorderHover: 'rgba(59, 130, 246, 0.32)',
+    blue: 'rgba(59, 130, 246, 0.14)',
+    blueStrong: 'rgba(59, 130, 246, 0.22)',
+    card: 'rgba(21, 31, 50, 0.94)',
+    cardBorder: 'rgba(148, 163, 184, 0.18)',
+    cardBorderHover: 'rgba(96, 165, 250, 0.38)',
   },
 
-  // Status Colors
   status: {
-    success: '#22C55E',
-    error: '#EF4444',
-    warning: '#F59E0B',
+    success: '#4ADE80',
+    error: '#F87171',
+    warning: '#FBBF24',
   },
 } as const
