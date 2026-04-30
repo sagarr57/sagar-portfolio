@@ -1,6 +1,7 @@
 import { Outfit, DM_Sans } from 'next/font/google'
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
+import Cursor from './components/Cursor'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -93,7 +94,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={dmSans.className}>{children}</body>
+      <body className={dmSans.className}>
+        <Cursor />
+        {children}
+      </body>
     </html>
   )
 }

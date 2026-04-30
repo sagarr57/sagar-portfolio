@@ -13,14 +13,14 @@ function InitialBadge({ label }: { label: string }) {
         width: 52,
         height: 52,
         borderRadius: 12,
-        background: 'rgba(255, 255, 255, 0.06)',
-        border: `1px solid ${colors.overlay.cardBorder}`,
+        background: 'rgba(124, 58, 237, 0.08)',
+        border: `1px solid rgba(124, 58, 237, 0.20)`,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         fontWeight: 500,
         fontSize: '0.8125rem',
-        color: colors.accent.primary,
+        color: '#7c3aed',
         flexShrink: 0,
         letterSpacing: '-0.02em',
       }}
@@ -39,7 +39,7 @@ export default function Education() {
       className="section-surface"
       style={{
         padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)',
-        background: colors.background.secondary,
+        background: '#f3e8ff',
         position: 'relative',
       }}
     >
@@ -54,7 +54,7 @@ export default function Education() {
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
             Education
           </h2>
-          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <div style={{ width: 80, height: 3, background: 'linear-gradient(90deg, #7c3aed, #a855f7, transparent)', borderRadius: 9999, margin: '0 auto 1.1rem' }} />
           <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
             Formal training in AI and computer science
           </p>
@@ -73,9 +73,9 @@ export default function Education() {
                 background: colors.background.card,
                 borderRadius: 12,
                 border: `1px solid ${colors.overlay.cardBorder}`,
-                borderLeft: `4px solid ${colors.accent.primary}`,
+                borderLeft: '4px solid #7c3aed',
                 padding: 'clamp(1.25rem, 4vw, 1.75rem)',
-                boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
+                boxShadow: '0 2px 10px rgba(15, 23, 42, 0.08)',
                 display: 'flex',
                 gap: '1rem',
                 alignItems: 'flex-start',
@@ -84,7 +84,7 @@ export default function Education() {
               <InitialBadge label={badges[index] ?? '•'} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
-                  <FaGraduationCap style={{ color: colors.accent.primary, flexShrink: 0 }} aria-hidden />
+                  <FaGraduationCap style={{ color: '#7c3aed', flexShrink: 0 }} aria-hidden />
                   <h3 style={{ margin: 0, fontSize: '1.125rem', fontWeight: 500, color: colors.text.primary }}>{entry.institution}</h3>
                 </div>
                 <p style={{ margin: '0 0 0.5rem', fontWeight: 500, color: colors.text.secondary, fontSize: '0.9375rem' }}>{entry.degree}</p>

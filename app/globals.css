@@ -7,31 +7,37 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-:root {
-  /* Navy shell + blue accent (classic dev portfolio) */
-  --background: #0a0f1a;
-  --foreground: #e8eef7;
-  --surface: #121b2e;
-  --surface-elevated: #1a2740;
-  --accent: #3b82f6;
-  --accent-foreground: #f0f7ff;
-  --keyword: #93c5fd;
-  --glow-1: #3b82f633;
-  --glow-2: #2563eb28;
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
 
-  /* Aliases for existing rules */
+:root {
+  /* Light theme — milky white / slate grey */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --surface: #f3f5f8;
+  --surface-elevated: #ffffff;
+  --accent: #2563eb;           /* Blue 600 — deeper for light bg */
+  --accent-foreground: #ffffff;
+  --keyword: #2563eb;
+  --glow-1: rgba(37, 99, 235, 0.08);  /* very soft blue wash */
+  --glow-2: rgba(37, 99, 235, 0.05);  /* even softer */
+
+  /* Aliases */
   --bg-primary: var(--background);
   --bg-secondary: var(--surface);
-  --bg-tertiary: var(--surface);
-  --bg-card: var(--surface);
+  --bg-tertiary: var(--background);
+  --bg-card: var(--surface-elevated);
   --text-primary: var(--foreground);
-  --text-secondary: #c8d4e8;
-  --text-muted: #8b9dc4;
+  --text-secondary: #475569;  /* Slate 600 */
+  --text-muted: #94a3b8;      /* Slate 400 */
   --accent-primary: var(--accent);
-  --accent-secondary: #60a5fa;
-  --accent-light: #93c5fd;
-  --accent-soft-bg: rgba(59, 130, 246, 0.2);
-  --accent-border: rgba(255, 255, 255, 0.12);
+  --accent-secondary: #3b82f6;
+  --accent-light: #60a5fa;
+  --accent-soft-bg: rgba(37, 99, 235, 0.08);
+  --accent-border: rgba(15, 23, 42, 0.08); /* dark-on-light border */
   --font-sans-stack: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display-stack: var(--font-display), ui-sans-serif, system-ui, sans-serif;
 }
@@ -72,7 +78,7 @@ body::before {
   content: none;
 }
 
-/* Hero: flat base + soft blurred orbs (reference portfolio) */
+/* Hero: deep dark base + blurred orbs */
 #hero {
   position: relative;
   isolation: isolate;
@@ -85,6 +91,17 @@ body::before {
   background: var(--background);
 }
 
+/* Subtle dot-grid texture on hero */
+#hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(15,23,42,0.055) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
 #hero .hero-glow {
   pointer-events: none;
   position: absolute;
@@ -93,21 +110,21 @@ body::before {
 }
 
 #hero .hero-glow--left {
-  left: -22%;
-  top: 0;
-  width: min(28rem, 92vw);
-  height: min(28rem, 92vw);
+  left: -10%;
+  top: 10%;
+  width: min(32rem, 90vw);
+  height: min(32rem, 90vw);
   background: var(--glow-1);
-  filter: blur(100px);
+  filter: blur(120px);
 }
 
 #hero .hero-glow--right {
-  right: -22%;
-  bottom: 0;
-  width: min(24rem, 88vw);
-  height: min(24rem, 88vw);
+  right: -10%;
+  bottom: 5%;
+  width: min(26rem, 80vw);
+  height: min(26rem, 80vw);
   background: var(--glow-2);
-  filter: blur(90px);
+  filter: blur(100px);
 }
 
 @media (min-width: 640px) {
@@ -140,11 +157,14 @@ body::before {
 .hero-title,
 h1.hero-title {
   font-family: var(--font-display-stack);
-  font-size: 1.85rem;
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: var(--foreground);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-subtitle,
@@ -226,13 +246,13 @@ button {
   align-items: center;
   font-family: var(--font-sans-stack);
   font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.32rem 0.62rem;
+  color: #1e40af;
+  background: rgba(37, 99, 235, 0.09);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  padding: 0.32rem 0.65rem;
   border-radius: 9999px;
   line-height: 1.2;
 }
@@ -245,8 +265,8 @@ button {
   flex-shrink: 0;
   width: 14px;
   height: 14px;
-  color: var(--accent);
-  opacity: 0.9;
+  color: #2563eb;
+  opacity: 1;
 }
 
 /* Minimal external project links */
@@ -347,9 +367,9 @@ button {
   gap: 0.28em;
 }
 
-/* Slightly larger on tablet+ */
+/* Tablet+ */
 @media (min-width: 641px) {
-  .hero-title, h1.hero-title { font-size: 2.25rem; }
+  .hero-title, h1.hero-title { font-size: 2.75rem; }
   .hero-subtitle, h2.hero-subtitle { font-size: 1.125rem; }
   h1 { font-size: 2.25rem; }
   h2, .section-title { font-size: 1.875rem; }
@@ -358,10 +378,10 @@ button {
   .card-title { font-size: 1.125rem; }
 }
 
-/* Desktop - modest increase */
+/* Desktop */
 @media (min-width: 1025px) {
-  .hero-title, h1.hero-title { font-size: 2.5rem; }
-  .hero-subtitle, h2.hero-subtitle { font-size: 1.25rem; }
+  .hero-title, h1.hero-title { font-size: 3.75rem; }
+  .hero-subtitle, h2.hero-subtitle { font-size: 1.3rem; }
   h1 { font-size: 2.5rem; }
   h2, .section-title { font-size: 2rem; }
   h3 { font-size: 1.5rem; }
@@ -372,14 +392,23 @@ button {
   html { scroll-behavior: smooth; }
 }
 
-/* Touch targets - mobile first */
+/* Touch targets — buttons and standalone links only */
 button,
-a {
+a:not(.project-view-link):not(.cert-secondary-link):not(.cert-tile-link) {
   min-height: 44px;
   min-width: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Inline / compact links don't need 44px targets */
+.project-view-link,
+.cert-secondary-link,
+.cert-tile-link {
+  min-height: 0 !important;
+  min-width: 0 !important;
+  display: inline-flex;
 }
 
 button {
@@ -422,23 +451,6 @@ section {
   padding: clamp(1.5rem, 4.5vw, 3rem) clamp(1rem, 4vw, 2rem);
 }
 
-/* Scrollbar styling */
-.projects-scroll-container::-webkit-scrollbar,
-.skills-scroll-container::-webkit-scrollbar {
-  height: 6px;
-}
-
-.projects-scroll-container::-webkit-scrollbar-track,
-.skills-scroll-container::-webkit-scrollbar-track {
-  background: var(--bg-tertiary);
-  border-radius: 10px;
-}
-
-.projects-scroll-container::-webkit-scrollbar-thumb,
-.skills-scroll-container::-webkit-scrollbar-thumb {
-  background: var(--accent-border);
-  border-radius: 10px;
-}
 
 /* Tablet and up */
 @media (min-width: 641px) {
@@ -463,39 +475,12 @@ section {
   .header-nav-mobile-btn {
     display: none !important;
   }
-}
 
-/* Hide nav buttons on mobile - show on tablet+ */
-@media (max-width: 768px) {
-  .nav-button-left,
-  .nav-button-right {
-    display: none !important;
-  }
-
-  .projects-scroll-container,
-  .skills-scroll-container {
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
+  .header-hire-btn {
+    display: flex !important;
   }
 }
 
-/* Experience: responsive grid + expand affordance */
-.experience-cards {
-  display: grid;
-  gap: clamp(1.25rem, 4vw, 1.5rem);
-  grid-template-columns: 1fr;
-  align-items: start;
-}
-
-@media (min-width: 900px) {
-  .experience-cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .exp-card--featured {
-    grid-column: 1 / -1;
-  }
-}
 
 @media (min-width: 641px) {
   #projects .projects-grid {
@@ -522,11 +507,6 @@ section {
 }
 
 @media (min-width: 769px) {
-  #skills .nav-button-left,
-  #skills .nav-button-right {
-    display: flex !important;
-  }
-
   #hero .hero-inner-grid {
     grid-template-columns: 1fr auto !important;
   }
@@ -573,11 +553,11 @@ section {
   }
 
   #hero .hero-title {
-    font-size: 1.6rem;
+    font-size: 2rem;
   }
 
   #hero .hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   #hero .hero-scroll-cta {
@@ -593,27 +573,17 @@ section {
   }
 }
 
-/* Form inputs - prevent iOS zoom */
+/* Form inputs — prevent iOS zoom on focus */
 @media (max-width: 480px) {
   form input,
   form textarea {
     font-size: 16px !important;
-  }
-
-  section {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
   }
 }
 
 /* --- Section polish --- */
 .section-surface {
   position: relative;
-}
-
-.section-glow,
-.section-glow--alt {
-  display: none;
 }
 
 /* Certifications: responsive n×n grid */
@@ -640,8 +610,8 @@ section {
 }
 
 .cert-tile:hover {
-  border-color: rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(37, 99, 235, 0.25) !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.10) !important;
 }
 
 /* Education: two columns on wide screens */
@@ -672,38 +642,107 @@ section {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .about-card--wide {
-    grid-column: 1 / -1;
-  }
 }
 
 .about-card:hover {
-  border-color: rgba(255, 255, 255, 0.14) !important;
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(37, 99, 235, 0.30) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10), 0 0 0 1px rgba(37, 99, 235, 0.12) !important;
 }
 
-.about-values-grid {
+/* WhyHireMe grid — mobile first */
+.why-hire-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-  gap: clamp(0.85rem, 2.5vw, 1.15rem);
-  max-width: 1100px;
-  margin-inline: auto;
+  gap: clamp(1rem, 3vw, 1.35rem);
+  grid-template-columns: 1fr;
 }
 
-@media (min-width: 641px) {
-  .about-values-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* Hero proof bar — compact stat badges */
+.hero-proof-bar > div {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.07);
+}
+
+.hero-proof-bar > div:hover {
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.10) !important;
+}
+
+/* Cards on tinted sections — transition only, let inline shadows stand */
+.about-card,
+.cert-tile,
+.project-card {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+/* About bento — always 2×2 on desktop (4 equal cards) */
+@media (min-width: 900px) {
+  .about-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
-@media (min-width: 1025px) {
-  .about-values-grid {
-    grid-template-columns: repeat(4, 1fr);
+/* ── Responsive polish ─────────────────────────────────────── */
+
+/* Contact relocation badge — wrap gracefully on narrow screens */
+#contact .relocation-badge {
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Hero proof badges — allow 2×2 wrap on narrow phones */
+@media (max-width: 400px) {
+  .hero-proof-bar > div {
+    min-width: 60px !important;
+    padding: 0.4rem 0.6rem !important;
   }
 }
 
-/* Global touch targets are 44px; allow denser CTAs in grids */
-main a.cert-tile-link {
-  min-width: 0 !important;
-  min-height: 36px !important;
+/* Skills — 2-col card grid on all mobile, 3 at 641+, 4 at 1025+ */
+@media (max-width: 640px) {
+  #skills .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+  }
+  #skills .skills-grid > div {
+    padding: 0.85rem 0.65rem !important;
+  }
+}
+
+/* Certifications — single col on very narrow phones */
+@media (max-width: 400px) {
+  .certifications-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* WhyHireMe — 2-col at 641+ but 4-col only at 1100+ to avoid cramping */
+@media (min-width: 641px) and (max-width: 1099px) {
+  .why-hire-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (min-width: 1100px) {
+  .why-hire-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* Header brand — prevent overflow on very small phones */
+@media (max-width: 360px) {
+  .header-brand {
+    display: none;
+  }
+}
+
+/* Section horizontal overflow guard */
+#experience,
+#about,
+#skills,
+#education,
+#projects,
+#certifications,
+#why-hire-me,
+#contact {
+  overflow-x: hidden;
 }

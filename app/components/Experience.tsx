@@ -34,9 +34,72 @@ const professionalExperience = [
       { icon: 'FaBrain', label: 'AI & LLMs' },
     ],
   },
-  { id: 2, title: 'Full Stack Developer Intern', company: 'Decarbeon', location: 'Dubai, UAE', duration: 'Feb 2025 - Apr 2025', type: 'Professional', description: ['Contributed to <strong>Decarbeon</strong>, a sustainability analytics dashboard with interactive visualizations built using <strong>Next.js</strong>, <strong>Tailwind CSS</strong>, and <strong>Power BI</strong> integrations.', 'Developed dashboards for sustainability metrics and ESG KPIs using <strong>Next.js</strong> and <strong>Chart.js</strong> to help stakeholders track performance in real time.', 'Built a short-term <strong>WordPress</strong>-based web app to rapidly deliver marketing content and sustainability insights for stakeholders.', 'Collaborated on data visualizations for <strong>energy consumption</strong> and <strong>carbon footprint</strong>, improving clarity for decision-makers.', 'Applied <strong>AI-driven insights</strong> to reporting modules, surfacing data-driven recommendations on sustainability performance.'], tools: [{ icon: 'TbBrandNextjs', label: 'Next.js' }, { icon: 'TbBrandReact', label: 'React' }, { icon: 'SiHtml5', label: 'Tailwind & HTML' }, { icon: 'SiCss3', label: 'CSS' }, { icon: 'TbBrandMysql', label: 'Data Integrations' }, { icon: 'TbBrandGit', label: 'Git & Version Control' }] },
-  { id: 3, title: 'Associate Software Engineer', company: 'New Relic', location: 'Hyderabad, India', duration: 'Feb 2023 - Mar 2024', type: 'Professional', description: ['Architected and built reusable <strong>React</strong> components for performance monitoring dashboards, resulting in <strong>25% faster load times</strong> and improved UX.', 'Designed and developed a domain validation landing page that increased user engagement by <strong>35%</strong> through intuitive UX and seamless interactions.', 'Led QA automation initiatives using <strong>Playwright</strong> and <strong>Jest</strong>, achieving zero critical bugs in production releases.', 'Optimized <strong>CI/CD pipelines</strong> and deployment workflows, reducing configuration overhead by <strong>40%</strong> and improving team productivity.'], tools: [{ icon: 'TbBrandReact', label: 'React' }, { icon: 'TbBrandNextjs', label: 'Next.js' }, { icon: 'TbBrandNodejs', label: 'Node.js' }, { icon: 'TbBrandMongodb', label: 'MongoDB' }, { icon: 'BiTestTube', label: 'Playwright' }, { icon: 'SiJest', label: 'Jest' }, { icon: 'SiGooglecloud', label: 'Google Cloud' }] },
-  { id: 4, title: 'Junior Level Engineer', company: 'XRG Consulting', location: 'Hyderabad, India', duration: 'Sept 2021 - Jan 2023', type: 'Professional', description: ['Developed a robust Java-based backend service for automated user invitation system, eliminating 40% of manual follow-up tasks.', 'Created an interactive React modal component for team invitations, significantly enhancing user engagement and workflow efficiency.', 'Comprehensive API documentation using Swagger, reducing new developer onboarding time by two weeks.'], tools: [{ icon: 'TbBrandJavascript', label: 'JavaScript' }, { icon: 'TbBrandTypescript', label: 'TypeScript' }, { icon: 'TbBrandPython', label: 'Python' }, { icon: 'TbBrandDocker', label: 'Docker' }, { icon: 'SiSwagger', label: 'Swagger' }] },
+  {
+    id: 2,
+    title: 'Full Stack Developer Intern',
+    company: 'Decarbeon',
+    location: 'Dubai, UAE',
+    duration: 'Feb 2025 - Apr 2025',
+    type: 'Professional',
+    description: [
+      'Contributed to <strong>Decarbeon</strong>, a sustainability analytics dashboard with interactive visualizations built using <strong>Next.js</strong>, <strong>Tailwind CSS</strong>, and <strong>Power BI</strong> integrations.',
+      'Developed dashboards for sustainability metrics and ESG KPIs using <strong>Next.js</strong> and <strong>Chart.js</strong> to help stakeholders track performance in real time.',
+      'Built a short-term <strong>WordPress</strong>-based web app to rapidly deliver marketing content and sustainability insights for stakeholders.',
+      'Collaborated on data visualizations for <strong>energy consumption</strong> and <strong>carbon footprint</strong>, improving clarity for decision-makers.',
+      'Applied <strong>AI-driven insights</strong> to reporting modules, surfacing data-driven recommendations on sustainability performance.',
+    ],
+    tools: [
+      { icon: 'TbBrandNextjs', label: 'Next.js' },
+      { icon: 'TbBrandReact', label: 'React' },
+      { icon: 'SiHtml5', label: 'Tailwind & HTML' },
+      { icon: 'SiCss3', label: 'CSS' },
+      { icon: 'TbBrandMysql', label: 'Data Integrations' },
+      { icon: 'TbBrandGit', label: 'Git & Version Control' },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Associate Software Engineer',
+    company: 'New Relic',
+    location: 'Hyderabad, India',
+    duration: 'Feb 2023 - Mar 2024',
+    type: 'Professional',
+    description: [
+      'Architected and built reusable <strong>React</strong> components for performance monitoring dashboards, resulting in <strong>25% faster load times</strong> and improved UX.',
+      'Designed and developed a domain validation landing page that increased user engagement by <strong>35%</strong> through intuitive UX and seamless interactions.',
+      'Led QA automation initiatives using <strong>Playwright</strong> and <strong>Jest</strong>, achieving zero critical bugs in production releases.',
+      'Optimized <strong>CI/CD pipelines</strong> and deployment workflows, reducing configuration overhead by <strong>40%</strong> and improving team productivity.',
+    ],
+    tools: [
+      { icon: 'TbBrandReact', label: 'React' },
+      { icon: 'TbBrandNextjs', label: 'Next.js' },
+      { icon: 'TbBrandNodejs', label: 'Node.js' },
+      { icon: 'TbBrandMongodb', label: 'MongoDB' },
+      { icon: 'BiTestTube', label: 'Playwright' },
+      { icon: 'SiJest', label: 'Jest' },
+      { icon: 'SiGooglecloud', label: 'Google Cloud' },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Junior Level Engineer',
+    company: 'XRG Consulting',
+    location: 'Hyderabad, India',
+    duration: 'Sept 2021 - Jan 2023',
+    type: 'Professional',
+    description: [
+      'Developed a robust Java-based backend service for automated user invitation system, eliminating 40% of manual follow-up tasks.',
+      'Created an interactive React modal component for team invitations, significantly enhancing user engagement and workflow efficiency.',
+      'Comprehensive API documentation using Swagger, reducing new developer onboarding time by two weeks.',
+    ],
+    tools: [
+      { icon: 'TbBrandJavascript', label: 'JavaScript' },
+      { icon: 'TbBrandTypescript', label: 'TypeScript' },
+      { icon: 'TbBrandPython', label: 'Python' },
+      { icon: 'TbBrandDocker', label: 'Docker' },
+      { icon: 'SiSwagger', label: 'Swagger' },
+    ],
+  },
 ]
 
 const highlightKeywords = [
@@ -51,7 +114,7 @@ const highlightKeywords = [
   'PingFree',
   'GoHighLevel',
   'Pabbly',
-  'AI', 'SaaS', 'CRM', 'Next.js', 'React', 'Node.js', 'MongoDB', 'Python', 'LLMs', 'WordPress', 'Chart.js', 'Power BI', 'Tailwind CSS', 'ESG', 'sustainability', 'automation', 'WhatsApp', 'voice calling', 'Decarbeon', 'New Relic', 'Playwright', 'Jest', 'CI/CD', '25%', '35%', '40%', '45%', '50%', 'zero critical bugs', '99.9%', 'machine learning', 'ML', 'chatbot', 'NLP', 'SEO',
+  'AI', 'SaaS', 'CRM', 'Next.js', 'React', 'Node.js', 'MongoDB', 'Python', 'LLMs', 'WordPress', 'Chart.js', 'Power BI', 'Tailwind CSS', 'ESG', 'sustainability', 'automation', 'WhatsApp', 'voice calling', 'Decarbeon', 'New Relic', 'Playwright', 'Jest', 'CI/CD', '25%', '35%', '40%', '45%', '50%', '60%', 'zero critical bugs', '99.9%', 'machine learning', 'ML', 'chatbot', 'NLP', 'SEO',
 ]
 
 function highlightText(text: string, keywordColor: string): string {
@@ -65,99 +128,191 @@ function highlightText(text: string, keywordColor: string): string {
 
 type ExpItem = (typeof professionalExperience)[0]
 
-function ExpCard(props: { exp: ExpItem; index: number; accentColor: string; accentBg: string; accentBorder: string; featured?: boolean }) {
-  const { exp, index, accentColor, accentBg, accentBorder, featured } = props
+function TimelineItem({ exp, index, isLast }: { exp: ExpItem; index: number; isLast: boolean }) {
+  const isCurrent = exp.duration.includes('Present')
 
   return (
-    <motion.div
-      className={featured ? 'exp-card--featured' : undefined}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5, delay: index * 0.05 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      style={{
-        background: colors.background.card,
-        borderRadius: 12,
-        border: '1px solid ' + colors.overlay.cardBorder,
-        borderLeft: '4px solid ' + accentColor,
-        padding: 'clamp(1.25rem, 4vw, 1.75rem)',
-        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.35)',
-        width: '100%',
-        minWidth: 0,
-      }}
-    >
-      <div style={{ marginBottom: '1rem' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 500, color: colors.text.primary, margin: 0 }}>{exp.title}</h3>
-          <span style={{ background: accentBg, color: accentColor, padding: '0.2rem 0.5rem', borderRadius: 6, fontSize: '0.75rem', fontWeight: 500 }}>{exp.type}</span>
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center', color: colors.text.muted, fontSize: '0.875rem' }}>
-          <span style={{ fontWeight: 500, color: colors.text.primary }}>{exp.company}</span>
-          <span>•</span>
-          <span>{exp.location}</span>
-          <span>•</span>
-          <span>{exp.duration}</span>
-        </div>
-      </div>
-      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 0.5rem' }}>
-        {exp.description.map(function (item, idx) {
-          return (
-            <li key={idx} style={{ padding: '0.25rem 0', paddingLeft: '0.85rem', position: 'relative', color: colors.text.secondary, lineHeight: 1.65, fontSize: '0.9375rem' }}>
-              <span className="list-marker-dot" style={{ background: accentColor }} aria-hidden />
-              <span dangerouslySetInnerHTML={{ __html: highlightText(item, colors.keyword) }} />
-            </li>
-          )
-        })}
-      </ul>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
-        {exp.tools.map(function (tool, idx) {
-          return (
-            <span key={idx} className="tech-pill tech-pill--with-icon">
-              {getIcon(tool.icon)}
-              <span>{tool.label}</span>
+    <div style={{ position: 'relative', paddingLeft: 'clamp(2.75rem, 7vw, 3.75rem)', paddingBottom: isLast ? 0 : 'clamp(2rem, 5vw, 2.75rem)' }}>
+      {/* Vertical connector line */}
+      {!isLast && (
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            left: 'clamp(0.875rem, 2.2vw, 1.1875rem)',
+            top: '2.25rem',
+            bottom: 0,
+            width: 2,
+            background: 'linear-gradient(to bottom, rgba(37,99,235,0.40), rgba(37,99,235,0.06))',
+            borderRadius: 2,
+          }}
+        />
+      )}
+
+      {/* Timeline dot */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.1, duration: 0.3, type: 'spring', stiffness: 260, damping: 20 }}
+        aria-hidden
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: '0.3125rem',
+          width: 'clamp(1.75rem, 4vw, 2.125rem)',
+          height: 'clamp(1.75rem, 4vw, 2.125rem)',
+          borderRadius: '50%',
+          background: isCurrent ? colors.accent.primary : '#ffffff',
+          border: `2px solid ${isCurrent ? colors.accent.primary : 'rgba(37,99,235,0.45)'}`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: isCurrent ? '#ffffff' : colors.accent.primary,
+          boxShadow: isCurrent
+            ? '0 0 0 5px rgba(37,99,235,0.13), 0 2px 10px rgba(37,99,235,0.28)'
+            : '0 0 0 4px rgba(37,99,235,0.07)',
+          zIndex: 2,
+        }}
+      >
+        <FaBriefcase size={11} />
+      </motion.div>
+
+      {/* Content card */}
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ duration: 0.45, delay: index * 0.07 }}
+        whileHover={{ y: -3, transition: { duration: 0.2 } }}
+        style={{
+          background: colors.background.card,
+          borderRadius: 14,
+          border: `1px solid ${colors.overlay.cardBorder}`,
+          borderLeft: `3px solid ${isCurrent ? colors.accent.primary : 'rgba(37,99,235,0.35)'}`,
+          padding: 'clamp(1.15rem, 4vw, 1.65rem)',
+          boxShadow: '0 2px 12px rgba(15,23,42,0.07)',
+        }}
+      >
+        {/* Header */}
+        <div style={{ marginBottom: '0.875rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem', marginBottom: '0.45rem' }}>
+            <h3 style={{ margin: 0, fontSize: 'clamp(0.9375rem, 2.2vw, 1.075rem)', fontWeight: 600, color: colors.text.primary, letterSpacing: '-0.015em' }}>
+              {exp.title}
+            </h3>
+            {isCurrent && (
+              <span style={{
+                background: `${colors.accent.primary}15`,
+                color: colors.accent.primary,
+                border: `1px solid ${colors.accent.primary}30`,
+                padding: '0.15rem 0.55rem',
+                borderRadius: 999,
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                letterSpacing: '0.04em',
+                textTransform: 'uppercase',
+              }}>
+                Current
+              </span>
+            )}
+          </div>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.6rem', alignItems: 'center' }}>
+            <span style={{ fontWeight: 600, color: colors.accent.primary, fontSize: '0.875rem' }}>{exp.company}</span>
+            <span style={{ color: colors.text.muted, fontSize: '0.8125rem' }}>·</span>
+            <span style={{ color: colors.text.secondary, fontSize: '0.8125rem' }}>{exp.location}</span>
+            <span style={{ color: colors.text.muted, fontSize: '0.8125rem' }}>·</span>
+            <span style={{
+              color: colors.text.secondary,
+              background: 'rgba(15,23,42,0.05)',
+              border: '1px solid rgba(15,23,42,0.10)',
+              padding: '0.1rem 0.5rem',
+              borderRadius: 6,
+              fontSize: '0.775rem',
+              fontWeight: 500,
+            }}>
+              {exp.duration}
             </span>
-          )
-        })}
-      </div>
-    </motion.div>
+          </div>
+        </div>
+
+        {/* Bullets */}
+        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1rem' }}>
+          {exp.description.map(function (item, idx) {
+            return (
+              <li key={idx} style={{ padding: '0.22rem 0', paddingLeft: '1rem', position: 'relative', color: colors.text.secondary, lineHeight: 1.65, fontSize: '0.9rem' }}>
+                <span className="list-marker-dot" style={{ background: colors.accent.primary }} aria-hidden />
+                <span dangerouslySetInnerHTML={{ __html: highlightText(item, colors.keyword) }} />
+              </li>
+            )
+          })}
+        </ul>
+
+        {/* Tech pills */}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+          {exp.tools.map(function (tool, idx) {
+            return (
+              <span key={idx} className="tech-pill tech-pill--with-icon">
+                {getIcon(tool.icon)}
+                <span>{tool.label}</span>
+              </span>
+            )
+          })}
+        </div>
+      </motion.div>
+    </div>
   )
 }
 
 export default function Experience() {
-  const proAccent = colors.accent.primary
-
   return (
     <section
       id="experience"
       className="section-surface"
       style={{ padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)', background: colors.background.primary, position: 'relative' }}
     >
-      <div style={{ maxWidth: 1180, width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.25rem)' }}>
-          <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>Experience & Expertise</h2>
-          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
-          <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>Roles, impact, and the tools behind each chapter.</p>
+      <div style={{ maxWidth: 900, width: '100%', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        {/* Section heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.5rem)' }}
+        >
+          <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
+            Experience & Expertise
+          </h2>
+          <div style={{ width: 80, height: 3, background: 'linear-gradient(90deg, #2563eb, #3b82f6, transparent)', borderRadius: 9999, margin: '0 auto 1.1rem' }} />
+          <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
+            Roles, impact, and the tools behind each chapter.
+          </p>
         </motion.div>
+
+        {/* Sub-label */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}
+        >
+          <FaBriefcase style={{ color: colors.accent.primary, flexShrink: 0 }} />
+          <span style={{ fontWeight: 500, color: colors.text.primary, fontSize: '1rem' }}>Professional Experience</span>
+        </motion.div>
+
+        {/* Timeline */}
         <div>
-          <h3 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: colors.text.primary, fontSize: '1.1rem', fontWeight: 500 }}>
-            <FaBriefcase style={{ color: proAccent }} /> Professional Experience
-          </h3>
-          <div className="experience-cards">
-            {professionalExperience.map(function (exp, index) {
-              return (
-                <ExpCard
-                  key={exp.id}
-                  exp={exp}
-                  index={index}
-                  accentColor={proAccent}
-                  accentBg={proAccent + '20'}
-                  accentBorder={proAccent + '40'}
-                  featured={exp.id === 1}
-                />
-              )
-            })}
-          </div>
+          {professionalExperience.map(function (exp, index) {
+            return (
+              <TimelineItem
+                key={exp.id}
+                exp={exp}
+                index={index}
+                isLast={index === professionalExperience.length - 1}
+              />
+            )
+          })}
         </div>
       </div>
     </section>

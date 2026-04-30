@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaPaperPlane } from 'react-icons/fa'
 import { IoMailOutline, IoCallOutline, IoLocationOutline } from 'react-icons/io5'
+import { TbWorld } from 'react-icons/tb'
 import SectionWithGradient from './ui/SectionWithGradient'
 import { colors } from '../utils/colors'
 
@@ -54,16 +55,40 @@ export default function Contact() {
         </h2>
         <div
           style={{
-            width: 48,
-            height: 2,
-            background: colors.accent.primary,
-            borderRadius: 2,
-            margin: '0 auto 1rem',
+            width: 80,
+            height: 3,
+            background: 'linear-gradient(90deg, #3b82f6, #60a5fa, transparent)',
+            borderRadius: 9999,
+            margin: '0 auto 1.1rem',
           }}
         />
         <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
           Whether you need an AI engineer or full-stack developer, I&apos;m here to bring your vision to life.
         </p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15, duration: 0.4 }}
+          className="relocation-badge"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            marginTop: '1rem',
+            padding: '0.4rem 1rem',
+            borderRadius: 999,
+            border: `1px solid ${colors.accent.primary}45`,
+            background: `${colors.accent.primary}10`,
+            color: colors.accent.secondary,
+            fontSize: '0.875rem',
+            fontWeight: 500,
+          }}
+        >
+          <TbWorld size={15} />
+          Based in Dubai, UAE · Open to relocation globally
+        </motion.div>
       </motion.div>
 
       <div
@@ -89,7 +114,7 @@ export default function Contact() {
             flexDirection: 'column' as const,
             alignItems: 'center',
             gap: '0.35rem',
-            boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
+            boxShadow: '0 2px 10px rgba(15, 23, 42, 0.08)',
             cursor: item.link ? 'pointer' : 'default',
             width: '100%',
             minWidth: 0,
@@ -158,7 +183,7 @@ export default function Contact() {
           width: '100%',
           minWidth: 0,
           margin: '0 auto',
-          boxShadow: '0 1px 10px rgba(0, 0, 0, 0.32)',
+          boxShadow: '0 2px 10px rgba(15, 23, 42, 0.08)',
         }}
       >
         <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
@@ -181,7 +206,7 @@ export default function Contact() {
               border: `1px solid ${colors.overlay.cardBorder}`,
               borderRadius: 8,
               fontSize: '0.9375rem',
-              background: colors.background.tertiary,
+              background: colors.background.card,
               color: colors.text.primary,
             }}
           />
@@ -199,7 +224,7 @@ export default function Contact() {
               border: `1px solid ${colors.overlay.cardBorder}`,
               borderRadius: 8,
               fontSize: '0.9375rem',
-              background: colors.background.tertiary,
+              background: colors.background.card,
               color: colors.text.primary,
             }}
           />
@@ -217,7 +242,7 @@ export default function Contact() {
               border: `1px solid ${colors.overlay.cardBorder}`,
               borderRadius: 8,
               fontSize: '0.9375rem',
-              background: colors.background.tertiary,
+              background: colors.background.card,
               color: colors.text.primary,
               resize: 'vertical',
               minHeight: 88,

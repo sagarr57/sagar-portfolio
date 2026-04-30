@@ -62,8 +62,8 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
     { icon: <FaBrain size={28} />, name: 'Machine Learning', color: colors.accent.primary },
     { icon: <SiJupyter size={28} />, name: 'Jupyter', color: '#F37626' },
     { icon: <FaBrain size={28} />, name: 'Scikit-learn', color: '#F7931E' },
-    { icon: <SiPandas size={28} />, name: 'Pandas', color: '#150458' },
-    { icon: <SiNumpy size={28} />, name: 'NumPy', color: '#013243' },
+    { icon: <SiPandas size={28} />, name: 'Pandas', color: '#e070c8' },
+    { icon: <SiNumpy size={28} />, name: 'NumPy', color: '#4ab8d4' },
   ],
   'Programming & Development': [
     { icon: <TbBrandJavascript size={28} />, name: 'JavaScript', color: '#F7DF1E' },
@@ -72,7 +72,7 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
   ],
   'Front-End': [
     { icon: <TbBrandReact size={28} />, name: 'React', color: '#61DAFB' },
-    { icon: <TbBrandNextjs size={28} />, name: 'Next.js', color: '#000' },
+    { icon: <TbBrandNextjs size={28} />, name: 'Next.js', color: '#e2e8f0' },
     { icon: <SiTailwindcss size={28} />, name: 'Tailwind CSS', color: '#06B6D4' },
     { icon: <SiMaterialdesign size={28} />, name: 'Material UI', color: '#0081CB' },
     { icon: <SiBootstrap size={28} />, name: 'Bootstrap', color: '#7952B3' },
@@ -81,7 +81,7 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
     { icon: <SiCss3 size={28} />, name: 'CSS', color: '#1572B6' },
   ],
   'Back-End & Databases': [
-    { icon: <SiExpress size={28} />, name: 'Express.js', color: '#000' },
+    { icon: <SiExpress size={28} />, name: 'Express.js', color: '#c0c8d8' },
     { icon: <SiFastapi size={28} />, name: 'FastAPI', color: '#009688' },
     { icon: <TbBrandMongodb size={28} />, name: 'MongoDB', color: '#47A248' },
     { icon: <SiSupabase size={28} />, name: 'Supabase', color: '#3ECF8E' },
@@ -114,7 +114,7 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
     { icon: <SiPostman size={28} />, name: 'Postman', color: '#FF6C37' },
     { icon: <SiJira size={28} />, name: 'Agile', color: '#2D70AD' },
     { icon: <SiFigma size={28} />, name: 'Figma', color: '#F04E37' },
-    { icon: <SiSlack size={28} />, name: 'Slack', color: '#4A154B' },
+    { icon: <SiSlack size={28} />, name: 'Slack', color: '#e01e5a' },
     { icon: <SiWordpress size={28} />, name: 'WordPress', color: '#21759B' },
     { icon: <TbBrandGit size={28} />, name: 'Git', color: '#0079BF' },
   ],
@@ -129,7 +129,7 @@ export default function Skills() {
       id="skills"
       style={{
         padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)',
-        background: colors.background.secondary,
+        background: '#dcfce7',
         position: 'relative',
       }}
     >
@@ -146,11 +146,11 @@ export default function Skills() {
           </h2>
           <div
             style={{
-              width: 48,
-              height: 2,
-              background: colors.accent.primary,
-              borderRadius: 2,
-              margin: '0 auto 1rem',
+              width: 80,
+              height: 3,
+              background: 'linear-gradient(90deg, #16a34a, #22c55e, transparent)',
+              borderRadius: 9999,
+              margin: '0 auto 1.1rem',
             }}
           />
           <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
@@ -179,13 +179,13 @@ export default function Skills() {
               style={{
                 padding: '0.625rem 1rem',
                 cursor: 'pointer',
-                color: activeTab === tab ? colors.accentForeground : colors.text.secondary,
+                color: activeTab === tab ? '#ffffff' : colors.text.secondary,
                 fontWeight: 500,
-                background: activeTab === tab ? colors.accent.primary : 'rgba(255, 255, 255, 0.05)',
+                background: activeTab === tab ? '#15803d' : 'rgba(22, 163, 74, 0.15)',
                 borderRadius: 999,
                 whiteSpace: 'nowrap',
                 fontSize: '0.875rem',
-                border: activeTab === tab ? '1px solid transparent' : `1px solid ${colors.overlay.cardBorder}`,
+                border: activeTab === tab ? '1px solid transparent' : '1px solid rgba(22, 163, 74, 0.40)',
                 flexShrink: 0,
                 boxShadow: 'none',
               }}
@@ -221,7 +221,7 @@ export default function Skills() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '0.5rem',
-                boxShadow: '0 1px 8px rgba(0, 0, 0, 0.3)',
+                boxShadow: '0 2px 10px rgba(15, 23, 42, 0.07)',
               }}
             >
               <div

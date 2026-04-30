@@ -29,7 +29,7 @@ export default function Certifications() {
       className="section-surface"
       style={{
         padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)',
-        background: colors.background.primary,
+        background: '#ccfbf1',
         position: 'relative',
       }}
     >
@@ -44,7 +44,7 @@ export default function Certifications() {
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
             Licenses & certifications
           </h2>
-          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <div style={{ width: 80, height: 3, background: 'linear-gradient(90deg, #0d9488, #14b8a6, transparent)', borderRadius: 9999, margin: '0 auto 1.1rem' }} />
           <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
             Verified credentials — compact grid, full detail on the issuer sites
           </p>
@@ -69,7 +69,7 @@ export default function Certifications() {
                   borderRadius: 14,
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   padding: '1rem 1rem 0.85rem',
-                  boxShadow: '0 2px 12px rgba(0, 0, 0, 0.35)',
+                  boxShadow: '0 2px 10px rgba(15, 23, 42, 0.08)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.5rem',
@@ -82,8 +82,8 @@ export default function Certifications() {
                       width: 44,
                       height: 44,
                       borderRadius: 10,
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      border: `1px solid ${colors.overlay.cardBorder}`,
+                      background: 'rgba(13, 148, 136, 0.14)',
+                      border: '1px solid rgba(13, 148, 136, 0.35)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -126,13 +126,13 @@ export default function Certifications() {
                       <span
                         key={s}
                         style={{
-                          fontSize: '0.65rem',
-                          fontWeight: 500,
-                          color: colors.text.muted,
-                          background: colors.background.tertiary,
-                          padding: '0.15rem 0.4rem',
-                          borderRadius: 6,
-                          border: `1px solid ${colors.overlay.cardBorder}`,
+                          fontSize: '0.7rem',
+                          fontWeight: 600,
+                          color: '#0f766e',
+                          background: 'rgba(13, 148, 136, 0.13)',
+                          padding: '0.22rem 0.55rem',
+                          borderRadius: 999,
+                          border: '1px solid rgba(13, 148, 136, 0.35)',
                           maxWidth: '100%',
                           overflow: 'hidden',
                           textOverflow: 'ellipsis',
@@ -146,10 +146,10 @@ export default function Certifications() {
                     {skillsMore > 0 ? (
                       <span
                         style={{
-                          fontSize: '0.65rem',
-                          fontWeight: 500,
-                          color: colors.accent.primary,
-                          padding: '0.15rem 0.35rem',
+                          fontSize: '0.7rem',
+                          fontWeight: 700,
+                          color: '#0f766e',
+                          padding: '0.22rem 0.4rem',
                         }}
                       >
                         +{skillsMore}

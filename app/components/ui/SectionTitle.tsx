@@ -26,15 +26,15 @@ export default function SectionTitle({ title, subtitle, children }: SectionTitle
         {title}
       </motion.h2>
       <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: 48 }}
+        initial={{ width: 0, opacity: 0 }}
+        whileInView={{ width: 80, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
         style={{
-          height: 2,
-          background: colors.accent.primary,
-          borderRadius: 2,
-          margin: '0 auto 1rem',
+          height: 3,
+          background: 'linear-gradient(90deg, #3b82f6, #60a5fa, transparent)',
+          borderRadius: 9999,
+          margin: '0 auto 1.1rem',
         }}
       />
       {subtitle && (

@@ -50,31 +50,37 @@ export const heroData = {
 // About Section Data
 export const aboutData = {
   title: 'About Me',
-  subtitle: 'AI engineer and full-stack builder — shipping fintech products, automation, and data-backed UX from Dubai.',
+  subtitle: 'AI + Full-Stack Engineer with 4 years production experience — based in Dubai, open to relocation globally.',
   cards: [
     {
-      title: 'Background & impact',
+      title: 'Who I am',
       content: [
-        'I bring 4+ years across enterprise observability, sustainability analytics, and fintech, and now lead AI and product delivery at Louis Charles International in Dubai.',
+        'AI + Full-Stack Engineer with 4+ years of production experience across enterprise, consulting, and product. Currently completing an MSc in Artificial Intelligence at Heriot-Watt University, Dubai.',
       ],
-      highlight: 'Louis Charles International',
+      highlight: 'Heriot-Watt University',
     },
     {
-      title: 'How I work',
+      title: 'What I have built',
       content: [
-        'I build with Next.js, React, Node.js, Python, and FastAPI, with strong focus on automation, CRM workflows, and analytics that improve business outcomes.',
+        'Delivered fintech loan platforms (QuickCash Direct, All Day Loans), performance monitoring tools at New Relic, and AI automation systems — all production-deployed with real users.',
       ],
-      highlight: 'Next.js',
+      highlight: 'New Relic',
     },
     {
-      title: 'Education & direction',
+      title: 'What I specialize in',
       content: [
-        'I am pursuing an MSc in Artificial Intelligence at Heriot-Watt University, building on a B.Tech in Computer Science and applying both to practical AI products.',
+        'LLMs, NLP pipelines, voice AI, and scalable REST APIs (Node.js, Python, FastAPI). Full-stack delivery with Next.js and React — from backend architecture to deployed product.',
       ],
-      highlight: 'MSc in Artificial Intelligence',
+      highlight: 'FastAPI',
+    },
+    {
+      title: 'What I am looking for',
+      content: [
+        'Senior AI Engineer or Full-Stack roles in AI products, fintech, or enterprise SaaS. Based in Dubai, UAE — open to relocation anywhere in the world.',
+      ],
+      highlight: 'open to relocation',
       highlightColor: '#60A5FA',
       special: true,
-      wide: true,
     },
   ],
   values: [

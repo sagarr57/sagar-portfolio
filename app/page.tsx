@@ -8,6 +8,7 @@ import Experience from './components/Experience'
 import Education from './components/Education'
 import Projects from './components/Projects'
 import Certifications from './components/Certifications'
+import WhyHireMe from './components/WhyHireMe'
 import Contact from './components/Contact'
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
       <Education />
       <Projects />
       <Certifications />
+      <WhyHireMe />
       <Contact />
     </main>
   )

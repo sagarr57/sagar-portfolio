@@ -30,14 +30,14 @@ function ProjectCard({ project, index, accent }: { project: Project; index: numb
         borderRadius: 14,
         border: `1px solid ${colors.overlay.cardBorder}`,
         padding: 'clamp(1.15rem, 3vw, 1.6rem)',
-        boxShadow: '0 2px 12px rgba(0, 0, 0, 0.35)',
+        boxShadow: '0 2px 12px rgba(15, 23, 42, 0.08)',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'stretch',
         minHeight: 0,
-        borderTop: `1px solid rgba(255, 255, 255, 0.06)`,
+        borderTop: `4px solid #d97706`,
       }}
     >
       <div style={{ marginBottom: '1rem', paddingTop: 2, flexShrink: 0 }}>
@@ -107,7 +107,7 @@ export default function Projects() {
       className="section-surface"
       style={{
         padding: 'clamp(2.25rem, 6vw, 4rem) clamp(1rem, 5vw, 2rem)',
-        background: colors.background.tertiary,
+        background: '#fef3c7',
         position: 'relative',
       }}
     >
@@ -122,7 +122,7 @@ export default function Projects() {
           <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
             Featured Projects
           </h2>
-          <div style={{ width: 48, height: 2, background: colors.accent.primary, borderRadius: 2, margin: '0 auto 1rem' }} />
+          <div style={{ width: 80, height: 3, background: 'linear-gradient(90deg, #d97706, #f59e0b, transparent)', borderRadius: 9999, margin: '0 auto 1.1rem' }} />
           <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
             Selected work across professional builds and coursework.
           </p>
@@ -156,9 +156,9 @@ export default function Projects() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 style={{
-                  border: active ? '1px solid transparent' : '1px solid rgba(255, 255, 255, 0.12)',
-                  background: active ? colors.accent.primary : 'rgba(255, 255, 255, 0.05)',
-                  color: active ? colors.accentForeground : colors.text.secondary,
+                  border: active ? '1px solid transparent' : '1px solid rgba(217, 119, 6, 0.42)',
+                  background: active ? '#b45309' : 'rgba(217, 119, 6, 0.16)',
+                  color: active ? '#ffffff' : colors.text.secondary,
                   fontWeight: 500,
                   fontSize: '0.875rem',
                   padding: '0.55rem 1.2rem',

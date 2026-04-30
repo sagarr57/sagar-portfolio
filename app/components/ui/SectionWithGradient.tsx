@@ -31,7 +31,7 @@ export default function SectionWithGradient({
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
-        borderTop: variant === 'contact' ? '1px solid rgba(255, 255, 255, 0.1)' : undefined,
+        borderTop: variant === 'contact' ? '1px solid rgba(15, 23, 42, 0.08)' : undefined,
       }}
     >
       <GradientBackground variant={variant} overlayPosition={overlayPosition} />

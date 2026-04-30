@@ -4,9 +4,17 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { TbBrandLinkedin, TbBrandGithub } from 'react-icons/tb'
 import { HiArrowDown } from 'react-icons/hi'
+import { IoLocationOutline } from 'react-icons/io5'
 import { colors } from '../utils/colors'
 
 const PORTRAIT = '/images/sagar-mamindla-portrait.jpeg'
+
+const PROOF_BADGES = [
+  { value: '4+', label: 'Years Engineering' },
+  { value: 'LLM', label: 'NLP & AI Apps' },
+  { value: '10+', label: 'Shipped Projects' },
+  { value: 'MSc', label: 'AI · Heriot-Watt' },
+]
 
 export default function Hero() {
   const scrollToNext = () => {
@@ -15,14 +23,15 @@ export default function Hero() {
   }
 
   const socialLinks = [
-    { icon: <TbBrandGithub />, link: 'https://github.com/sagarr57', label: 'GitHub' },
-    { icon: <TbBrandLinkedin />, link: 'https://linkedin.com/in/sagar-mamindla', label: 'LinkedIn' },
+    { icon: <TbBrandGithub size={18} />, link: 'https://github.com/sagarr57', label: 'GitHub' },
+    { icon: <TbBrandLinkedin size={18} />, link: 'https://linkedin.com/in/sagar-mamindla', label: 'LinkedIn' },
   ]
 
   return (
     <section id="hero">
       <div className="hero-glow hero-glow--left" aria-hidden />
       <div className="hero-glow hero-glow--right" aria-hidden />
+
       <div
         className="hero-inner-grid"
         style={{
@@ -43,21 +52,44 @@ export default function Hero() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            gap: 'clamp(1rem, 2.5vh, 1.5rem)',
+            gap: 'clamp(0.9rem, 2.2vw, 1.2rem)',
           }}
           className="hero-copy hero-copy-block"
         >
+          {/* Location / Relocation badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.02, duration: 0.4 }}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              padding: '0.3rem 0.8rem',
+              borderRadius: 999,
+              border: `1px solid ${colors.accent.primary}50`,
+              background: `${colors.accent.primary}12`,
+              color: colors.accent.secondary,
+              fontSize: '0.8125rem',
+              fontWeight: 500,
+              alignSelf: 'flex-start',
+              letterSpacing: '0.01em',
+            }}
+          >
+            <IoLocationOutline size={13} />
+            Dubai, UAE · Open to relocation
+          </motion.div>
+
           <div>
             <motion.h1
               className="hero-title font-display"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.05, duration: 0.45 }}
+              transition={{ delay: 0.07, duration: 0.45 }}
               style={{
-                marginBottom: '0.35rem',
-                color: colors.text.primary,
-                letterSpacing: '-0.03em',
-                lineHeight: 1.1,
+                marginBottom: '0.4rem',
+                letterSpacing: '-0.04em',
+                lineHeight: 1.08,
               }}
             >
               Sagar Mamindla
@@ -67,12 +99,12 @@ export default function Hero() {
               className="hero-subtitle"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.12, duration: 0.45 }}
+              transition={{ delay: 0.13, duration: 0.45 }}
               style={{
                 margin: 0,
                 color: colors.accent.primary,
-                fontWeight: 500,
-                fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
+                fontWeight: 600,
+                fontSize: 'clamp(1.05rem, 2.5vw, 1.25rem)',
                 letterSpacing: '-0.02em',
               }}
             >
@@ -83,48 +115,75 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.18, duration: 0.45 }}
+            transition={{ delay: 0.19, duration: 0.45 }}
             style={{
               margin: 0,
               color: colors.text.secondary,
               maxWidth: '34rem',
-              lineHeight: 1.65,
+              lineHeight: 1.68,
               fontSize: 'clamp(0.9375rem, 1.8vw, 1.0625rem)',
             }}
           >
-            Crafting intelligent solutions at the intersection of AI and software engineering.
+            Building production-grade AI applications with real-time data processing and scalable backend systems.{' '}
+            Deploying LLM-powered fintech products to real users.
           </motion.p>
 
+          {/* Proof bar — 4 stat badges */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.24, duration: 0.4 }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}
+            transition={{ delay: 0.25, duration: 0.4 }}
+            className="hero-proof-bar"
+            style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}
           >
-            {['4+ years experience', 'Fintech & AI products'].map((point) => (
-              <span
-                key={point}
+            {PROOF_BADGES.map((badge) => (
+              <div
+                key={badge.label}
                 style={{
                   display: 'inline-flex',
+                  flexDirection: 'column',
                   alignItems: 'center',
-                  padding: '0.3rem 0.65rem',
-                  borderRadius: 999,
+                  padding: '0.5rem 0.9rem',
+                  borderRadius: 10,
                   border: `1px solid ${colors.overlay.cardBorder}`,
                   background: colors.background.card,
-                  color: colors.text.secondary,
-                  fontSize: '0.75rem',
-                  fontWeight: 500,
+                  gap: '0.1rem',
+                  minWidth: 72,
                 }}
               >
-                {point}
-              </span>
+                <span
+                  style={{
+                    color: colors.accent.primary,
+                    fontWeight: 700,
+                    fontSize: '0.9375rem',
+                    lineHeight: 1,
+                    fontFamily: 'var(--font-display-stack)',
+                    letterSpacing: '-0.01em',
+                  }}
+                >
+                  {badge.value}
+                </span>
+                <span
+                  style={{
+                    color: colors.text.muted,
+                    fontSize: '0.7rem',
+                    fontWeight: 500,
+                    textAlign: 'center',
+                    lineHeight: 1.3,
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {badge.label}
+                </span>
+              </div>
             ))}
           </motion.div>
 
+          {/* CTA row */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.36 }}
+            transition={{ delay: 0.34 }}
             style={{
               display: 'flex',
               flexWrap: 'wrap',
@@ -138,22 +197,24 @@ export default function Hero() {
                 e.preventDefault()
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
               }}
-              whileHover={{ y: -2 }}
+              whileHover={{ y: -2, boxShadow: `0 6px 20px ${colors.accent.primary}40` }}
               whileTap={{ scale: 0.98 }}
               style={{
                 background: colors.accent.primary,
                 color: colors.accentForeground,
-                padding: '0.65rem 1.15rem',
+                padding: '0.65rem 1.35rem',
                 borderRadius: 10,
-                fontWeight: 500,
+                fontWeight: 600,
                 textDecoration: 'none',
-                fontSize: '0.875rem',
-                boxShadow: 'none',
+                fontSize: '0.9rem',
                 minHeight: 44,
+                boxShadow: `0 2px 12px ${colors.accent.primary}30`,
+                letterSpacing: '-0.01em',
               }}
             >
               Get in touch
             </motion.a>
+
             <motion.a
               href="/resume/sagar-mamindla-resume.pdf"
               download
@@ -162,17 +223,18 @@ export default function Hero() {
               style={{
                 background: colors.background.card,
                 color: colors.text.primary,
-                padding: '0.65rem 1.15rem',
+                padding: '0.65rem 1.35rem',
                 borderRadius: 10,
                 border: `1px solid ${colors.overlay.cardBorder}`,
                 fontWeight: 500,
                 textDecoration: 'none',
-                fontSize: '0.875rem',
+                fontSize: '0.9rem',
                 minHeight: 44,
               }}
             >
               Download resume
             </motion.a>
+
             <div style={{ display: 'flex', gap: '0.45rem' }}>
               {socialLinks.map((s, i) => (
                 <motion.a
@@ -181,11 +243,11 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  whileHover={{ scale: 1.06 }}
+                  whileHover={{ scale: 1.08, borderColor: colors.accent.primary }}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    width: 40,
-                    height: 40,
+                    width: 42,
+                    height: 42,
                     borderRadius: 10,
                     border: `1px solid ${colors.overlay.cardBorder}`,
                     background: colors.background.card,
@@ -193,9 +255,7 @@ export default function Hero() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '1.1rem',
                     textDecoration: 'none',
-                    boxShadow: 'none',
                   }}
                 >
                   {s.icon}
@@ -205,22 +265,23 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
+        {/* Portrait */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.15, duration: 0.5 }}
           style={{
             position: 'relative',
             margin: '0 auto',
-            borderRadius: 18,
+            borderRadius: 20,
             overflow: 'hidden',
-            boxShadow: '0 8px 28px rgba(0, 0, 0, 0.45)',
+            boxShadow: `0 8px 32px rgba(0, 0, 0, 0.5), 0 0 48px ${colors.accent.primary}18`,
           }}
           className="hero-portrait-wrap"
         >
           <Image
             src={PORTRAIT}
-            alt="Sagar Mamindla — AI engineer and full-stack developer"
+            alt="Sagar Mamindla — AI engineer and backend developer"
             fill
             priority
             sizes="(max-width: 768px) 40vw, 300px"
@@ -234,7 +295,7 @@ export default function Hero() {
         className="hero-scroll-cta"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.55 }}
+        transition={{ delay: 0.6 }}
         onClick={scrollToNext}
         whileHover={{ y: 4 }}
         style={{
