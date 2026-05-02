@@ -142,7 +142,7 @@ export const projects: Project[] = [
       '<strong>Tech:</strong> NLP-based text normalization → feature engineering → classification model → FastAPI endpoint consumed by the loan affordability engine.',
       '<strong>Impact:</strong> Shipped to production at Louis Charles — automating manual affordability assessment and cutting underwriting review time significantly.',
     ],
-    link: 'https://louis-charles.com',
+    link: 'https://nc-middleware.louis-charles.com/bank-statements',
     type: 'live',
   },
   {
