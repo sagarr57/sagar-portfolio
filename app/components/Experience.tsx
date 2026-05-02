@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FaBriefcase } from 'react-icons/fa'
+import { FaBriefcase, FaLaptopCode } from 'react-icons/fa'
 import { getIcon } from '../utils/iconMapper'
 import { colors } from '../utils/colors'
 
@@ -21,17 +21,19 @@ const professionalExperience = [
       'Improved acquisition SEO and measurement using <strong>Google Search Console</strong>, <strong>Microsoft Clarity</strong>, <strong>Google Analytics</strong>, and <strong>Google Tag Manager</strong> across <strong>QuickCash Direct</strong>, <strong>All Day Loans</strong>, and core loan application funnels.',
       'Building a <strong>SaaS-based CRM</strong> to manage loan leads end-to-end with automation across the full lead lifecycle.',
       'Implementing core CRM features including <strong>calendar scheduling</strong>, <strong>in-built WhatsApp chat</strong>, and automated status updates to keep stakeholders aligned.',
-      'Designing an <strong>AI-driven internal voice calling system</strong> trained on business data to improve agent productivity and call quality.',
+      'Built and shipped a <strong>bank statement extractor</strong> using <strong>machine learning</strong> (Python, Scikit-learn, pdfplumber) to parse and categorize transactions from <strong>10 major UK banks</strong> — automatically identifying income, bills, gambling, and debt repayments for loan affordability assessments.',
+      'Built an <strong>AI voice calling system</strong> powered by <strong>OpenAI GPT-4</strong>, <strong>Whisper</strong> (speech-to-text), and <strong>ElevenLabs</strong> (TTS) — orchestrated via <strong>LangChain</strong> and <strong>FastAPI</strong>, handling inbound calls, live Q&A from business knowledge, and automated call summaries.',
       'Automating the user journey through <strong>WhatsApp workflow</strong> and <strong>AI-powered conversations</strong>, cutting response time by <strong>60%</strong> and improving lead engagement.',
     ],
     tools: [
       { icon: 'TbBrandNextjs', label: 'Next.js' },
       { icon: 'TbBrandReact', label: 'React' },
       { icon: 'TbBrandNodejs', label: 'Node.js' },
+      { icon: 'TbBrandPython', label: 'Python' },
+      { icon: 'SiFastapi', label: 'FastAPI' },
+      { icon: 'FaBrain', label: 'LangChain' },
+      { icon: 'SiOpenai', label: 'OpenAI' },
       { icon: 'TbBrandMongodb', label: 'MongoDB' },
-      { icon: 'TbBrandGit', label: 'Git & CI/CD' },
-      { icon: 'TbBrandPython', label: 'Python AI' },
-      { icon: 'FaBrain', label: 'AI & LLMs' },
     ],
   },
   {
@@ -102,6 +104,31 @@ const professionalExperience = [
   },
 ]
 
+const freelanceExperience = [
+  {
+    id: 5,
+    title: 'Freelance Developer & Automation Consultant',
+    company: 'Self-employed',
+    location: 'Remote',
+    duration: 'Apr 2024 - Jan 2025',
+    type: 'Freelance',
+    description: [
+      'Built and launched <strong>SRR Auto Spare Parts</strong> — full company website for a Korean/Japanese auto parts dealer with product catalog, gallery, and type-safe contact forms (<strong>React Hook Form + Zod</strong>). Implemented <strong>lead capture automation</strong> via n8n to route enquiries directly into a CRM pipeline.',
+      'Developed <strong>The Kaash Journal</strong> — a live editorial platform covering AI and fintech, with <strong>Next.js</strong> frontend, <strong>Node.js</strong> API layer, and <strong>Supabase</strong> for content, auth, and data persistence.',
+      'Configured automated <strong>lead generation funnels</strong> and <strong>WhatsApp Business API</strong> nurture sequences for both clients — qualifying inbound leads and triggering follow-up workflows without manual intervention.',
+      'Reduced client manual follow-up effort by over <strong>50%</strong> through multi-step automation pipelines (n8n + WhatsApp), replacing ad-hoc outreach with structured, timed sequences.',
+    ],
+    tools: [
+      { icon: 'TbBrandNextjs', label: 'Next.js' },
+      { icon: 'TbBrandReact', label: 'React' },
+      { icon: 'TbBrandNodejs', label: 'Node.js' },
+      { icon: 'SiSupabase', label: 'Supabase' },
+      { icon: 'SiN8N', label: 'n8n' },
+      { icon: 'SiWhatsapp', label: 'WhatsApp API' },
+    ],
+  },
+]
+
 const highlightKeywords = [
   'Google Search Console',
   'Google Tag Manager',
@@ -115,6 +142,8 @@ const highlightKeywords = [
   'GoHighLevel',
   'Pabbly',
   'AI', 'SaaS', 'CRM', 'Next.js', 'React', 'Node.js', 'MongoDB', 'Python', 'LLMs', 'WordPress', 'Chart.js', 'Power BI', 'Tailwind CSS', 'ESG', 'sustainability', 'automation', 'WhatsApp', 'voice calling', 'Decarbeon', 'New Relic', 'Playwright', 'Jest', 'CI/CD', '25%', '35%', '40%', '45%', '50%', '60%', 'zero critical bugs', '99.9%', 'machine learning', 'ML', 'chatbot', 'NLP', 'SEO',
+  'LangChain', 'FastAPI', 'OpenAI', 'GPT-4', 'Whisper', 'ElevenLabs', 'Scikit-learn', 'bank statement extractor', 'bank statement', 'UK banks', 'affordability',
+  'SRR Auto Spare Parts', 'Kaash Journal', 'lead generation', 'lead capture', 'n8n', 'Supabase', 'React Hook Form', 'Zod', 'WhatsApp Business API',
 ]
 
 function highlightText(text: string, keywordColor: string): string {
@@ -310,6 +339,31 @@ export default function Experience() {
                 exp={exp}
                 index={index}
                 isLast={index === professionalExperience.length - 1}
+              />
+            )
+          })}
+        </div>
+
+        {/* Freelance section */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 'clamp(2rem, 5vw, 3rem) 0 2rem' }}
+        >
+          <FaLaptopCode style={{ color: colors.accent.primary, flexShrink: 0 }} />
+          <span style={{ fontWeight: 500, color: colors.text.primary, fontSize: '1rem' }}>Freelance & Independent Projects</span>
+        </motion.div>
+
+        <div>
+          {freelanceExperience.map(function (exp, index) {
+            return (
+              <TimelineItem
+                key={exp.id}
+                exp={exp}
+                index={index}
+                isLast={index === freelanceExperience.length - 1}
               />
             )
           })}

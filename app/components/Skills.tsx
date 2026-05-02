@@ -56,14 +56,16 @@ import { colors } from '../utils/colors'
 const skillsData: Record<string, { icon: React.ReactNode; name: string; color: string }[]> = {
   'AI & Machine Learning': [
     { icon: <TbBrandPython size={28} />, name: 'Python', color: '#3776AB' },
-    { icon: <SiOpenai size={28} />, name: 'OpenAI / LLMs', color: '#10A37F' },
-    { icon: <SiTensorflow size={28} />, name: 'TensorFlow', color: '#FF6F00' },
+    { icon: <SiOpenai size={28} />, name: 'OpenAI / GPT-4', color: '#10A37F' },
+    { icon: <FaBrain size={28} />, name: 'LangChain', color: '#1C3C3C' },
+    { icon: <FaBrain size={28} />, name: 'RAG & Embeddings', color: '#7B2CBF' },
+    { icon: <FaBrain size={28} />, name: 'Voice AI (Whisper / ElevenLabs)', color: '#E040FB' },
+    { icon: <SiTensorflow size={28} />, name: 'TensorFlow / Keras', color: '#FF6F00' },
     { icon: <SiPytorch size={28} />, name: 'PyTorch', color: '#EE4C2C' },
-    { icon: <FaBrain size={28} />, name: 'Machine Learning', color: colors.accent.primary },
-    { icon: <SiJupyter size={28} />, name: 'Jupyter', color: '#F37626' },
     { icon: <FaBrain size={28} />, name: 'Scikit-learn', color: '#F7931E' },
     { icon: <SiPandas size={28} />, name: 'Pandas', color: '#e070c8' },
     { icon: <SiNumpy size={28} />, name: 'NumPy', color: '#4ab8d4' },
+    { icon: <SiJupyter size={28} />, name: 'Jupyter', color: '#F37626' },
   ],
   'Programming & Development': [
     { icon: <TbBrandJavascript size={28} />, name: 'JavaScript', color: '#F7DF1E' },

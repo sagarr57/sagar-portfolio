@@ -35,6 +35,11 @@ import {
   SiTensorflow,
   SiPytorch,
   SiSwagger,
+  SiFastapi,
+  SiOpenai,
+  SiSupabase,
+  SiN8N,
+  SiWhatsapp,
 } from 'react-icons/si'
 import { BiTestTube } from 'react-icons/bi'
 import { 
@@ -84,6 +89,11 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   SiTensorflow,
   SiPytorch,
   SiSwagger,
+  SiFastapi,
+  SiOpenai,
+  SiSupabase,
+  SiN8N,
+  SiWhatsapp,
   BiTestTube,
   FaBrain,
   FaRocket,
