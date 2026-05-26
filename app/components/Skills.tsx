@@ -47,10 +47,12 @@ import {
   SiWordpress,
   SiWhatsapp,
   SiN8N,
+  SiPostgresql,
 } from 'react-icons/si'
 import { IoAnalyticsOutline } from 'react-icons/io5'
 import { BiTestTube } from 'react-icons/bi'
-import { FaBrain } from 'react-icons/fa'
+import { FaBrain, FaAws } from 'react-icons/fa'
+import { TbDatabase } from 'react-icons/tb'
 import { colors } from '../utils/colors'
 
 const skillsData: Record<string, { icon: React.ReactNode; name: string; color: string }[]> = {
@@ -58,7 +60,11 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
     { icon: <TbBrandPython size={28} />, name: 'Python', color: '#3776AB' },
     { icon: <SiOpenai size={28} />, name: 'OpenAI / GPT-4', color: '#10A37F' },
     { icon: <FaBrain size={28} />, name: 'LangChain', color: '#1C3C3C' },
+    { icon: <FaBrain size={28} />, name: 'LangGraph', color: '#2D6A4F' },
+    { icon: <TbDatabase size={28} />, name: 'Vector Databases', color: '#1A1AFF' },
     { icon: <FaBrain size={28} />, name: 'RAG & Embeddings', color: '#7B2CBF' },
+    { icon: <FaBrain size={28} />, name: 'Agentic Workflows', color: '#0EA5E9' },
+    { icon: <FaBrain size={28} />, name: 'LLM Evaluation', color: '#059669' },
     { icon: <FaBrain size={28} />, name: 'Voice AI (Whisper / ElevenLabs)', color: '#E040FB' },
     { icon: <SiTensorflow size={28} />, name: 'TensorFlow / Keras', color: '#FF6F00' },
     { icon: <SiPytorch size={28} />, name: 'PyTorch', color: '#EE4C2C' },
@@ -86,6 +92,7 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
     { icon: <SiExpress size={28} />, name: 'Express.js', color: '#c0c8d8' },
     { icon: <SiFastapi size={28} />, name: 'FastAPI', color: '#009688' },
     { icon: <TbBrandMongodb size={28} />, name: 'MongoDB', color: '#47A248' },
+    { icon: <SiPostgresql size={28} />, name: 'PostgreSQL', color: '#4169E1' },
     { icon: <SiSupabase size={28} />, name: 'Supabase', color: '#3ECF8E' },
     { icon: <TbBrandMysql size={28} />, name: 'MySQL', color: '#4479A1' },
   ],
@@ -105,9 +112,10 @@ const skillsData: Record<string, { icon: React.ReactNode; name: string; color: s
   ],
   'DevOps & Cloud': [
     { icon: <TbBrandDocker size={28} />, name: 'Docker', color: '#2496ED' },
-    { icon: <SiJira size={28} />, name: 'Jenkins', color: '#D24939' },
-    { icon: <TbBrandGit size={28} />, name: 'GitHub Actions', color: '#2088FF' },
+    { icon: <FaAws size={28} />, name: 'AWS', color: '#FF9900' },
     { icon: <SiGooglecloud size={28} />, name: 'Google Cloud', color: '#4285F4' },
+    { icon: <TbBrandGit size={28} />, name: 'GitHub Actions', color: '#2088FF' },
+    { icon: <SiJira size={28} />, name: 'Jenkins', color: '#D24939' },
   ],
   'Testing & Tools': [
     { icon: <SiJest size={28} />, name: 'Jest', color: '#C21325' },

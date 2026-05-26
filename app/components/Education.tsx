@@ -92,10 +92,10 @@ export default function Education() {
                   {entry.dates}
                   {entry.location ? ` · ${entry.location}` : ''}
                 </p>
-                {entry.grade ? (
-                  <p style={{ margin: '0.5rem 0 0', fontSize: '0.875rem', color: colors.text.secondary }}>
-                    <span style={{ color: colors.text.muted }}>Grade: </span>
-                    {entry.grade}
+                {entry.coursework ? (
+                  <p style={{ margin: '0.5rem 0 0', fontSize: '0.8125rem', color: colors.text.secondary, lineHeight: 1.6 }}>
+                    <span style={{ color: colors.text.muted, fontWeight: 500 }}>Coursework: </span>
+                    {entry.coursework}
                   </p>
                 ) : null}
               </div>

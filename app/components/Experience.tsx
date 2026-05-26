@@ -8,10 +8,10 @@ import { colors } from '../utils/colors'
 const professionalExperience = [
   {
     id: 1,
-    title: 'AI Solution Engineer',
+    title: 'AI Software Engineer',
     company: 'Louis Charles International LLC FZ',
     location: 'Dubai, UAE',
-    duration: 'Jul 2025 - Present',
+    duration: 'Aug 2025 - Present',
     type: 'Professional',
     description: [
       'Manage and maintain the official public website for <strong>Louis Charles International LLC FZ</strong>, preserving a high-conversion landing experience and clean information architecture as requirements change.',
@@ -23,7 +23,7 @@ const professionalExperience = [
       'Implementing core CRM features including <strong>calendar scheduling</strong>, <strong>in-built WhatsApp chat</strong>, and automated status updates to keep stakeholders aligned.',
       'Built and shipped a <strong>bank statement extractor</strong> using <strong>machine learning</strong> (Python, Scikit-learn, pdfplumber) to parse and categorize transactions from <strong>10 major UK banks</strong> — automatically identifying income, bills, gambling, and debt repayments for loan affordability assessments.',
       'Built an <strong>AI voice calling system</strong> powered by <strong>OpenAI GPT-4</strong>, <strong>Whisper</strong> (speech-to-text), and <strong>ElevenLabs</strong> (TTS) — orchestrated via <strong>LangChain</strong> and <strong>FastAPI</strong>, handling inbound calls, live Q&A from business knowledge, and automated call summaries.',
-      'Automating the user journey through <strong>WhatsApp workflow</strong> and <strong>AI-powered conversations</strong>, cutting response time by <strong>60%</strong> and improving lead engagement.',
+      'Built a <strong>RAG-powered WhatsApp automation</strong> system — retrieving context from the product knowledge base via <strong>embeddings</strong> to qualify and route leads through <strong>AI-powered conversations</strong>, cutting first-response time by <strong>60%</strong> and improving lead engagement.',
     ],
     tools: [
       { icon: 'TbBrandNextjs', label: 'Next.js' },
