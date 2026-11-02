@@ -1,80 +1,46 @@
-import { Outfit, DM_Sans } from 'next/font/google'
+import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
 import type { Metadata, Viewport } from 'next'
 import Cursor from './components/Cursor'
+import SmoothScroll from './components/SmoothScroll'
 
-const outfit = Outfit({
+const syne = Syne({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-display',
-  preload: true,
-  adjustFontFallback: true,
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-syne',
 })
 
-const dmSans = DM_Sans({
+const dm = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-sans',
-  preload: true,
-  adjustFontFallback: true,
+  variable: '--font-dm',
 })
+
+const title = 'Sagar Mamindla — AI Engineer & Full-Stack Developer'
+const description =
+  'AI engineer in Dubai shipping production AI systems: voice and call intelligence, ML pipelines, multi-tenant SaaS and fintech platforms. MSc Artificial Intelligence, Heriot-Watt.'
 
 export const metadata: Metadata = {
-  title: 'Sagar Mamindla - AI Engineer & Full-Stack Developer',
-  description:
-    'AI Engineer and Full-Stack Developer in Dubai building fintech products, intelligent automation, and measurable web experiences.',
-  keywords: [
-    'Sagar Mamindla',
-    'AI Engineer',
-    'Full-Stack Developer',
-    'Next.js',
-    'React',
-    'Python',
-    'FastAPI',
-    'Portfolio',
-  ],
+  title,
+  description,
+  keywords: ['Sagar Mamindla', 'AI Engineer', 'Full-Stack Developer', 'Machine Learning', 'NLP', 'Next.js', 'Laravel', 'Dubai'],
   authors: [{ name: 'Sagar Mamindla' }],
-  creator: 'Sagar Mamindla',
-  publisher: 'Sagar Mamindla',
-  openGraph: {
-    title: 'Sagar Mamindla - AI Engineer & Full-Stack Developer',
-    description:
-      'Building production-grade AI automation, fintech workflows, and full-stack products with measurable business outcomes.',
-    type: 'website',
-    locale: 'en_US',
-    siteName: 'Sagar Mamindla Portfolio',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sagar Mamindla - AI Engineer & Full-Stack Developer',
-    description:
-      'AI + full-stack portfolio: fintech products, automation systems, and performance-focused web engineering.',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  openGraph: { title, description, type: 'website', locale: 'en_US', siteName: 'Sagar Mamindla' },
+  twitter: { card: 'summary_large_image', title, description },
+  robots: { index: true, follow: true },
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: '#0a0f1a',
+  themeColor: '#050505',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${syne.variable} ${dm.variable}`}>
       <head>
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -82,20 +48,18 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Sagar Mamindla',
-              jobTitle: 'AI Engineer & Full-Stack Developer',
-              address: {
-                '@type': 'PostalAddress',
-                addressLocality: 'Dubai',
-                addressCountry: 'UAE',
-              },
+              jobTitle: 'AI Engineer',
+              address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'UAE' },
               email: 'sagar05.ms@gmail.com',
               sameAs: ['https://github.com/sagarr57', 'https://linkedin.com/in/sagar-mamindla'],
             }),
           }}
         />
       </head>
-      <body className={dmSans.className}>
+      <body>
+        <SmoothScroll />
         <Cursor />
+        <div className="grain" aria-hidden />
         {children}
       </body>
     </html>

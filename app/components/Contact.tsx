@@ -1,286 +1,76 @@
 'use client'
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { FaPaperPlane } from 'react-icons/fa'
-import { IoMailOutline, IoCallOutline, IoLocationOutline } from 'react-icons/io5'
-import { TbWorld } from 'react-icons/tb'
-import SectionWithGradient from './ui/SectionWithGradient'
-import { colors } from '../utils/colors'
+import { profile } from '../data/portfolio'
+import Magnetic from './Magnetic'
+import { MaskHeading, Reveal } from './Reveal'
+import Scramble from './Scramble'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [successMessage, setSuccessMessage] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
-    if (!formData.name || !formData.email || !formData.message) {
-      setErrorMessage('Please fill in all fields')
-      return
-    }
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
-      if (!response.ok) throw new Error('Failed to send message')
-      setSuccessMessage("Message sent! I'll get back to you soon.")
-      setFormData({ name: '', email: '', message: '' })
-    } catch {
-      setErrorMessage('Failed to send. Please try again or email directly.')
-    }
-  }
-
-  const contactItems = [
-    { icon: <IoMailOutline />, title: 'Email', text: 'sagar05.ms@gmail.com', link: 'mailto:sagar05.ms@gmail.com', description: 'Drop me a line' },
-    { icon: <IoCallOutline />, title: 'Call', text: '+971 553084546', link: 'tel:+971553084546', description: 'Available for calls' },
-    { icon: <IoLocationOutline />, title: 'Location', text: 'Dubai, UAE', description: 'Open to remote work' },
+  const cards = [
+    { label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
+    { label: 'LinkedIn', value: 'in/sagar-mamindla', href: profile.linkedin },
+    { label: 'GitHub', value: 'github.com/sagarr57', href: profile.github },
   ]
-
   return (
-    <SectionWithGradient id="contact" variant="contact">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.25rem)' }}
-      >
-        <h2 className="section-title" style={{ marginBottom: '0.75rem', color: colors.text.primary }}>
-          Let&apos;s Build Something Intelligent
-        </h2>
-        <div
-          style={{
-            width: 80,
-            height: 3,
-            background: 'linear-gradient(90deg, #3b82f6, #60a5fa, transparent)',
-            borderRadius: 9999,
-            margin: '0 auto 1.1rem',
-          }}
-        />
-        <p style={{ color: colors.text.secondary, maxWidth: 560, margin: '0 auto', fontSize: '1rem' }}>
-          Whether you need an AI engineer or full-stack developer, I&apos;m here to bring your vision to life.
-        </p>
+    <section id="contact" className="contact">
+      <div className="hero-glow" style={{ left: '50%', top: '10%', transform: 'translateX(-50%)' }} aria-hidden />
+      <div className="container" style={{ position: 'relative' }}>
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 32 }}>
+            <span className="eyebrow">
+              <Scramble text="Contact" />
+            </span>
+          </div>
+        </Reveal>
+        <MaskHeading className="display contact-title" lines={["Let's", <em key="b">build.</em>]} />
+        <Reveal delay={0.2}>
+          <p className="contact-sub">{profile.contactLine}</p>
+          <div className="contact-actions">
+            <Magnetic>
+              <a href={`mailto:${profile.email}`} className="btn btn-primary">
+                Start a conversation <span className="arrow">↗</span>
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href={profile.phoneHref} className="btn btn-ghost">
+                {profile.phone}
+              </a>
+            </Magnetic>
+          </div>
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15, duration: 0.4 }}
-          className="relocation-badge"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            marginTop: '1rem',
-            padding: '0.4rem 1rem',
-            borderRadius: 999,
-            border: `1px solid ${colors.accent.primary}45`,
-            background: `${colors.accent.primary}10`,
-            color: colors.accent.secondary,
-            fontSize: '0.875rem',
-            fontWeight: 500,
-          }}
-        >
-          <TbWorld size={15} />
-          Based in Dubai, UAE · Open to relocation globally
-        </motion.div>
-      </motion.div>
+        <div className="contact-cards">
+          {cards.map((c, i) => (
+            <Reveal key={c.label} delay={i * 0.08}>
+              <a className="contact-card shimmer" href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+                <span>{c.label}</span>
+                <b>{c.value}</b>
+                <i className="arrow" aria-hidden>
+                  ↗
+                </i>
+              </a>
+            </Reveal>
+          ))}
+        </div>
 
-      <div
-        className="contact-cards"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: '0.75rem',
-          marginBottom: 'clamp(1.25rem, 3vw, 1.75rem)',
-          width: '100%',
-          maxWidth: 980,
-          marginInline: 'auto',
-        }}
-      >
-        {contactItems.map((item, index) => {
-          const cardStyle = {
-            background: colors.background.card,
-            borderRadius: 12,
-            border: `1px solid ${colors.overlay.cardBorder}`,
-            padding: 'clamp(0.8rem, 2.4vw, 1rem)',
-            textAlign: 'center' as const,
-            display: 'flex',
-            flexDirection: 'column' as const,
-            alignItems: 'center',
-            gap: '0.35rem',
-            boxShadow: '0 2px 10px rgba(15, 23, 42, 0.08)',
-            cursor: item.link ? 'pointer' : 'default',
-            width: '100%',
-            minWidth: 0,
-            maxWidth: '100%',
-            textDecoration: 'none',
-          }
-
-          const content = (
-            <>
-              <div style={{ fontSize: '1.3rem', color: colors.accent.primary }}>{item.icon}</div>
-              <div style={{ width: '100%', minWidth: 0, wordBreak: 'break-word' }}>
-                <div style={{ fontWeight: 500, fontSize: '0.875rem', color: colors.text.primary }}>{item.title}</div>
-                <div style={{ fontWeight: 500, fontSize: '0.8125rem', color: colors.accent.primary }}>{item.text}</div>
-                <div style={{ fontSize: '0.75rem', color: colors.text.muted }}>{item.description}</div>
-              </div>
-            </>
-          )
-
-          if (item.link) {
-            return (
-              <motion.a
-                key={index}
-                href={item.link}
-                aria-label={`${item.title}: ${item.text}`}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.99 }}
-                style={cardStyle}
-              >
-                {content}
-              </motion.a>
-            )
-          }
-
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.5 }}
-              whileHover={{ y: -2 }}
-              style={cardStyle}
-            >
-              {content}
-            </motion.div>
-          )
-        })}
+        <footer className="footer">
+          <span>© {new Date().getFullYear()} Sagar Mamindla — designed &amp; built from scratch with Next.js, WebGL shaders, Framer Motion &amp; Lenis.</span>
+          <nav>
+            <a href={profile.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a href={profile.resume} download>
+              Résumé
+            </a>
+          </nav>
+        </footer>
       </div>
-
-      <motion.form
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        onSubmit={handleSubmit}
-        style={{
-          background: colors.background.card,
-          borderRadius: 12,
-          border: `1px solid ${colors.overlay.cardBorder}`,
-          padding: 'clamp(1rem, 3vw, 1.25rem)',
-          maxWidth: 500,
-          width: '100%',
-          minWidth: 0,
-          margin: '0 auto',
-          boxShadow: '0 2px 10px rgba(15, 23, 42, 0.08)',
-        }}
-      >
-        <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-          <h3 style={{ marginBottom: '0.4rem', fontSize: '1.125rem', color: colors.text.primary }}>Start a Conversation</h3>
-          <p style={{ color: colors.text.secondary, fontSize: '0.875rem' }}>
-            Tell me about your project and let&apos;s explore how we can work together.
-          </p>
-        </div>
-
-        <div style={{ marginBottom: '0.75rem' }}>
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
-            style={{
-              width: '100%',
-              padding: '0.6rem 0.85rem',
-              border: `1px solid ${colors.overlay.cardBorder}`,
-              borderRadius: 8,
-              fontSize: '0.9375rem',
-              background: colors.background.card,
-              color: colors.text.primary,
-            }}
-          />
-        </div>
-        <div style={{ marginBottom: '0.75rem' }}>
-          <input
-            type="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            required
-            style={{
-              width: '100%',
-              padding: '0.6rem 0.85rem',
-              border: `1px solid ${colors.overlay.cardBorder}`,
-              borderRadius: 8,
-              fontSize: '0.9375rem',
-              background: colors.background.card,
-              color: colors.text.primary,
-            }}
-          />
-        </div>
-        <div style={{ marginBottom: '0.75rem' }}>
-          <textarea
-            placeholder="Tell me about your project..."
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            required
-            rows={4}
-            style={{
-              width: '100%',
-              padding: '0.6rem 0.85rem',
-              border: `1px solid ${colors.overlay.cardBorder}`,
-              borderRadius: 8,
-              fontSize: '0.9375rem',
-              background: colors.background.card,
-              color: colors.text.primary,
-              resize: 'vertical',
-              minHeight: 88,
-            }}
-          />
-        </div>
-        <motion.button
-          type="submit"
-          whileHover={{ y: -1 }}
-          whileTap={{ scale: 0.98 }}
-          style={{
-            width: '100%',
-            padding: '0.62rem 1rem',
-            background: colors.accent.primary,
-            color: colors.accentForeground,
-            border: 'none',
-            borderRadius: 8,
-            fontSize: '0.9375rem',
-            fontWeight: 500,
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.5rem',
-            boxShadow: 'none',
-          }}
-        >
-          Send Message <FaPaperPlane size={14} />
-        </motion.button>
-        <p style={{ color: colors.text.muted, textAlign: 'center', marginTop: '0.65rem', fontSize: '0.8125rem' }}>
-          Prefer email? Reach me directly at{' '}
-          <a href="mailto:sagar05.ms@gmail.com" style={{ color: colors.accent.primary, textDecoration: 'none', fontWeight: 500 }}>
-            sagar05.ms@gmail.com
-          </a>
-        </p>
-        {successMessage && <p style={{ color: colors.status.success, textAlign: 'center', marginTop: '1rem', fontSize: '0.9375rem' }}>{successMessage}</p>}
-        {errorMessage && <p style={{ color: colors.status.error, textAlign: 'center', marginTop: '1rem', fontSize: '0.9375rem' }}>{errorMessage}</p>}
-      </motion.form>
-    </SectionWithGradient>
+      <div className="giant" aria-hidden>
+        SAGAR
+      </div>
+    </section>
   )
 }

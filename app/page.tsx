@@ -1,56 +1,29 @@
-'use client'
-
-import Header from './components/Header'
+import Nav from './components/Nav'
 import Hero from './components/Hero'
+import Marquee from './components/Marquee'
 import About from './components/About'
-import Skills from './components/Skills'
+import Work from './components/Work'
 import Experience from './components/Experience'
-import Education from './components/Education'
-import Projects from './components/Projects'
-import Certifications from './components/Certifications'
-import WhyHireMe from './components/WhyHireMe'
+import Stack from './components/Stack'
 import Contact from './components/Contact'
+import Doctrine from './components/Doctrine'
+import Preloader from './components/Preloader'
 
 export default function Home() {
   return (
-    <main style={{ position: 'relative', zIndex: 1, minHeight: '100vh', background: '#0a0f1a', overflowX: 'hidden' }}>
-      <a
-        href="#about"
-        className="skip-link"
-        style={{
-          position: 'absolute',
-          left: '1rem',
-          top: '0.75rem',
-          zIndex: 200,
-          padding: '0.5rem 1rem',
-          background: '#1a2740',
-          color: '#fff',
-          borderRadius: 8,
-          fontWeight: 500,
-          fontSize: '0.875rem',
-          textDecoration: 'none',
-          transform: 'translateY(-200%)',
-          transition: 'transform 0.2s',
-        }}
-        onFocus={(e) => {
-          e.currentTarget.style.transform = 'translateY(0)'
-        }}
-        onBlur={(e) => {
-          e.currentTarget.style.transform = 'translateY(-200%)'
-        }}
-      >
-        Skip to content
-      </a>
-      <Header />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Education />
-      <Projects />
-      <Certifications />
-      <WhyHireMe />
-      <Contact />
-    </main>
+    <>
+      <Preloader />
+      <Nav />
+      <main>
+        <Hero />
+        <Marquee />
+        <About />
+        <Doctrine />
+        <Work />
+        <Experience />
+        <Stack />
+        <Contact />
+      </main>
+    </>
   )
 }

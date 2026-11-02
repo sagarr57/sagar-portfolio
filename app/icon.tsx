@@ -9,14 +9,14 @@ export default function Icon() {
       style={{
         width: 32,
         height: 32,
-        background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%)',
+        background: '#ff8c24',
         borderRadius: 8,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#ffffff',
+        color: '#050505',
         fontSize: 20,
-        fontWeight: 700,
+        fontWeight: 800,
         fontFamily: 'sans-serif',
         letterSpacing: '-0.5px',
       }}
