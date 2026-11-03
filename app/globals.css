@@ -58,7 +58,8 @@ body {
   line-height: 1.6;
   background: var(--bg);
   color: var(--fg);
-  overflow-x: hidden;
+  /* clip (not hidden): hidden turns body into a scroll container on iOS Safari and breaks position: sticky */
+  overflow-x: clip;
 }
 
 ::selection {
@@ -1536,7 +1537,7 @@ a.contact-card:hover .arrow {
 }
 
 /* Doctrine — pinned scroll-scrubbed section */
-.dt-root { position: relative; }
+.dt-root { position: relative; height: calc(var(--steps) * 90vh + 60vh); }
 .dt-sticky {
   position: sticky;
   top: 0;
@@ -1686,6 +1687,7 @@ a.contact-card:hover .arrow {
 .dt-big span { display: inline-block; }
 
 @media (max-width: 900px) {
+  .dt-root { height: calc(var(--steps) * 70vh + 40vh); }
   .dt-sticky { flex-direction: column; }
   .dt-left {
     flex: 1;

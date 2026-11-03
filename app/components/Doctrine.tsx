@@ -70,7 +70,7 @@ export default function Doctrine() {
   const step = doctrine[idx]
 
   return (
-    <section className="dt-root" ref={ref} style={{ height: `${n * 90 + 60}vh` }} aria-label="How I work">
+    <section className="dt-root" ref={ref} style={{ '--steps': n } as React.CSSProperties} aria-label="How I work">
       <div className="dt-sticky">
         <div className="dt-right" aria-hidden>
           <Static />
