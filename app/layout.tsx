@@ -17,14 +17,14 @@ const dm = DM_Sans({
   variable: '--font-dm',
 })
 
-const title = 'Sagar Mamindla — AI Engineer & Full-Stack Developer'
+const title = 'Sagar Mamindla — Full-Stack & AI Software Engineer'
 const description =
-  'AI engineer in Dubai shipping production AI systems: voice and call intelligence, ML pipelines, multi-tenant SaaS and fintech platforms. MSc Artificial Intelligence, Heriot-Watt.'
+  'Full-stack & AI software engineer in Dubai building multi-tenant SaaS, AI-powered workflows and integration middleware with TypeScript, React/Next.js, Laravel, Python and PostgreSQL.'
 
 export const metadata: Metadata = {
   title,
   description,
-  keywords: ['Sagar Mamindla', 'AI Engineer', 'Full-Stack Developer', 'Machine Learning', 'NLP', 'Next.js', 'Laravel', 'Dubai'],
+  keywords: ['Sagar Mamindla', 'AI Software Engineer', 'AI Engineer', 'Full-Stack Developer', 'Machine Learning', 'NLP', 'Next.js', 'Laravel', 'Dubai'],
   authors: [{ name: 'Sagar Mamindla' }],
   openGraph: { title, description, type: 'website', locale: 'en_US', siteName: 'Sagar Mamindla' },
   twitter: { card: 'summary_large_image', title, description },
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@context': 'https://schema.org',
               '@type': 'Person',
               name: 'Sagar Mamindla',
-              jobTitle: 'AI Engineer',
+              jobTitle: 'Full-Stack & AI Software Engineer',
               address: { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'UAE' },
               email: 'sagar05.ms@gmail.com',
               sameAs: ['https://github.com/sagarr57', 'https://linkedin.com/in/sagar-mamindla'],

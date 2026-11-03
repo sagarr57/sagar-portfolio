@@ -3,66 +3,56 @@
 export const profile = {
   name: 'Sagar Mamindla',
   location: 'Dubai, UAE',
-  availability: 'Open to AI engineering roles · relocation-ready',
-  typer: ['voice AI for live calls.', 'ML pipelines.', 'multi-tenant SaaS.', 'LLM-powered workflows.', 'fintech platforms.'],
-  lede: 'AI & full-stack engineer. I design, build and ship web products — this site included.',
+  availability: 'Open to full-stack & AI roles · relocation-ready',
+  typer: ['multi-tenant SaaS.', 'AI-powered workflows.', 'integration middleware.', 'realtime web apps.', 'ML pipelines.'],
+  lede: 'Full-stack, AI and software engineering — schema to UI, models to deployment. This site included.',
   email: 'sagar05.ms@gmail.com',
   phone: '+971 55 308 4546',
   phoneHref: 'tel:+971553084546',
   github: 'https://github.com/sagarr57',
   linkedin: 'https://linkedin.com/in/sagar-mamindla',
   resume: '/resume/sagar-mamindla-resume.pdf',
-  contactLine: 'Open to AI & full-stack roles. I reply within a day.',
+  contactLine: 'Open to full-stack & AI engineering roles. I reply within a day.',
 }
 
 export const stats = [
-  { value: 4, suffix: '+', label: 'Years in production' },
-  { value: 25, suffix: '', label: 'Projects shipped' },
-  { value: 10, suffix: '+', label: 'Live products' },
-  { value: 6, suffix: '', label: 'ML datasets in my dissertation' },
+  { value: 2100, suffix: '+', label: 'Commits in 2025–26' },
+  { value: 285, suffix: 'k', label: 'Lines in my largest solo build' },
+  { value: 310, suffix: '+', label: 'PostgreSQL migrations' },
+  { value: 300, suffix: '+', label: 'Test files on one product' },
 ]
 
 export const marquee = [
-  'Python', 'PyTorch', 'Transformers', 'XGBoost', 'Claude API', 'FastAPI', 'Next.js', 'React', 'TypeScript',
-  'Laravel', 'PostgreSQL', 'Redis', 'Twilio', 'AWS', 'Supabase', 'SHAP', 'Playwright',
+  'TypeScript', 'React 19', 'Next.js 16', 'Supabase', 'PostgreSQL', 'Laravel', 'Python', 'FastAPI', 'Tailwind 4',
+  'Claude API', 'MCP', 'pgvector', 'Redis', 'AWS', 'Docker', 'GitHub Actions', 'Playwright', 'Vitest',
 ]
 
 export const about = {
   statement:
-    'I build *AI-powered *web *products — from the pixel on screen to the model behind it.',
-  pillars: [
-    { title: 'Build', text: 'Full-stack from schema to UI: Laravel, Node and FastAPI backends with React and Next.js front ends.' },
-    { title: 'Apply AI', text: 'LLM workflows, voice AI, NLP and classical ML — with evaluation, explainability and guardrails.' },
-    { title: 'Research', text: 'Dissertation on explainable ML for mental-health signals across six datasets and 17k records.' },
-    { title: 'Ship', text: 'Tests, CI gates and observability. Most of what is listed here runs in production today.' },
-  ],
+    'I design and ship *multi-tenant *SaaS, *AI workflows and integration middleware — database, APIs, realtime, UI and deployment, end to end.',
 }
 
 // Pinned, scroll-scrubbed "How I work" section
 export const doctrine = [
   {
-    title: 'Research ',
-    accent: 'the data.',
-    body: 'Every system starts with what the data can honestly support — leakage, imbalance and bias get found before a model is trusted.',
-    proof: '> 6 datasets · 17k records · SHAP-explained',
+    title: 'Spec ',
+    accent: 'it first.',
+    proof: '> Written specs · ADRs · 13-phase roadmap',
   },
   {
     title: 'Engineer ',
     accent: 'the core.',
-    body: 'Schemas, queues, tenancy and APIs designed for the load and the audit trail — not just the demo.',
-    proof: '> Laravel · FastAPI · Postgres · Redis',
+    proof: '> 290 migrations · RLS on every tenant table',
   },
   {
     title: 'Make it ',
     accent: 'smart.',
-    body: 'LLMs, voice AI and ML placed where they remove real work — streamed, observable and with a human in the loop.',
-    proof: '> LLMs · voice AI · NLP · ML',
+    proof: '> Claude · OpenAI · MCP · RAG · agents',
   },
   {
     title: 'Ship & ',
     accent: 'prove it.',
-    body: 'CI gates, end-to-end tests and measured outcomes. If it is not in production, it is not done.',
-    proof: '> 991 tests green → production',
+    proof: '> CI: types · lint · <2% duplication · RLS tests',
   },
 ]
 
@@ -80,6 +70,7 @@ export interface Project {
   stack: string[]
   link?: { href: string; label: string }
   metric?: { value: string; label: string }
+  highlights?: { v: string; l: string }[]
   featured?: boolean
   color?: string
   code?: string[]
@@ -88,30 +79,142 @@ export interface Project {
 export const projects: Project[] = [
   // ── Professional ──
   {
-    slug: 'iva-platform',
-    title: 'IVA Sales & Compliance Platform',
-    tagline: 'Multi-tenant SaaS with browser calling, live AI extraction and a visual workflow engine',
+    slug: 'staffena',
+    title: 'Staffena — Multi-Tenant HR & Payroll SaaS',
+    tagline: 'Solo-built: hiring to payroll for any number of companies, each in an isolated workspace',
+    category: 'Professional',
+    year: '2026',
+    featured: true,
+    color: '#00c47a',
+    summary:
+      'Mobile-first HR platform where companies run their entire people operations, plus a provider console to onboard, bill and support them. Sole architect and developer.',
+    points: [
+      '127 screens across 6 surfaces and 20+ modules: core HR, leave & time, payroll, recruitment, performance, engagement, billing.',
+      'PostgreSQL row-level security on every tenant table, with tests proving no cross-company leaks; RBAC mirrored in TypeScript and SQL.',
+      'Claude-powered HR assistant, public REST API + webhooks, PWA with offline clock-in, English & Arabic (RTL).',
+      'Keyless GitHub Actions → AWS (OIDC, S3, SSM) deploys; CI with RLS tests against disposable Postgres.',
+    ],
+    stack: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind 4', 'Claude API', 'AWS'],
+    metric: { value: '285k', label: 'lines of code · solo-built' },
+    highlights: [{ v: '127', l: 'screens' }, { v: '20+', l: 'modules' }, { v: '290', l: 'migrations' }],
+    link: { href: 'https://staffena.com', label: 'staffena.com' },
+    code: [
+      '<span class="k">create policy</span> tenant_isolation',
+      '  <span class="k">on</span> employees <span class="k">using</span> (',
+      '    company_id = auth.company_id() )',
+      '<span class="s">✓ 290 migrations · 300+ test files</span>',
+    ],
+  },
+  {
+    slug: 'crm-saas',
+    title: 'Multi-Tenant CRM & Communications SaaS',
+    tagline: 'Unified inbox, browser calling and AI call transcripts for financial-services firms',
     category: 'Professional',
     year: '2026',
     featured: true,
     summary:
-      'A multi-tenant platform for UK debt-advice firms: advisors work leads, run compliant calls in the browser, capture income & expenditure, and push eligible cases to insolvency practitioners. Core engineer on a team of five.',
+      'Large multi-tenant CRM with platform, tenant-admin and customer-portal dashboards. Second-highest contributor in a team of 6+.',
     points: [
-      'Live-call workspace where an AI extraction stream fills the income & expenditure table in real time over WebSockets, with confidence scores and supersede handling.',
-      'Event-driven workflow engine with a visual DAG editor (8 control-flow nodes, versioning, dry-run simulator) — plus “describe it in English” generation via the Claude API streamed to the canvas.',
-      'Twilio WebRTC telephony: hunt groups, encrypted recordings, AI transcription & compliance scoring, server-enforced regulatory ring times.',
-      'SLA rule engine with a 5-level cascade and live breach broadcasting; Gmail/Outlook OAuth sync, Stripe billing, Meilisearch.',
-      'Storybook design system with Figma tokens; Pest + Playwright suites gated in CI.',
+      'Lead & pipeline management, workflow automation builder, calendar and billing.',
+      'Unified inbox (email, SMS, WhatsApp) and WebRTC calling with recordings and AI transcripts.',
+      'AI document extraction, RAG and agents; MFA, passkeys and GDPR/DSAR tooling.',
     ],
-    stack: ['Laravel', 'React 19', 'TypeScript', 'Inertia', 'PostgreSQL', 'Redis', 'Reverb', 'ReactFlow', 'Twilio', 'Claude API', 'Deepgram', 'AWS'],
-    metric: { value: '991', label: 'automated tests passing' },
+    stack: ['Laravel', 'Inertia', 'React 19', 'TypeScript', 'PostgreSQL', 'pgvector', 'Redis', 'Reverb', 'Stripe', 'Playwright'],
+    metric: { value: '925', label: 'commits · 2nd of 6+ engineers' },
+    highlights: [{ v: '3', l: 'dashboards' }, { v: '3', l: 'inbox channels' }, { v: '6+', l: 'engineers' }],
     code: [
-      '<span class="k">on</span> call.utterance <span class="k">→</span> extract()',
-      '  income.employment  <span class="s">£2,140</span>  <span class="k">0.92</span>',
-      '  housing.rent       <span class="s">£  850</span>  <span class="k">0.88</span>',
-      '  utilities.energy   <span class="s">£  120</span>  <span class="k">0.71</span>',
-      '<span class="k">emit</span> ie.updated <span class="k">→</span> reverb://advisor',
+      '<span class="k">on</span> call.ended <span class="k">→</span> transcribe()',
+      '  inbox.thread   <span class="s">email · sms · whatsapp</span>',
+      '  ai.summary     <span class="s">ready</span>',
+      '<span class="k">emit</span> lead.updated <span class="k">→</span> reverb://tenant',
     ],
+  },
+  {
+    slug: 'ai-pm',
+    title: 'AI Project-Management Platform',
+    tagline: 'Hackathon build that replaced off-the-shelf PM tools',
+    category: 'Professional',
+    year: '2026',
+    featured: true,
+    color: '#a78bfa',
+    summary: 'Ideas → specs → tasks, Gantt charts, planning and 1:1s — with AI that turns a brain dump into structured work. Top contributor in a team of 3.',
+    points: [
+      'AI “brain dump” that splits free text into work items; AI feature builder with GitHub-aware codebase context.',
+      'Workflow engine, Slack & Notion connectors, MCP integration and a UAT Chrome extension.',
+      'Four gated CI checks per PR, branch protection and CODEOWNERS.',
+    ],
+    stack: ['Next.js 16', 'TypeScript', 'Neon', 'Drizzle', 'Vercel AI SDK', 'MCP', 'NextAuth', 'Playwright'],
+    metric: { value: '143k', label: 'lines of code · ~430 commits' },
+    highlights: [{ v: '#1', l: 'contributor' }, { v: '4', l: 'CI gates / PR' }, { v: 'MCP', l: 'integration' }],
+    code: [
+      '<span class="k">brain_dump</span>("fix login, add gantt export")',
+      '  <span class="k">→</span> bug   <span class="s">Login fails on SSO</span>',
+      '  <span class="k">→</span> task  <span class="s">Gantt CSV export</span>',
+    ],
+  },
+  {
+    slug: 'ai-middleware',
+    title: 'AI Calling & CRM Integration Middleware',
+    tagline: 'Connects a CRM, an AI outbound-calling agent and a booking system',
+    category: 'Professional',
+    year: '2026',
+    featured: true,
+    color: '#ff6a00',
+    summary: 'Python middleware I led: scheduled AI call-backs, two-way data sync and bank-statement intelligence, running as a managed Linux service.',
+    points: [
+      'Scheduled automatic AI call-backs for unanswered leads.',
+      'Bi-directional CRM ↔ marketing-platform sync via webhooks.',
+      'Bank-statement PDF extraction with a scikit-learn classifier and LLM fallback.',
+    ],
+    stack: ['Python 3.11', 'FastAPI', 'Pydantic', 'SQLAlchemy', 'APScheduler', 'scikit-learn', 'OpenAI'],
+    metric: { value: '28/43', label: 'commits · lead developer' },
+    highlights: [{ v: '3', l: 'systems connected' }, { v: 'ML+LLM', l: 'classifier' }, { v: '~10k', l: 'lines of Python' }],
+    code: [
+      '<span class="k">@scheduler</span>.every(<span class="s">"15m"</span>)',
+      '<span class="k">def</span> call_back_unanswered():',
+      '    <span class="k">for</span> lead <span class="k">in</span> crm.missed(): agent.dial(lead)',
+    ],
+  },
+  {
+    slug: 'hr-portal',
+    title: 'Internal HR Portal',
+    tagline: 'Solo-built staff self-service portal — live with real users',
+    category: 'Professional',
+    year: '2026',
+    summary: 'Leave, records, handbook quizzes and wellbeing check-ins; its business logic later became the foundation of Staffena.',
+    points: ['Role-scoped access for staff, supervisors and HR.', '26 migrations including RLS hardening.'],
+    stack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind', 'Recharts', 'Vitest'],
+    metric: { value: '130', label: 'commits · in production' },
+  },
+  {
+    slug: 'telephony-rd',
+    title: 'Telephony R&D — Open-Source Dialler Evaluation',
+    tagline: 'Evaluated PBX/dialler platforms and built live-audio proofs of concept',
+    category: 'Professional',
+    year: '2026',
+    summary: 'Python Asterisk AMI event listener and live-audio tap POC; co-authored the findings report.',
+    points: ['Compared open-source PBX and dialler platforms for an AI calling stack.'],
+    stack: ['Python', 'Asterisk AMI', 'VoIP', 'Linux'],
+  },
+  {
+    slug: 'case-crm',
+    title: 'AI Case-Management CRM Prototype',
+    tagline: 'Turborepo monorepo exposing domain modules to AI agents via MCP',
+    category: 'Professional',
+    year: '2026',
+    summary: 'Contributed CI fixes, test coverage, ESLint and ORM security upgrades.',
+    points: ['Domain modules served to AI agents through MCP servers.'],
+    stack: ['Next.js', 'Drizzle', 'PostgreSQL', 'MCP', 'Turborepo'],
+  },
+  {
+    slug: 'eligibility-api',
+    title: 'Eligibility Rules API',
+    tagline: 'Timed full-stack exercise: 5 business rules + a validated 3-step wizard',
+    category: 'Professional',
+    year: '2026',
+    summary: 'REST endpoint applying five business rules, with a validated three-step React wizard.',
+    points: ['Tested end to end with Pest and Vitest.'],
+    stack: ['Laravel', 'React', 'Pest', 'Vitest'],
   },
   {
     slug: 'bank-statements',
@@ -119,7 +222,6 @@ export const projects: Project[] = [
     tagline: 'Parses statements from 10 UK banks and classifies every transaction',
     category: 'Professional',
     year: '2025',
-    featured: true,
     color: '#00c47a',
     summary:
       'Loan affordability checks meant manually reading bank statements in ten different PDF layouts. I built a pipeline that parses, normalises and classifies transactions automatically, served to the affordability engine as an API.',
@@ -130,7 +232,6 @@ export const projects: Project[] = [
     ],
     stack: ['Python', 'scikit-learn', 'pdfplumber', 'NLP', 'FastAPI'],
     metric: { value: '10', label: 'UK bank formats automated' },
-    link: { href: 'https://nc-middleware.louis-charles.com/bank-statements', label: 'Live tool' },
     code: [
       'TESCO STORES 2231      <span class="k">→</span> <span class="s">groceries</span>',
       'SKY BET LTD            <span class="k">→</span> <span class="s">gambling</span>',
@@ -173,20 +274,6 @@ export const projects: Project[] = [
     link: { href: 'https://www.quickcashdirect.com/', label: 'quickcashdirect.com' },
   },
   {
-    slug: 'dialler-spike',
-    title: 'Open-Source Dialler Evaluation',
-    tagline: 'Two-day VICIdial/Asterisk spike — and a live security incident handled',
-    category: 'Professional',
-    year: '2026',
-    summary:
-      'Evaluated whether VICIdial could power the platform’s telephony. Proved API-only provisioning, mapped multi-tenancy and real-time-audio gaps, and re-estimated the integration effort.',
-    points: [
-      'Outbound and API-provisioning proofs of concept passed; recommended instance-per-tenant isolation.',
-      'When the test box was compromised via a default-credential manager interface, I cleaned and hardened it (default-deny egress, fail2ban, key-only SSH) and turned it into production requirements.',
-    ],
-    stack: ['VICIdial', 'Asterisk', 'Linux', 'Security hardening'],
-  },
-  {
     slug: 'louischarles',
     title: 'Louis Charles International — Business Website',
     tagline: 'Corporate site for a Dubai financial-services group',
@@ -203,7 +290,6 @@ export const projects: Project[] = [
     tagline: 'New Relic website grader — web-vitals dashboards in React',
     category: 'Professional',
     year: '2023',
-    featured: true,
     color: '#1ce783',
     summary:
       'At New Relic I built reusable React components for performance-monitoring dashboards and the public website grader, used to track web vitals across monitored properties.',
@@ -248,7 +334,7 @@ export const projects: Project[] = [
     ],
     stack: ['Python', 'DistilBERT', 'XGBoost', 'LightGBM', 'SHAP', 'FastAPI', 'Streamlit', 'Next.js 16', 'Neon', 'Drizzle'],
     metric: { value: '0.834', label: 'weighted F1 · DistilBERT' },
-    link: { href: 'https://github.com/sagarr57/msc_dissertation', label: 'Code' },
+    highlights: [{ v: '6', l: 'datasets' }, { v: '17k', l: 'records' }, { v: '77.4', l: 'SUS score' }],
     code: [
       '<span class="k">model</span>       dreaddit  reddit  distress',
       'tfidf+lr    0.718     0.620   0.785',
@@ -271,7 +357,6 @@ export const projects: Project[] = [
     ],
     stack: ['PyTorch', 'HuggingFace', 'scikit-learn', 'GloVe', 'LDA'],
     metric: { value: '0.694', label: 'Kaggle public score' },
-    link: { href: 'https://github.com/sagarr57/F21AA_CW2_PG_Group4', label: 'GitHub' },
   },
   {
     slug: 'crop',
@@ -286,7 +371,6 @@ export const projects: Project[] = [
     ],
     stack: ['TensorFlow', 'Keras', 'scikit-learn', 'CNN', 'Plotly'],
     metric: { value: '99.3%', label: 'crop accuracy' },
-    link: { href: 'https://github.com/sagarr57/PG-Group-3', label: 'GitHub' },
   },
   {
     slug: 'ann-pso',
@@ -300,7 +384,6 @@ export const projects: Project[] = [
       'Best configuration reached a test MAE of 6.80 ± 0.51 MPa.',
     ],
     stack: ['Python', 'NumPy', 'PSO', 'Neural networks'],
-    link: { href: 'https://github.com/sagarr57/F21BC_PG09', label: 'GitHub' },
   },
   {
     slug: 'sudosage',
@@ -311,7 +394,6 @@ export const projects: Project[] = [
     summary: 'Constraint-satisfaction Sudoku solver with heuristics, behind a FastAPI + Next.js interface.',
     points: ['Most-constrained-variable and value-ordering heuristics.'],
     stack: ['Python', 'FastAPI', 'Next.js', 'CSP', 'pytest'],
-    link: { href: 'https://github.com/sagarr57/F29AI_Group-17', label: 'GitHub' },
   },
   {
     slug: 'lunar',
@@ -322,7 +404,6 @@ export const projects: Project[] = [
     summary: 'PDDL domains for an ESA lunar mission, extended with astronauts, visualised in React.',
     points: ['Valid plans for three missions (13, 21 and 28 steps).'],
     stack: ['PDDL', 'Automated planning', 'React', 'Next.js'],
-    link: { href: 'https://github.com/sagarr57/F29AI_Group-17', label: 'GitHub' },
   },
   {
     slug: 'mediconnect',
@@ -333,7 +414,6 @@ export const projects: Project[] = [
     summary: 'Hospital management system with an NLP intent-classification chatbot for patient queries and scheduling.',
     points: ['NLTK/spaCy intent classification routed into Node/Express workflows.'],
     stack: ['Python', 'NLP', 'Node.js', 'MongoDB', 'Docker', 'Jenkins'],
-    link: { href: 'https://github.com/sagarr57/MediConnect-360', label: 'GitHub' },
   },
   {
     slug: 'workplace',
@@ -344,7 +424,6 @@ export const projects: Project[] = [
     summary: 'Collected, labelled and classified public discussion of workplace culture, with topic modelling.',
     points: ['YouTube + Reddit collectors; TextBlob/VADER ensemble labelling with manual review.', 'TF-IDF + SVM reached 68.9% test accuracy; LDA topics via pyLDAvis.'],
     stack: ['scikit-learn', 'NLTK', 'VADER', 'gensim'],
-    link: { href: 'https://github.com/SMariamD/F21AA--Work-place-Culture-Analysis--Group-4-PG', label: 'GitHub' },
   },
   {
     slug: 'active-life',
@@ -428,6 +507,7 @@ export const projects: Project[] = [
     summary: 'A rebuild proposal with scrollytelling and an explorable 3D “energy world” — guided or free-roam, with mobile quality switching.',
     points: ['Three.js / React Three Fiber scenes with post-processing and GSAP ScrollTrigger.', 'Semantic fallback for low-power devices.'],
     stack: ['Next.js', 'Three.js', 'R3F', 'GSAP'],
+    link: { href: 'https://github.com/sagarr57/Enercap_demo', label: 'GitHub' },
   },
   {
     slug: 'worldcup',
@@ -448,7 +528,6 @@ export const projects: Project[] = [
     summary: 'Express/TypeScript backend for a mobile social app: real-time messaging, media, moderation.',
     points: ['Socket.io real-time layer; Postgres via Sequelize plus MongoDB.', 'S3 media with AWS Rekognition moderation; Swagger-documented API.'],
     stack: ['Node.js', 'Express', 'TypeScript', 'Socket.io', 'PostgreSQL', 'AWS'],
-    link: { href: 'https://github.com/sagarr57/vibeinn-backend', label: 'GitHub' },
   },
 ]
 
@@ -459,13 +538,13 @@ export const experience = [
     location: 'Dubai, UAE',
     dates: 'Jul 2025 — Present',
     current: true,
-    summary: 'AI and full-stack delivery across fintech and debt-advice products.',
+    summary: 'Full-stack engineer on multi-tenant SaaS, AI workflows and integration middleware.',
     points: [
-      'Core engineer on a multi-tenant IVA SaaS — workflow engine, Twilio calling, live AI extraction.',
-      'ML bank-statement classifier for 10 UK bank formats.',
-      'Shipped QuickCash Direct, All Day Loans and the PingFree dashboard.',
+      'Solo-built Staffena, a multi-tenant HR & payroll SaaS — 127 screens, 20+ modules, ~285k lines.',
+      '2nd-highest contributor (~925 commits) to a multi-tenant CRM with WebRTC calling and AI transcripts.',
+      'Top contributor to an AI project-management platform; lead developer of AI calling middleware.',
     ],
-    stack: ['Laravel', 'React', 'Python', 'FastAPI', 'Twilio', 'Claude API'],
+    stack: ['Next.js', 'Laravel', 'TypeScript', 'Supabase', 'Python', 'AWS'],
   },
   {
     role: 'Co-founder & AI Engineer',
@@ -520,13 +599,13 @@ export const experience = [
 ]
 
 export const skills = [
-  { group: 'Machine Learning', note: 'Modelling, evaluation, explainability', items: ['Python', 'PyTorch', 'TensorFlow', 'scikit-learn', 'XGBoost', 'LightGBM', 'SHAP', 'Pandas'] },
-  { group: 'NLP & LLMs', note: 'Text, transformers and LLM products', items: ['HuggingFace', 'DistilBERT / RoBERTa', 'Claude API', 'OpenAI', 'Prompt engineering', 'SSE streaming'] },
-  { group: 'Voice AI', note: 'Calls, transcription, real time', items: ['Twilio WebRTC', 'Deepgram', 'WebSockets', 'Reverb'] },
-  { group: 'Backend', note: 'APIs and services', items: ['FastAPI', 'Laravel', 'Node.js', 'Express', 'REST'] },
-  { group: 'Frontend', note: 'Interfaces people enjoy', items: ['React 19', 'Next.js', 'TypeScript', 'Tailwind', 'ReactFlow', 'Storybook'] },
-  { group: 'Data & Cloud', note: 'Storage, infra and deployment', items: ['PostgreSQL', 'Redis', 'MongoDB', 'Supabase', 'Prisma', 'Meilisearch', 'AWS', 'Vercel', 'Docker', 'GitHub Actions'] },
-  { group: 'Quality', note: 'Tests that guard production', items: ['Playwright', 'Pest', 'Jest', 'PHPStan', 'Chromatic'] },
+  { group: 'AI / ML', note: 'LLM products and classical ML', items: ['Claude & OpenAI APIs', 'Vercel AI SDK', 'MCP', 'RAG', 'AI agents', 'Speech-to-text', 'PyTorch', 'Transformers', 'scikit-learn', 'XGBoost', 'SHAP'] },
+  { group: 'Frontend', note: 'Interfaces people enjoy', items: ['React 19', 'Next.js 15/16', 'TypeScript', 'Tailwind 4', 'shadcn/ui', 'TanStack', 'React Flow', 'Storybook', 'PWA'] },
+  { group: 'Backend', note: 'APIs and services', items: ['Node.js', 'Laravel', 'FastAPI', 'REST + OpenAPI', 'Websockets', 'Queues'] },
+  { group: 'Databases', note: 'Data with isolation built in', items: ['PostgreSQL + RLS', 'pgvector', 'Supabase', 'Neon', 'Drizzle', 'Redis', 'Meilisearch'] },
+  { group: 'Integrations', note: 'Systems talking to systems', items: ['Stripe', 'WebRTC & VoIP', 'Asterisk', 'SMS & WhatsApp', 'Slack', 'Notion', 'Web Push', 'Webhooks'] },
+  { group: 'Cloud & DevOps', note: 'Ship it safely', items: ['AWS (S3, SSM, EC2, OIDC)', 'Vercel + Cron', 'Docker', 'GitHub Actions', 'Linux / systemd', 'Turborepo', 'pnpm'] },
+  { group: 'Quality & Security', note: 'Guards on production', items: ['Vitest', 'Playwright', 'Pest', 'PHPStan', 'RLS tests', 'RBAC', 'MFA / passkeys', 'GDPR tooling'] },
 ]
 
 export const education = [

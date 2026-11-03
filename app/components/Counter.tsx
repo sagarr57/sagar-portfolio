@@ -14,5 +14,5 @@ export default function Counter({ to }: { to: number }) {
     return () => c.stop()
   }, [inView, to])
 
-  return <span ref={ref}>{val}</span>
+  return <span ref={ref}>{val.toLocaleString('en-US')}</span>
 }

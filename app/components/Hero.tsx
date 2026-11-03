@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { profile, stats } from '../data/portfolio'
 import Magnetic from './Magnetic'
 import Counter from './Counter'
@@ -38,10 +38,39 @@ function Typer({ words }: { words: string[] }) {
   return <span className="typer">{text}</span>
 }
 
+const ROLES = ['Full-Stack', 'AI', 'Software']
+
+/** Headline word that cycles through roles with a masked slide + blur. */
+function RotatingWord({ delay }: { delay: number }) {
+  const [i, setI] = useState(0)
+  useEffect(() => {
+    let id: ReturnType<typeof setInterval>
+    const t = setTimeout(() => (id = setInterval(() => setI((n) => (n + 1) % ROLES.length), 2400)), delay * 1000 + 1200)
+    return () => {
+      clearTimeout(t)
+      clearInterval(id)
+    }
+  }, [delay])
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.span
+        key={ROLES[i]}
+        className="role-word"
+        initial={{ y: '105%', opacity: 0, filter: 'blur(10px)' }}
+        animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+        exit={{ y: '-105%', opacity: 0, filter: 'blur(10px)' }}
+        transition={{ duration: 0.6, ease }}
+      >
+        {ROLES[i]}
+      </motion.span>
+    </AnimatePresence>
+  )
+}
+
 const lines = [
-  { words: ['AI', 'Engineer'], cls: '' },
-  { words: ['who', 'ships'], cls: 'outline' },
-  { words: ['real', 'systems.'], cls: '', accentLast: true },
+  { words: ['ROLE'], cls: '' },
+  { words: ['Engineer'], cls: 'outline' },
+  { words: ['who', 'ships.'], cls: '', accentLast: true },
 ]
 
 export default function Hero() {
@@ -90,12 +119,24 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="display hero-title" aria-label="AI Engineer who ships real systems.">
+        <h1 className="display hero-title" aria-label="Full-Stack, AI and Software Engineer who ships.">
           {lines.map((l) => (
             <span key={l.words.join()} className={`line-mask ${l.cls}`}>
               {l.words.map((word, j) => {
                 const d = INTRO + 0.1 + w++ * 0.08
                 const accent = l.accentLast && j === l.words.length - 1
+                if (word === 'ROLE')
+                  return (
+                    <motion.span
+                      key={word}
+                      style={{ display: 'inline-block' }}
+                      initial={{ y: '105%', opacity: 0, filter: 'blur(10px)' }}
+                      animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                      transition={{ duration: 1.1, delay: d, ease }}
+                    >
+                      <RotatingWord delay={d} />
+                    </motion.span>
+                  )
                 return (
                   <motion.span
                     key={word}

@@ -67,6 +67,16 @@ function StackCard({ p, i, n, progress }: { p: Project; i: number; n: number; pr
             <span className="grad-text">{first}</span> {rest.join(' ')}
           </h3>
           <p>{p.tagline}</p>
+          {p.highlights && (
+            <div className="hl">
+              {p.highlights.map((h) => (
+                <div key={h.l}>
+                  <b>{h.v}</b>
+                  <span>{h.l}</span>
+                </div>
+              ))}
+            </div>
+          )}
           <div className="stack-foot">
             <div className="tags">
               {p.stack.slice(0, 6).map((t) => (
@@ -129,7 +139,7 @@ function HoverPreview({ p, x, y }: { p: Project | null; x: MotionValue<number>; 
 }
 
 export default function Work() {
-  const order = ['iva-platform', 'mindvibe', 'bank-statements', 'dravyx', 'newrelic-grader']
+  const order = ['staffena', 'crm-saas', 'ai-pm', 'ai-middleware', 'mindvibe']
   const featured = order.map((s) => projects.find((p) => p.slug === s)!).filter(Boolean)
   const stackRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: stackRef, offset: ['start start', 'end end'] })
@@ -212,9 +222,13 @@ export default function Work() {
                   </span>
                   <span className="row-cat">{p.category}</span>
                   <span className="row-year">{p.year}</span>
-                  <span className={`row-go ${p.link ? '' : 'off'}`} aria-hidden>
-                    ↗
-                  </span>
+                  {p.link ? (
+                    <span className="row-go" aria-hidden>
+                      ↗
+                    </span>
+                  ) : (
+                    <span aria-hidden />
+                  )}
                 </Tag>
               )
             })}

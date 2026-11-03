@@ -512,7 +512,7 @@ img {
   vertical-align: top;
   margin-left: 2px;
 }
-.stat span {
+.stat > span {
   display: block;
   margin-top: 10px;
   font-size: 14px;
@@ -1236,7 +1236,7 @@ a.contact-card:hover .arrow {
 .giant {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 19.5vw;
+  font-size: 16.5vw;
   line-height: 0.75;
   letter-spacing: -0.06em;
   text-align: center;
@@ -1805,4 +1805,41 @@ a.contact-card:hover .arrow {
 }
 @media (min-width: 761px) and (max-width: 1024px) {
   .row-btn { grid-template-columns: 40px 1fr 120px 40px; }
+}
+
+/* Rotating role word in the hero */
+.role-word {
+  display: inline-block;
+  will-change: transform, filter;
+}
+
+/* Featured-card highlight numbers */
+.hl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.hl > div {
+  padding: 18px 0 18px 16px;
+  border-left: 1px solid var(--line);
+}
+.hl > div:first-child { border-left: 0; padding-left: 0; }
+.hl b {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.hl span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-3);
 }
