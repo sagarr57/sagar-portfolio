@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion'
 import { doctrine } from '../data/portfolio'
-
-const ease = [0.16, 1, 0.3, 1] as const
+import { EASE_OUT as ease, rafWhileVisible } from '../lib/motion'
 
 /** Pixelated CRT static drawn on a tiny canvas and scaled up. */
 function Static() {
@@ -14,26 +13,20 @@ function Static() {
     const ctx = c.getContext('2d')!
     const w = (c.width = 96), h = (c.height = 54)
     const img = ctx.createImageData(w, h)
-    let raf = 0, frame = 0, visible = false
-    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting))
-    io.observe(c)
-    const tick = () => {
-      raf = requestAnimationFrame(tick)
-      if (!visible || frame++ % 3) return
-      for (let i = 0; i < img.data.length; i += 4) {
+    const px = img.data
+    for (let i = 3; i < px.length; i += 4) px[i] = 255 // alpha is constant — set once
+    let frame = 0
+    // ~20fps static is plenty; loop only runs while the canvas is on screen.
+    return rafWhileVisible(c, () => {
+      if (frame++ % 3) return
+      for (let i = 0; i < px.length; i += 4) {
         const v = Math.random() * 255
-        img.data[i] = v
-        img.data[i + 1] = v * 0.62
-        img.data[i + 2] = v * 0.2
-        img.data[i + 3] = 255
+        px[i] = v
+        px[i + 1] = v * 0.62
+        px[i + 2] = v * 0.2
       }
       ctx.putImageData(img, 0, 0)
-    }
-    tick()
-    return () => {
-      cancelAnimationFrame(raf)
-      io.disconnect()
-    }
+    })
   }, [])
   return <canvas ref={ref} className="dt-noise" aria-hidden />
 }
@@ -81,7 +74,7 @@ export default function Doctrine() {
             <span />
           </motion.div>
           <motion.div className="dt-big" style={{ scale: bigScale }}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence initial={false}>
               <motion.span
                 key={idx}
                 initial={{ y: '40%', opacity: 0, filter: 'blur(12px)' }}
@@ -97,7 +90,8 @@ export default function Doctrine() {
 
         <div className="dt-left">
           <span className="eyebrow">How I work</span>
-          <AnimatePresence mode="wait">
+          <div className="dt-swap">
+          <AnimatePresence initial={false}>
             <motion.div
               key={idx}
               className="dt-panel"
@@ -118,6 +112,7 @@ export default function Doctrine() {
               <Typed text={step.proof} />
             </motion.div>
           </AnimatePresence>
+          </div>
           <div className="dt-dots">
             {doctrine.map((d, i) => (
               <span key={d.title} className={i === idx ? 'on' : ''} />

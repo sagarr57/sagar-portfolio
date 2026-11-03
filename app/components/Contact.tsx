@@ -1,5 +1,3 @@
-'use client'
-
 import { profile } from '../data/portfolio'
 import Magnetic from './Magnetic'
 import { MaskHeading, Reveal } from './Reveal'

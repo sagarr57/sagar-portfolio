@@ -7,8 +7,7 @@ import Magnetic from './Magnetic'
 import Counter from './Counter'
 import ShaderBg from './ShaderBg'
 import Scramble from './Scramble'
-
-const ease = [0.16, 1, 0.3, 1] as const
+import { EASE_OUT as ease } from '../lib/motion'
 const INTRO = 1.25 // wait for preloader curtain
 
 function Typer({ words }: { words: string[] }) {
@@ -161,8 +160,12 @@ export default function Hero() {
           transition={{ duration: 1, delay: INTRO + 0.75, ease }}
         >
           <p className="hero-lede">
-            I&apos;m <strong>{profile.name}</strong> — I build <Typer words={profile.typer} />
-            <br />
+            <span className="hero-lede-name">
+              I&apos;m <strong>{profile.name}</strong> —
+            </span>
+            <span className="hero-lede-build">
+              I build <Typer words={profile.typer} />
+            </span>
             {profile.lede}
           </p>
           <div className="hero-actions">

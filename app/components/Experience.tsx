@@ -1,21 +1,13 @@
 import { experience } from '../data/portfolio'
-import { MaskHeading, Reveal } from './Reveal'
-import Scramble from './Scramble'
+import { Reveal } from './Reveal'
+import SectionHead from './SectionHead'
+import Tags from './Tags'
 
 export default function Experience() {
   return (
     <section id="experience" className="section" style={{ paddingTop: 0 }}>
       <div className="container">
-        <div className="section-head">
-          <div>
-            <Reveal>
-              <span className="eyebrow" style={{ marginBottom: 24, display: 'inline-flex' }}>
-                <Scramble text="Experience" />
-              </span>
-            </Reveal>
-            <MaskHeading lines={['4+ years', <>in <em>production</em></>]} />
-          </div>
-        </div>
+        <SectionHead eyebrow="Experience" lines={['4+ years', <>in <em>production</em></>]} />
 
         <div className="xp">
           {experience.map((x, i) => (
@@ -30,13 +22,7 @@ export default function Experience() {
                   <span className="xp-co">
                     {x.company} · {x.location}
                   </span>
-                  <div className="tags" style={{ marginTop: 16 }}>
-                    {x.stack.slice(0, 5).map((t) => (
-                      <span className="tag" key={t}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                  <Tags items={x.stack} max={5} style={{ marginTop: 16 }} />
                 </div>
                 <div className="xp-detail">
                   <p className="xp-summary">{x.summary}</p>

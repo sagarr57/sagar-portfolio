@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { EASE_SOFT } from '../lib/motion'
 
 export function Reveal({
   children,
@@ -19,7 +20,7 @@ export function Reveal({
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-10% 0px' }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.9, delay, ease: EASE_SOFT }}
     >
       {children}
     </motion.div>
@@ -30,7 +31,7 @@ export function Reveal({
 // The in-view trigger lives on the (unclipped) heading; masked lines inherit via variants.
 const lineVariants = {
   hidden: { y: '110%' },
-  shown: (i: number) => ({ y: 0, transition: { duration: 1, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] } }),
+  shown: (i: number) => ({ y: 0, transition: { duration: 1, delay: i * 0.1, ease: EASE_SOFT } }),
 }
 
 export function MaskHeading({

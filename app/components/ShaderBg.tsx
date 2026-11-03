@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { prefersReducedMotion, rafWhileVisible } from '../lib/motion'
 
 /**
  * Original WebGL "molten aurora" background: domain-warped fbm noise
@@ -60,73 +61,91 @@ export default function ShaderBg() {
 
   useEffect(() => {
     const canvas = ref.current!
-    const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false })
-    if (!gl) return
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const reduce = prefersReducedMotion()
+    let stop = () => {}
 
-    const sh = (type: number, src: string) => {
-      const s = gl.createShader(type)!
-      gl.shaderSource(s, src)
-      gl.compileShader(s)
-      return s
+    /** Compile, link and start drawing. Re-run after a lost WebGL context (common on iOS when backgrounded). */
+    const init = () => {
+      const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false, powerPreference: 'low-power' })
+      if (!gl) return
+      const sh = (type: number, src: string) => {
+        const s = gl.createShader(type)!
+        gl.shaderSource(s, src)
+        gl.compileShader(s)
+        return s
+      }
+      const prog = gl.createProgram()!
+      gl.attachShader(prog, sh(gl.VERTEX_SHADER, vert))
+      gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, frag))
+      gl.linkProgram(prog)
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return
+      gl.useProgram(prog)
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
+      const loc = gl.getAttribLocation(prog, 'a')
+      gl.enableVertexAttribArray(loc)
+      gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
+
+      const uRes = gl.getUniformLocation(prog, 'u_res')
+      const uTime = gl.getUniformLocation(prog, 'u_time')
+      const uMouse = gl.getUniformLocation(prog, 'u_mouse')
+
+      // Render at half resolution — it's a soft field, so this is invisible and 4× cheaper.
+      // Only resize when the size really changes (iOS fires resize on every address-bar move,
+      // and setting canvas.width clears the canvas).
+      const scale = 0.5
+      const resize = () => {
+        const w = Math.max(1, Math.round(canvas.clientWidth * scale))
+        const h = Math.max(1, Math.round(canvas.clientHeight * scale))
+        if (w === canvas.width && h === canvas.height) return
+        canvas.width = w
+        canvas.height = h
+        gl.viewport(0, 0, w, h)
+        gl.uniform2f(uRes, w, h)
+      }
+      canvas.width = canvas.height = 0
+      resize()
+      const ro = new ResizeObserver(resize)
+      ro.observe(canvas)
+
+      let mx = 0.5, my = 0.5, tx = 0.5, ty = 0.5
+      const onMove = (e: PointerEvent) => {
+        tx = e.clientX / window.innerWidth
+        ty = 1 - e.clientY / window.innerHeight
+      }
+      window.addEventListener('pointermove', onMove, { passive: true })
+
+      const draw = (t: number) => {
+        mx += (tx - mx) * 0.03
+        my += (ty - my) * 0.03
+        gl.uniform1f(uTime, t)
+        gl.uniform2f(uMouse, mx, my)
+        gl.drawArrays(gl.TRIANGLES, 0, 3)
+      }
+      const start = performance.now()
+      const stopLoop = reduce ? (draw(12), () => {}) : rafWhileVisible(canvas, (now) => draw((now - start) / 1000))
+
+      stop = () => {
+        stopLoop()
+        ro.disconnect()
+        window.removeEventListener('pointermove', onMove)
+      }
     }
-    const prog = gl.createProgram()!
-    gl.attachShader(prog, sh(gl.VERTEX_SHADER, vert))
-    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, frag))
-    gl.linkProgram(prog)
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return
-    gl.useProgram(prog)
 
-    const buf = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf)
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
-    const loc = gl.getAttribLocation(prog, 'a')
-    gl.enableVertexAttribArray(loc)
-    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0)
-
-    const uRes = gl.getUniformLocation(prog, 'u_res')
-    const uTime = gl.getUniformLocation(prog, 'u_time')
-    const uMouse = gl.getUniformLocation(prog, 'u_mouse')
-
-    // Render at reduced resolution — it's a soft field, so this is invisible and cheap.
-    const scale = 0.5
-    const resize = () => {
-      canvas.width = Math.max(1, canvas.clientWidth * scale)
-      canvas.height = Math.max(1, canvas.clientHeight * scale)
-      gl.viewport(0, 0, canvas.width, canvas.height)
-      gl.uniform2f(uRes, canvas.width, canvas.height)
+    const onLost = (e: Event) => {
+      e.preventDefault() // allow the browser to restore the context
+      stop()
     }
-    resize()
-    window.addEventListener('resize', resize)
-
-    let mx = 0.5, my = 0.5, tx = 0.5, ty = 0.5
-    const onMove = (e: PointerEvent) => {
-      tx = e.clientX / window.innerWidth
-      ty = 1 - e.clientY / window.innerHeight
-    }
-    window.addEventListener('pointermove', onMove)
-
-    let raf = 0, visible = true
-    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting))
-    io.observe(canvas)
-    const start = performance.now()
-    const draw = (now: number) => {
-      raf = requestAnimationFrame(draw)
-      if (!visible) return
-      mx += (tx - mx) * 0.03
-      my += (ty - my) * 0.03
-      gl.uniform1f(uTime, reduce ? 12 : (now - start) / 1000)
-      gl.uniform2f(uMouse, mx, my)
-      gl.drawArrays(gl.TRIANGLES, 0, 3)
-      if (reduce) cancelAnimationFrame(raf)
-    }
-    raf = requestAnimationFrame(draw)
+    const onRestored = () => init()
+    canvas.addEventListener('webglcontextlost', onLost)
+    canvas.addEventListener('webglcontextrestored', onRestored)
+    init()
 
     return () => {
-      cancelAnimationFrame(raf)
-      io.disconnect()
-      window.removeEventListener('resize', resize)
-      window.removeEventListener('pointermove', onMove)
+      stop()
+      canvas.removeEventListener('webglcontextlost', onLost)
+      canvas.removeEventListener('webglcontextrestored', onRestored)
     }
   }, [])
 

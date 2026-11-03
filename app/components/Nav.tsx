@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from 'framer-motion'
 import { profile } from '../data/portfolio'
+import { EASE_OUT, EASE_SOFT } from '../lib/motion'
 
 const links = [
   { href: '#about', label: 'About' },
@@ -52,7 +53,7 @@ export default function Nav() {
         className={`nav ${solid ? 'solid' : ''}`}
         initial={{ y: -100, opacity: 0, x: '-50%' }}
         animate={{ y: hidden ? -110 : 0, opacity: 1, x: '-50%' }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.7, ease: EASE_OUT }}
       >
         <a href="#" className="nav-logo" aria-label="Back to top">
           SM<span>.</span>
@@ -89,7 +90,7 @@ export default function Nav() {
             initial={{ clipPath: 'circle(0% at 100% 0%)' }}
             animate={{ clipPath: 'circle(150% at 100% 0%)' }}
             exit={{ clipPath: 'circle(0% at 100% 0%)' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, ease: EASE_SOFT }}
           >
             {links.map((l, i) => (
               <motion.a

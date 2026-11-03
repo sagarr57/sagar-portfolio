@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
+import { prefersReducedMotion } from '../lib/motion'
 
 const GLYPHS = '!<>-_\\/[]{}—=+*^?#ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 
@@ -31,7 +32,7 @@ export default function Scramble({ text, className }: { text: string; className?
   }
 
   useEffect(() => {
-    if (inView && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) run()
+    if (inView && !prefersReducedMotion()) run()
     return () => cancelAnimationFrame(raf.current)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inView])
