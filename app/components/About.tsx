@@ -18,7 +18,9 @@ function Word({ children, progress, range }: { children: string; progress: Motio
 
 export default function About() {
   const ref = useRef<HTMLParagraphElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] })
+  // Finish lighting up while the statement is still in the lower half of the screen,
+  // so short (mobile) paragraphs are fully readable once centred.
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.95', 'end 0.7'] })
   const words = about.statement.split(' ')
 
   return (
