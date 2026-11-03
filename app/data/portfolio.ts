@@ -361,16 +361,16 @@ export const projects: Project[] = [
   {
     slug: 'crop',
     title: 'Crop Recommendation & Disease Detection — ML Platform',
-    tagline: 'F21DL · tabular ML for 22 crops + a CNN for 38 leaf diseases',
+    tagline: 'F21DL · ensemble ML for 22 crops + a CNN for 38 leaf diseases',
     category: 'MSc Coursework',
     year: '2025',
     summary: 'Soil and climate data recommend a crop; leaf photos diagnose disease. I built the MLP and the model-comparison framework.',
     points: [
-      'Random Forest reached 99.32% test accuracy (MCC 0.993) across 22 crop classes; MLP 95.2%.',
+      'Ensemble crop recommender reached 99.72% accuracy across 22 crop classes.',
       'Custom 1.3M-parameter CNN with AdamW and label smoothing: 86.7% test accuracy on 38 classes.',
     ],
     stack: ['TensorFlow', 'Keras', 'scikit-learn', 'CNN', 'Plotly'],
-    metric: { value: '99.3%', label: 'crop accuracy' },
+    metric: { value: '99.72%', label: 'crop accuracy' },
   },
   {
     slug: 'ann-pso',
@@ -543,6 +543,7 @@ export const experience = [
       'Solo-built Staffena, a multi-tenant HR & payroll SaaS — 127 screens, 20+ modules, ~285k lines.',
       '2nd-highest contributor (~925 commits) to a multi-tenant CRM with WebRTC calling and AI transcripts.',
       'Top contributor to an AI project-management platform; lead developer of AI calling middleware.',
+      'ML bank-statement classifier for 10 UK bank formats; delivered QuickCash Direct, All Day Loans and PingFree Admin.',
     ],
     stack: ['Next.js', 'Laravel', 'TypeScript', 'Supabase', 'Python', 'AWS'],
   },
@@ -574,7 +575,7 @@ export const experience = [
     points: [
       'React dashboard components — 25% faster load times.',
       'Landing page that lifted engagement 35%.',
-      'Playwright & Jest automation — zero critical bugs shipped.',
+      'Playwright & Jest automation — zero critical bugs; CI/CD config overhead cut 40%.',
     ],
     stack: ['React', 'Next.js', 'Node.js', 'Playwright', 'Jest'],
   },
@@ -582,10 +583,13 @@ export const experience = [
     role: 'Freelance Full-Stack Developer',
     company: 'Freelance',
     location: 'Remote',
-    dates: '2024',
-    summary: 'AI-powered e-commerce platform.',
-    points: ['React, Node and MongoDB store with ML product recommendations and an AI support chatbot.'],
-    stack: ['React', 'Node.js', 'MongoDB', 'Python'],
+    dates: 'Apr 2024 — Jan 2025',
+    summary: 'AI e-commerce and client automation.',
+    points: [
+      'React, Node and MongoDB store with ML product recommendations and an AI support chatbot.',
+      'Client sites with WhatsApp Business API + n8n lead capture — 50% less manual follow-up.',
+    ],
+    stack: ['React', 'Node.js', 'MongoDB', 'Python', 'n8n'],
   },
   {
     role: 'Junior Engineer',
@@ -599,13 +603,13 @@ export const experience = [
 ]
 
 export const skills = [
-  { group: 'AI / ML', note: 'LLM products and classical ML', items: ['Claude & OpenAI APIs', 'Vercel AI SDK', 'MCP', 'RAG', 'AI agents', 'Speech-to-text', 'PyTorch', 'Transformers', 'scikit-learn', 'XGBoost', 'SHAP'] },
-  { group: 'Frontend', note: 'Interfaces people enjoy', items: ['React 19', 'Next.js 15/16', 'TypeScript', 'Tailwind 4', 'shadcn/ui', 'TanStack', 'React Flow', 'Storybook', 'PWA'] },
-  { group: 'Backend', note: 'APIs and services', items: ['Node.js', 'Laravel', 'FastAPI', 'REST + OpenAPI', 'Websockets', 'Queues'] },
-  { group: 'Databases', note: 'Data with isolation built in', items: ['PostgreSQL + RLS', 'pgvector', 'Supabase', 'Neon', 'Drizzle', 'Redis', 'Meilisearch'] },
-  { group: 'Integrations', note: 'Systems talking to systems', items: ['Stripe', 'WebRTC & VoIP', 'Asterisk', 'SMS & WhatsApp', 'Slack', 'Notion', 'Web Push', 'Webhooks'] },
+  { group: 'AI / ML', note: 'LLM products and classical ML', items: ['Claude & OpenAI APIs', 'Vercel AI SDK', 'MCP', 'RAG & pgvector', 'AI agents', 'LangChain', 'Whisper', 'ElevenLabs', 'PyTorch', 'TensorFlow / Keras', 'Transformers', 'scikit-learn', 'XGBoost', 'SHAP'] },
+  { group: 'Frontend', note: 'Interfaces people enjoy', items: ['TypeScript', 'JavaScript', 'React 19', 'Next.js 15/16', 'Tailwind 4', 'shadcn/ui', 'TanStack', 'Inertia.js', 'React Flow', 'PWA'] },
+  { group: 'Backend', note: 'APIs and services', items: ['Node.js', 'Express', 'Laravel / PHP', 'Python / FastAPI', 'Java', 'REST + OpenAPI', 'WebSockets', 'Queues'] },
+  { group: 'Databases', note: 'Data with isolation built in', items: ['PostgreSQL + RLS', 'pgvector', 'Supabase', 'Neon', 'Drizzle', 'MongoDB', 'MySQL', 'Redis'] },
+  { group: 'Integrations', note: 'Systems talking to systems', items: ['WebRTC & VoIP', 'Asterisk', 'WhatsApp Business API', 'SMS', 'Stripe', 'Webhooks', 'n8n', 'Slack & Notion'] },
   { group: 'Cloud & DevOps', note: 'Ship it safely', items: ['AWS (S3, SSM, EC2, OIDC)', 'Vercel + Cron', 'Docker', 'GitHub Actions', 'Linux / systemd', 'Turborepo', 'pnpm'] },
-  { group: 'Quality & Security', note: 'Guards on production', items: ['Vitest', 'Playwright', 'Pest', 'PHPStan', 'RLS tests', 'RBAC', 'MFA / passkeys', 'GDPR tooling'] },
+  { group: 'Quality & Security', note: 'Guards on production', items: ['Playwright', 'Vitest', 'Jest', 'Pest', 'RLS tests', 'RBAC', 'MFA / passkeys', 'GDPR tooling'] },
 ]
 
 export const education = [
